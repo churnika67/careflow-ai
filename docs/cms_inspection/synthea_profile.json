@@ -1,0 +1,44 @@
+{
+  "origin_url": "https://github.com/synthetichealth/synthea-sample-data/raw/main/downloads/synthea_sample_data_fhir_r4_nov2021.zip",
+  "release": "nov2021",
+  "zip_sha256": "6d3c5433bcae4791bc5c30469d1445b430fb4894d5c13bda15fee0584bbd7778",
+  "zip_bytes": 94887125,
+  "total_bundles_in_release": 557,
+  "supported_resource_types": [
+    "Patient",
+    "Encounter",
+    "Condition",
+    "Procedure",
+    "Observation",
+    "MedicationRequest"
+  ],
+  "observed_unsupported_resource_types": [
+    "DiagnosticReport",
+    "Claim",
+    "ExplanationOfBenefit",
+    "DocumentReference",
+    "Immunization",
+    "SupplyDelivery",
+    "CareTeam",
+    "CarePlan",
+    "Medication",
+    "MedicationAdministration",
+    "ImagingStudy",
+    "AllergyIntolerance",
+    "Device",
+    "Provenance"
+  ],
+  "observed_coding_systems": [
+    "http://snomed.info/sct",
+    "http://loinc.org",
+    "http://www.nlm.nih.gov/research/umls/rxnorm",
+    "http://hl7.org/fhir/sid/cvx",
+    "http://unitsofmeasure.org"
+  ],
+  "observed_observation_value_shapes": [
+    "valueQuantity",
+    "valueCodeableConcept",
+    "valueString",
+    "component"
+  ]
+}

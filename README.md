@@ -5,10 +5,20 @@ verified phases. The planned system combines public Medicare coverage policies
 with synthetic claims and patient records to support documentation review.
 It is an engineering portfolio project, not a clinical decision system.
 
-**Current scope: Phase 7 — retrieval evaluation and golden dataset.** The existing
-hybrid retrieval and optional cross-encoder pipeline is unchanged. A versioned
-32-case development dataset now measures retrieval, eligibility, abstention and
-latency separately over the same 39 CMS chunks.
+**Current scope: Phase 8 — structured healthcare data engineering.** The existing
+retrieval/RAG pipeline (Phases 1-7) is unchanged. Phase 8 adds a separate,
+independent structured-data layer: CMS DE-SynPUF synthetic claims and Synthea
+synthetic FHIR R4 patient records, ingested into PostgreSQL with checksum-gated
+source validation, per-record quarantine, provenance, and idempotent loading.
+This layer is not yet connected to the RAG pipeline — see the
+[Phase 8 guide](docs/phase8_structured_health_data.md) for the architecture,
+real data-modeling findings (multi-coding, `Observation.value[x]` diversity,
+claim identity), schema, and reproduction steps.
+
+The Phase 7 retrieval evaluation below remains the last verified state of the
+unstructured pipeline: a versioned 32-case development dataset measuring
+retrieval, eligibility, abstention and latency separately over the same 39 CMS
+chunks.
 
 On 25 positive cases, Hit@1 was 22/25 for dense and 24/25 for BM25, hybrid and
 reranked hybrid. All reached 25/25 at Hit@5. Reranking improved one case and
@@ -127,7 +137,9 @@ flowchart LR
 Planned: Next.js/TypeScript → FastAPI → LangGraph router → policy retrieval and
 restricted structured-data tools → analysis → validation → cited report and human review.
 Implemented retrieval supports dense, BM25, RRF hybrid search and optional cross-encoder reranking.
-Phase 7 evaluation is implemented; claims/FHIR ingestion and the remaining roadmap are planned.
+Phase 7 evaluation and Phase 8 structured DE-SynPUF/FHIR ingestion are implemented as an
+independent layer, not yet connected to retrieval; the LangGraph router and remaining
+roadmap are planned.
 
 ## Repository
 
@@ -171,7 +183,9 @@ include the archive checksum; CMS may replace the file at the same URL.
 This profiles raw CSVs and validates saved findings; it does not ingest policies.
 LCD and Article **data exports** still
 require inspection before implementing their adapters. DE-SynPUF and Synthea
-inspection remain Phase 8 work. MIMIC-IV is a potential future extension only.
+inspection and ingestion are implemented — see the
+[Phase 8 guide](docs/phase8_structured_health_data.md). MIMIC-IV is a potential
+future extension only.
 
 ## Ingest and search
 

@@ -73,7 +73,42 @@ def main():
                 command.add_argument("--version")
                 command.add_argument("--source-field")
                 command.add_argument("--coverage-code")
+    for name in ("ingest-synpuf", "ingest-fhir", "validate-sources", "quality-check"):
+        commands.add_parser(name)
+    summary_command = commands.add_parser("ingestion-summary")
+    summary_command.add_argument("--limit", type=int, choices=range(1, 101), default=10)
     args = parser.parse_args()
+    if args.command in (
+        "ingest-synpuf",
+        "ingest-fhir",
+        "validate-sources",
+        "ingestion-summary",
+        "quality-check",
+    ):
+        import asyncio
+
+        if args.command == "validate-sources":
+            from ingestion.structured_reports import validate_sources
+
+            print(json.dumps(validate_sources(), indent=2))
+        elif args.command == "ingest-synpuf":
+            from ingestion.cms_synpuf.loader import ingest_synpuf
+
+            print(json.dumps(asyncio.run(ingest_synpuf(defaults)), indent=2, default=str))
+        elif args.command == "ingest-fhir":
+            from ingestion.synthea.loader import ingest_synthea
+
+            print(json.dumps(asyncio.run(ingest_synthea(defaults)), indent=2, default=str))
+        elif args.command == "ingestion-summary":
+            from ingestion.structured_reports import ingestion_summary
+
+            result = asyncio.run(ingestion_summary(defaults, args.limit))
+            print(json.dumps(result, indent=2, default=str))
+        else:
+            from ingestion.structured_reports import quality_check
+
+            print(json.dumps(asyncio.run(quality_check(defaults)), indent=2, default=str))
+        return
     if args.command == "rag":
         from app.generation.providers import GenerationError, create_provider
         from app.generation.runtime import retrieve

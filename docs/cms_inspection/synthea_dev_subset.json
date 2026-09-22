@@ -1,0 +1,18 @@
+{
+  "zip_sha256": "6d3c5433bcae4791bc5c30469d1445b430fb4894d5c13bda15fee0584bbd7778",
+  "selection_method": "Patient bundle filenames sorted lexicographically ascending across the 557-bundle nov2021 release; first 5 taken. This is a development selection for testing the ETL pipeline (schema coverage, reference resolution, coding preservation), not a representative population sample.",
+  "bundle_files": [
+    "fhir/Abdul218_Harris789_b0a06ead-cc42-aa48-dad6-841d4aa679fa.json",
+    "fhir/Abe604_Schmidt332_ccfc4db2-2026-7adb-3db0-33f3828140bb.json",
+    "fhir/Adelaida985_DuBuque211_31a2e8ec-69fc-8a71-3ab6-36cbdd508713.json",
+    "fhir/Adriana394_Hintz995_71a8b156-760b-df6b-859e-eefc7932a526.json",
+    "fhir/Agueda283_Gerhold939_76b289fd-e825-734c-8446-316f59643593.json"
+  ],
+  "bundle_sha256": {
+    "fhir/Abdul218_Harris789_b0a06ead-cc42-aa48-dad6-841d4aa679fa.json": "4ea2517eb45340fc6cbcf5e492db34a6eac8c4f280db08d07c68c00873a6191c",
+    "fhir/Abe604_Schmidt332_ccfc4db2-2026-7adb-3db0-33f3828140bb.json": "869bc840247a347eb9e0c32f231e45168bd6581bafc86fb7d2e393351542a52e",
+    "fhir/Adelaida985_DuBuque211_31a2e8ec-69fc-8a71-3ab6-36cbdd508713.json": "8dbef856c39ec95e415bdb7fa97319688d98784a0d7e699852fd3e6881b5e2b9",
+    "fhir/Adriana394_Hintz995_71a8b156-760b-df6b-859e-eefc7932a526.json": "04f835e629a7ccf3767ef1b1128a4a8ea6f64f661010f30ae189cd0f49cc7fb5",
+    "fhir/Agueda283_Gerhold939_76b289fd-e825-734c-8446-316f59643593.json": "a2f5c8e587684df1e6917fee9a9ceba119a0a96f7bef76a5f3863b7dd8042fc3"
+  }
+}

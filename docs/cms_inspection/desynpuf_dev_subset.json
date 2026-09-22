@@ -1,0 +1,26 @@
+{
+  "data_as_of": "2013-02-20",
+  "selection_method": "DESYNPUF_ID sorted lexicographically ascending, filtered to beneficiaries present in BOTH the 2008 Beneficiary Summary file and at least one claim in both the Inpatient and Outpatient Sample 1 files (36314 such beneficiaries exist), first 15 taken. This exercises all three selected source tables (Beneficiary Summary, Inpatient Claims, Outpatient Claims) and the multi-diagnosis/procedure/HCPCS wide-to-normalized transform without requiring a full 116k-beneficiary load for development and tests. This is a development selection for testing the ETL pipeline, not a representative population sample.",
+  "zip_sha256": {
+    "beneficiary_2008": "2b0c9cbfb07a6eb46d5f96472c0891275a390b686c3fa34daae8d3e53d70b18b",
+    "inpatient_sample1": "ac25124184d22863aff538607097d2d0c880d19f7d58f882f9d31129c492d893",
+    "outpatient_sample1": "7c94a94c8c676511d0bbea2dae3e6511980bdb8e44003285a0619a7ef38f9495"
+  },
+  "beneficiary_ids": [
+    "00013D2EFD8E45D1",
+    "00016F745862898F",
+    "00052705243EA128",
+    "0007F12A492FD25D",
+    "000C7486B11E7030",
+    "00108066CA1FACCE",
+    "0011714C14B52EEB",
+    "0011CB1FE23E91AF",
+    "00139C345A104F72",
+    "0013E139F1F37264",
+    "00157F1570C74E09",
+    "00196F0702489342",
+    "001AFA59A08ABBF1",
+    "001EA2F4DB30F105",
+    "001F135A720283D1"
+  ]
+}
