@@ -1,0 +1,55 @@
+{
+  "archive_sha256": "735619558de8759427d5fe71989d06b48e5625376594fe94efa7a60f7e152ca3",
+  "data_as_of": "2026-08-30",
+  "selection_rationale": "Eight manually inspected NCDs on home equipment and sleep testing, including one explicit noncoverage policy. No RETIRED title, termination date, undefined coverage-level code, or blank indications. This is a development selection, not certification of current coverage.",
+  "records": [
+    {
+      "NCD_id": "43",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "50.5",
+      "NCD_mnl_sect_title": "Oxygen Treatment of Inner Ear/Carbon Therapy"
+    },
+    {
+      "NCD_id": "169",
+      "NCD_vrsn_num": "2",
+      "NCD_mnl_sect": "240.2",
+      "NCD_mnl_sect_title": "Home Use of Oxygen"
+    },
+    {
+      "NCD_id": "219",
+      "NCD_vrsn_num": "2",
+      "NCD_mnl_sect": "280.3",
+      "NCD_mnl_sect_title": "Mobility Assistive Equipment (MAE)"
+    },
+    {
+      "NCD_id": "223",
+      "NCD_vrsn_num": "2",
+      "NCD_mnl_sect": "280.14",
+      "NCD_mnl_sect_title": "Infusion Pumps"
+    },
+    {
+      "NCD_id": "226",
+      "NCD_vrsn_num": "3",
+      "NCD_mnl_sect": "240.4",
+      "NCD_mnl_sect_title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)"
+    },
+    {
+      "NCD_id": "227",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "280.7",
+      "NCD_mnl_sect_title": "Hospital Beds"
+    },
+    {
+      "NCD_id": "330",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "240.4.1",
+      "NCD_mnl_sect_title": "Sleep Testing for Obstructive Sleep Apnea (OSA)"
+    },
+    {
+      "NCD_id": "376",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "280.16",
+      "NCD_mnl_sect_title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs"
+    }
+  ]
+}

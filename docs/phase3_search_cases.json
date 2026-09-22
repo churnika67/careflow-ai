@@ -1,0 +1,58 @@
+[
+  {
+    "query": "What clinical testing must support an initial claim for oxygen therapy at home?",
+    "expected_document_id": "169",
+    "expected_version": "2",
+    "expected_section": "B. Nationally Covered Indications",
+    "expected_evidence_phrase": "ordered and evaluated"
+  },
+  {
+    "query": "What diagnosis and sleep test documentation supports an initial 12-week CPAP trial?",
+    "expected_document_id": "226",
+    "expected_version": "3",
+    "expected_section": "B. Nationally Covered Indications",
+    "expected_evidence_phrase": "12-week period"
+  },
+  {
+    "query": "How are mobility limitations in activities of daily living at home assessed for a wheelchair?",
+    "expected_document_id": "219",
+    "expected_version": "2",
+    "expected_section": "B. Nationally Covered Indications",
+    "expected_evidence_phrase": "mobility-related activities of daily living"
+  },
+  {
+    "query": "What fasting C-peptide and glucose testing is required for an insulin infusion pump?",
+    "expected_document_id": "223",
+    "expected_version": "2",
+    "expected_section": "B. Nationally Covered Indications",
+    "expected_evidence_phrase": "fasting C-peptide"
+  },
+  {
+    "query": "What must a physician prescription document to justify a hospital bed?",
+    "expected_document_id": "227",
+    "expected_version": "1",
+    "expected_section": "B. Physician's Prescription",
+    "expected_evidence_phrase": "must accompany the initial claim"
+  },
+  {
+    "query": "Which unattended home sleep testing devices are covered to diagnose obstructive sleep apnea?",
+    "expected_document_id": "330",
+    "expected_version": "1",
+    "expected_section": "B. Nationally Covered Indications",
+    "expected_evidence_phrase": "Type II or Type III"
+  },
+  {
+    "query": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+    "expected_document_id": "376",
+    "expected_version": "1",
+    "expected_section": "B. Nationally Covered Indications",
+    "expected_evidence_phrase": "specialty evaluation"
+  },
+  {
+    "query": "Is oxygen and carbon dioxide inhalation therapy for inner ear disease reasonable and necessary?",
+    "expected_document_id": "43",
+    "expected_version": "1",
+    "expected_section": "indctn_lmtn",
+    "expected_evidence_phrase": "not reasonable and necessary"
+  }
+]

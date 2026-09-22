@@ -1,0 +1,819 @@
+{
+  "purpose": "Phase 4 smoke observations; not full RAG evaluation",
+  "settings": {
+    "provider": "deterministic",
+    "model": "first-evidence-v1",
+    "top_k": 5,
+    "min_score": 0.6
+  },
+  "cases": [
+    {
+      "question": "What clinical testing must support an initial claim for oxygen therapy at home?",
+      "response": {
+        "answer": "CMS evidence [11f9eda3-b2d1-5c44-9ea4-a1b37768c254]:\nB. Nationally Covered Indications\n\nOxygen therapy and oxygen equipment is covered in the home for acute or chronic conditions, short- or long- term, when the patient exhibits hypoxemia as defined below.\n\nInitial claims for oxygen therapy for hypoxemic patients must be based on the results of a clinical test that has been ordered and evaluated by the treating practitioner. Such a test is usually in the form of a measurement of the partial pressure of oxygen (PO2) in arterial blood. A measurement of arterial oxygen saturation obtained by ear or pulse oximetry, however, is also acceptable when ordered and evaluated by the treating practitioner and performed under his or her supervision or when performed by a qualified provider or supplier of laboratory services. A durable medical equipment (DME) supplier is not considered a qualified provider or supplier of laboratory services for purposes of this National Coverage Determination (NCD). This prohibition does not extend to the results of blood gas tests conducted by a hospital certified to do such tests.\n\nWhen the arterial blood gas and the oximetry studies are both used to document the need for home oxygen therapy and the results are conflicting, the arterial blood gas study is the preferred source of documenting medical need.\n\nRequired qualifying arterial blood gas or oximetry studies must be performed at the time of need. The time of need is defined as during the patient’s illness when the presumption is that the provision of oxygen in the home setting will improve the patient’s condition. For an inpatient hospital patient the time of need is within 2 days of discharge. For those patients whose initial oxygen prescription does not originate during an inpatient hospital stay, the time of need is during the period when the treating practitioner notes signs and symptoms of illness that can be relieved by oxygen in the patient who is to be treated at home.\n\nPatients exhibiting hypoxemia are defined using the clinical criteria below:\n\nGroup I:\n\n- An arterial PO2 at or below 55 mm Hg, or an arterial oxygen saturation at or below 88%, taken at rest, breathing room air;or\n\n- An arterial PO2 at or below 55 mm Hg, or an arterial oxygen saturation at or below 88%, taken during sleep for a patient who demonstrates an arterial PO2 at or above 56 mm Hg, or an arterial oxygen saturation at or above 89%, while awake; or a greater than normal fall in oxygen level during sleep (a decrease in arterial PO2 more than 10 mm Hg, or decrease in arterial oxygen saturation more than 5%) associated with symptoms or signs reasonably attributable to hypoxemia (e.g., impairment of cognitive processes and nocturnal restlessness or insomnia). In either of these cases, coverage is provided only for use of oxygen during sleep, and then only one type of unit will be covered. Portable oxygen, therefore, would not be covered in this situation; or,",
+        "citations": [
+          {
+            "document_id": "169",
+            "document_version": "2",
+            "title": "Home Use of Oxygen",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+          "b98117a8-1f53-50f4-902d-d62e8b671f90",
+          "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "beae40ce-4792-5578-80c8-afd649db96aa"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "score": 0.7036976,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+          "score": 0.5977581,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "b98117a8-1f53-50f4-902d-d62e8b671f90",
+          "score": 0.5631713,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "score": 0.55489486,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+          "score": 0.5322531,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "B. Nationally Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [
+        "11f9eda3-b2d1-5c44-9ea4-a1b37768c254"
+      ],
+      "cited_evidence": [
+        "B. Nationally Covered Indications\n\nOxygen therapy and oxygen equipment is covered in the home for acute or chronic conditions, short- or long- term, when the patient exhibits hypoxemia as defined below.\n\nInitial claims for oxygen therapy for hypoxemic patients must be based on the results of a clinical test that has been ordered and evaluated by the treating practitioner. Such a test is usually in the form of a measurement of the partial pressure of oxygen (PO2) in arterial blood. A measurement of arterial oxygen saturation obtained by ear or pulse oximetry, however, is also acceptable when ordered and evaluated by the treating practitioner and performed under his or her supervision or when performed by a qualified provider or supplier of laboratory services. A durable medical equipment (DME) supplier is not considered a qualified provider or supplier of laboratory services for purposes of this National Coverage Determination (NCD). This prohibition does not extend to the results of blood gas tests conducted by a hospital certified to do such tests.\n\nWhen the arterial blood gas and the oximetry studies are both used to document the need for home oxygen therapy and the results are conflicting, the arterial blood gas study is the preferred source of documenting medical need.\n\nRequired qualifying arterial blood gas or oximetry studies must be performed at the time of need. The time of need is defined as during the patient’s illness when the presumption is that the provision of oxygen in the home setting will improve the patient’s condition. For an inpatient hospital patient the time of need is within 2 days of discharge. For those patients whose initial oxygen prescription does not originate during an inpatient hospital stay, the time of need is during the period when the treating practitioner notes signs and symptoms of illness that can be relieved by oxygen in the patient who is to be treated at home.\n\nPatients exhibiting hypoxemia are defined using the clinical criteria below:\n\nGroup I:\n\n- An arterial PO2 at or below 55 mm Hg, or an arterial oxygen saturation at or below 88%, taken at rest, breathing room air;or\n\n- An arterial PO2 at or below 55 mm Hg, or an arterial oxygen saturation at or below 88%, taken during sleep for a patient who demonstrates an arterial PO2 at or above 56 mm Hg, or an arterial oxygen saturation at or above 89%, while awake; or a greater than normal fall in oxygen level during sleep (a decrease in arterial PO2 more than 10 mm Hg, or decrease in arterial oxygen saturation more than 5%) associated with symptoms or signs reasonably attributable to hypoxemia (e.g., impairment of cognitive processes and nocturnal restlessness or insomnia). In either of these cases, coverage is provided only for use of oxygen during sleep, and then only one type of unit will be covered. Portable oxygen, therefore, would not be covered in this situation; or,"
+      ]
+    },
+    {
+      "question": "What diagnosis and sleep test documentation supports an initial 12-week CPAP trial?",
+      "response": {
+        "answer": "CMS evidence [56903cee-00c9-5b23-a022-a4a1339e4c38]:\nB. Nationally Covered Indications\n\nEffective for claims with dates of service on and after March 13, 2008, the Centers for Medicare & Medicaid Services (CMS) determines that CPAP therapy when used in adult patients with OSA is considered reasonable and necessary under the following situations:\n\n1. The use of CPAP is covered under Medicare when used in adult patients with OSA. Coverage of CPAP is initially limited to a 12-week period to identify beneficiaries diagnosed with OSA as subsequently described who benefit from CPAP. CPAP is subsequently covered only for those beneficiaries diagnosed with OSA who benefit from CPAP during this 12-week period.\n\n2. The provider of CPAP must conduct education of the beneficiary prior to the use of the CPAP device to ensure that the beneficiary has been educated in the proper use of the device. A caregiver, for example a family member, may be compensatory, if consistently available in the beneficiary's home and willing and able to safely operate the CPAP device.\n\n3. A positive diagnosis of OSA for the coverage of CPAP must include a clinical evaluation and a positive:\n\na. attended PSG performed in a sleep laboratory; or\n\nb. unattended HST with a Type II home sleep monitoring device; or\n\nc. unattended HST with a Type III home sleep monitoring device; or\n\nd. unattended HST with a Type IV home sleep monitoring device that measures at least 3 channels.\n\n4. The sleep test must have been previously ordered by the beneficiary’s treating physician and furnished under appropriate physician supervision.\n\n5. An initial 12-week period of CPAP is covered in adult patients with OSA if either of the following criterion using the AHI or RDI are met:\n\na. AHI or RDI greater than or equal to 15 events per hour, or\n\nb. AHI or RDI greater than or equal to 5 events and less than or equal to 14 events per hour with documented symptoms of excessive daytime sleepiness, impaired cognition, mood disorders or insomnia, or documented hypertension, ischemic heart disease, or history of stroke.\n\n6. The AHI or RDI is calculated on the average number of events of per hour. If the AHI or RDI is calculated based on less than 2 hours of continuous recorded sleep, the total number of recorded events to calculate the AHI or RDI during sleep testing must be at a minimum the number of events that would have been required in a 2-hour period.\n\n7. Apnea is defined as a cessation of airflow for at least 10 seconds. Hypopnea is defined as an abnormal respiratory event lasting at least 10 seconds with at least a 30% reduction in thoracoabdominal movement or airflow as compared to baseline, and with at least a 4% oxygen desaturation.\n\n8. Coverage with Evidence Development (CED): Medicare provides the following limited coverage for CPAP in adult beneficiaries who do not qualify for CPAP coverage based on criteria 1-7 above. A clinical study seeking Medicare payment for CPAP provided to a beneficiary who is an enrolled subject in that study must address one or more of the following questions",
+        "citations": [
+          {
+            "document_id": "226",
+            "document_version": "3",
+            "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "4ac07ec4-9790-5188-a040-a8e8fc2dddc3",
+          "234fd16d-21df-524a-aa5d-1b781556bd00",
+          "872545e4-28bc-5797-b89c-d53742c95421",
+          "8d14e9d2-25fd-5e82-a621-9914d795f495"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "score": 0.7708387,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "4ac07ec4-9790-5188-a040-a8e8fc2dddc3",
+          "score": 0.64317447,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "C. Nationally Non-covered Indications"
+        },
+        {
+          "chunk_id": "234fd16d-21df-524a-aa5d-1b781556bd00",
+          "score": 0.6356814,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "872545e4-28bc-5797-b89c-d53742c95421",
+          "score": 0.63171387,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+          "score": 0.63003707,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "C. Nationally Non-Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [
+        "56903cee-00c9-5b23-a022-a4a1339e4c38",
+        "4ac07ec4-9790-5188-a040-a8e8fc2dddc3",
+        "234fd16d-21df-524a-aa5d-1b781556bd00",
+        "872545e4-28bc-5797-b89c-d53742c95421",
+        "8d14e9d2-25fd-5e82-a621-9914d795f495"
+      ],
+      "cited_evidence": [
+        "B. Nationally Covered Indications\n\nEffective for claims with dates of service on and after March 13, 2008, the Centers for Medicare & Medicaid Services (CMS) determines that CPAP therapy when used in adult patients with OSA is considered reasonable and necessary under the following situations:\n\n1. The use of CPAP is covered under Medicare when used in adult patients with OSA. Coverage of CPAP is initially limited to a 12-week period to identify beneficiaries diagnosed with OSA as subsequently described who benefit from CPAP. CPAP is subsequently covered only for those beneficiaries diagnosed with OSA who benefit from CPAP during this 12-week period.\n\n2. The provider of CPAP must conduct education of the beneficiary prior to the use of the CPAP device to ensure that the beneficiary has been educated in the proper use of the device. A caregiver, for example a family member, may be compensatory, if consistently available in the beneficiary's home and willing and able to safely operate the CPAP device.\n\n3. A positive diagnosis of OSA for the coverage of CPAP must include a clinical evaluation and a positive:\n\na. attended PSG performed in a sleep laboratory; or\n\nb. unattended HST with a Type II home sleep monitoring device; or\n\nc. unattended HST with a Type III home sleep monitoring device; or\n\nd. unattended HST with a Type IV home sleep monitoring device that measures at least 3 channels.\n\n4. The sleep test must have been previously ordered by the beneficiary’s treating physician and furnished under appropriate physician supervision.\n\n5. An initial 12-week period of CPAP is covered in adult patients with OSA if either of the following criterion using the AHI or RDI are met:\n\na. AHI or RDI greater than or equal to 15 events per hour, or\n\nb. AHI or RDI greater than or equal to 5 events and less than or equal to 14 events per hour with documented symptoms of excessive daytime sleepiness, impaired cognition, mood disorders or insomnia, or documented hypertension, ischemic heart disease, or history of stroke.\n\n6. The AHI or RDI is calculated on the average number of events of per hour. If the AHI or RDI is calculated based on less than 2 hours of continuous recorded sleep, the total number of recorded events to calculate the AHI or RDI during sleep testing must be at a minimum the number of events that would have been required in a 2-hour period.\n\n7. Apnea is defined as a cessation of airflow for at least 10 seconds. Hypopnea is defined as an abnormal respiratory event lasting at least 10 seconds with at least a 30% reduction in thoracoabdominal movement or airflow as compared to baseline, and with at least a 4% oxygen desaturation.\n\n8. Coverage with Evidence Development (CED): Medicare provides the following limited coverage for CPAP in adult beneficiaries who do not qualify for CPAP coverage based on criteria 1-7 above. A clinical study seeking Medicare payment for CPAP provided to a beneficiary who is an enrolled subject in that study must address one or more of the following questions"
+      ]
+    },
+    {
+      "question": "How are mobility limitations in activities of daily living at home assessed for a wheelchair?",
+      "response": {
+        "answer": "CMS evidence [266a9002-e18a-5b6b-950e-0705824077ee]:\nbeneficiary using the wheelchair. The caregiver’s need to use a wheelchair to assist the beneficiary in the MRADLs is to be considered in this determination.\n\nb. If the amelioration or compensation requires the beneficiary's compliance with treatment, for example medications or therapy, substantive non-compliance, whether willing or involuntary, can be grounds for denial of MAE coverage if it results in the beneficiary continuing to have a significant limitation. It may be determined that partial compliance results in adequate amelioration or compensation for the appropriate use of MAE.\n\n4. Does the beneficiary or caregiver demonstrate the capability and the willingness to consistently operate the MAE safely?\n\na. Safety considerations include personal risk to the beneficiary as well as risk to others. The determination of safety may need to occur several times during the process as the consideration focuses on a specific device.\n\nb. A history of unsafe behavior in other venues may be considered.\n\n5. Can the functional mobility deficit be sufficiently resolved by the prescription of a cane or walker?\n\na. The cane or walker should be appropriately fitted to the beneficiary for this evaluation.\n\nb. Assess the beneficiary’s ability to safely use a cane or walker.\n\n6. Does the beneficiary’s typical environment support the use of wheelchairs including scooters/power-operated vehicles (POVs)?\n\na. Determine whether the beneficiary’s environment will support the use of these types of MAE.\n\nb. Keep in mind such factors as physical layout, surfaces, and obstacles, which may render MAE unusable in the beneficiary’s home.\n\n7. Does the beneficiary have sufficient upper extremity function to propel a manual wheelchair in the home to participate in MRADLs during a typical day? The manual wheelchair should be optimally configured (seating options, wheelbase, device weight, and other appropriate accessories) for this determination.\n\na. Limitations of strength, endurance, range of motion, coordination, and absence or deformity in one or both upper extremities are relevant.\n\nb. A beneficiary with sufficient upper extremity function may qualify for a manual wheelchair. The appropriate type of manual wheelchair, i.e. light weight, etc., should be determined based on the beneficiary’s physical characteristics and anticipated intensity of use.\n\nc. The beneficiary's home should provide adequate access, maneuvering space and surfaces for the operation of a manual wheelchair.\n\nd. Assess the beneficiary’s ability to safely use a manual wheelchair.\n\nNOTE: If the beneficiary is unable to self-propel a manual wheelchair, and if there is a caregiver who is available, willing, and able to provide assistance, a manual wheelchair may be appropriate.\n\n8. Does the beneficiary have sufficient strength and postural stability to operate a POV/scooter?\n\na. A POV is a 3- or 4-wheeled device with tiller steering and limited seat modification capabilities. The beneficiary must be able to maintain stability and position for adequate operation.\n\nb. The beneficiary's home should provide adequate access, maneuvering space and surfaces for the operation of a POV.",
+        "citations": [
+          {
+            "document_id": "219",
+            "document_version": "2",
+            "title": "Mobility Assistive Equipment (MAE)",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "266a9002-e18a-5b6b-950e-0705824077ee",
+          "050d0c24-fb74-5004-94aa-b66ed0faec60",
+          "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+          "d760711e-bf95-5e64-9d58-31510aba392e",
+          "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+          "score": 0.6507623,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "050d0c24-fb74-5004-94aa-b66ed0faec60",
+          "score": 0.6085409,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "A. General"
+        },
+        {
+          "chunk_id": "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+          "score": 0.60804045,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+          "score": 0.60508925,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37",
+          "score": 0.5457982,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [
+        "266a9002-e18a-5b6b-950e-0705824077ee",
+        "050d0c24-fb74-5004-94aa-b66ed0faec60",
+        "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+        "d760711e-bf95-5e64-9d58-31510aba392e"
+      ],
+      "cited_evidence": [
+        "beneficiary using the wheelchair. The caregiver’s need to use a wheelchair to assist the beneficiary in the MRADLs is to be considered in this determination.\n\nb. If the amelioration or compensation requires the beneficiary's compliance with treatment, for example medications or therapy, substantive non-compliance, whether willing or involuntary, can be grounds for denial of MAE coverage if it results in the beneficiary continuing to have a significant limitation. It may be determined that partial compliance results in adequate amelioration or compensation for the appropriate use of MAE.\n\n4. Does the beneficiary or caregiver demonstrate the capability and the willingness to consistently operate the MAE safely?\n\na. Safety considerations include personal risk to the beneficiary as well as risk to others. The determination of safety may need to occur several times during the process as the consideration focuses on a specific device.\n\nb. A history of unsafe behavior in other venues may be considered.\n\n5. Can the functional mobility deficit be sufficiently resolved by the prescription of a cane or walker?\n\na. The cane or walker should be appropriately fitted to the beneficiary for this evaluation.\n\nb. Assess the beneficiary’s ability to safely use a cane or walker.\n\n6. Does the beneficiary’s typical environment support the use of wheelchairs including scooters/power-operated vehicles (POVs)?\n\na. Determine whether the beneficiary’s environment will support the use of these types of MAE.\n\nb. Keep in mind such factors as physical layout, surfaces, and obstacles, which may render MAE unusable in the beneficiary’s home.\n\n7. Does the beneficiary have sufficient upper extremity function to propel a manual wheelchair in the home to participate in MRADLs during a typical day? The manual wheelchair should be optimally configured (seating options, wheelbase, device weight, and other appropriate accessories) for this determination.\n\na. Limitations of strength, endurance, range of motion, coordination, and absence or deformity in one or both upper extremities are relevant.\n\nb. A beneficiary with sufficient upper extremity function may qualify for a manual wheelchair. The appropriate type of manual wheelchair, i.e. light weight, etc., should be determined based on the beneficiary’s physical characteristics and anticipated intensity of use.\n\nc. The beneficiary's home should provide adequate access, maneuvering space and surfaces for the operation of a manual wheelchair.\n\nd. Assess the beneficiary’s ability to safely use a manual wheelchair.\n\nNOTE: If the beneficiary is unable to self-propel a manual wheelchair, and if there is a caregiver who is available, willing, and able to provide assistance, a manual wheelchair may be appropriate.\n\n8. Does the beneficiary have sufficient strength and postural stability to operate a POV/scooter?\n\na. A POV is a 3- or 4-wheeled device with tiller steering and limited seat modification capabilities. The beneficiary must be able to maintain stability and position for adequate operation.\n\nb. The beneficiary's home should provide adequate access, maneuvering space and surfaces for the operation of a POV."
+      ]
+    },
+    {
+      "question": "What fasting C-peptide and glucose testing is required for an insulin infusion pump?",
+      "response": {
+        "answer": "CMS evidence [8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a]:\nof severe glycemic excursions.\n\nCriterion B: The patient with diabetes has been on a pump prior to enrollment in Medicare and has documented frequency of glucose self-testing an average of at least 4 times per day during the month prior to Medicare enrollment.\n\nGeneral CSII Criteria\n\nIn addition to meeting Criterion A or B above, the following general requirements must be met:\n\nThe patient with diabetes must be insulinopenic per the updated fasting C-peptide testing requirement, or, as an alternative, must be beta cell autoantibody positive.\n\nUpdated fasting C-peptide testing requirement:\n\n- Insulinopenia is defined as a fasting C-peptide level that is less than or equal to 110% of the lower limit of normal of the laboratory's measurement method.\n\n- For patients with renal insufficiency and creatinine clearance (actual or calculated from age, gender, weight, and serum creatinine) ≤ 50 ml/minute, insulinopenia is defined as a fasting C-peptide level that is less than or equal to 200% of the lower limit of normal of the laboratory's measurement method.\n\n- Fasting C-peptide levels will only be considered valid with a concurrently obtained fasting glucose ≤ 225 mg/dL.\n\n- Levels only need to be documented once in the medical records.\n\nContinued coverage of the insulin pump would require that the patient be seen and evaluated by the treating physician at least every 3 months.\n\nThe pump must be ordered by and follow-up care of the patient must be managed by a physician who manages multiple patients with CSII and who works closely with a team including nurses, diabetes educators, and dietitians who are knowledgeable in the use of CSII.\n\nOther Uses of CSII\n\nThe Centers for Medicare & Medicaid Services will continue to allow coverage of all other uses of CSII in accordance with the Category B investigational device exemption clinical trials regulation (42 CFR 405.201) or as a routine cost under the clinical trials policy (Medicare National Coverage Determinations Manual 310.1).\n\nf. Other Uses\n\nOther uses of external infusion pumps are covered if the Medicare Administrative Contractor (MAC) medical staff verifies the appropriateness of the therapy and the prescribed pump for the individual patient.\n\nNOTE: Payment may also be made for drugs necessary for the effective use of a covered external infusion pump as long as the drug being used with the pump is itself reasonable and necessary for the patient's treatment.\n\n2. Implantable Infusion Pumps\n\na. Chemotherapy for Liver Cancer (Effective for Services Performed On or After September 26, 1984)\n\nThe implantable infusion pump is covered for intra-arterial infusion of 5-FUdR for the treatment of liver cancer for patients with primary hepatocellular carcinoma or Duke's Class D colorectal cancer, in whom the metastases are limited to the liver, and where: (1) the disease is unresectable, or, (2) the patient refuses surgical excision of the tumor.\n\nb. Anti-Spasmodic Drugs for Severe Spasticity\n\nAn implantable infusion pump is covered when used to administer anti-spasmodic drugs intrathecally (e.g., baclofen) to treat chronic intractable spasticity in patients who have proven unresponsive to less invasive medical therapy as determined by the following criteria:",
+        "citations": [
+          {
+            "document_id": "223",
+            "document_version": "2",
+            "title": "Infusion Pumps",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+          "12e567b6-156e-588c-acda-0677bd65d97d",
+          "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "e40923e3-b175-58f0-97d7-b312ae009f1f"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "score": 0.7394255,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+          "score": 0.7180372,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "12e567b6-156e-588c-acda-0677bd65d97d",
+          "score": 0.5473412,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "score": 0.4744569,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "e40923e3-b175-58f0-97d7-b312ae009f1f",
+          "score": 0.42636263,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "A. General"
+        }
+      ],
+      "context_chunk_ids": [
+        "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+        "b7bf5640-cd19-5701-a863-3f86a2109ba7"
+      ],
+      "cited_evidence": [
+        "of severe glycemic excursions.\n\nCriterion B: The patient with diabetes has been on a pump prior to enrollment in Medicare and has documented frequency of glucose self-testing an average of at least 4 times per day during the month prior to Medicare enrollment.\n\nGeneral CSII Criteria\n\nIn addition to meeting Criterion A or B above, the following general requirements must be met:\n\nThe patient with diabetes must be insulinopenic per the updated fasting C-peptide testing requirement, or, as an alternative, must be beta cell autoantibody positive.\n\nUpdated fasting C-peptide testing requirement:\n\n- Insulinopenia is defined as a fasting C-peptide level that is less than or equal to 110% of the lower limit of normal of the laboratory's measurement method.\n\n- For patients with renal insufficiency and creatinine clearance (actual or calculated from age, gender, weight, and serum creatinine) ≤ 50 ml/minute, insulinopenia is defined as a fasting C-peptide level that is less than or equal to 200% of the lower limit of normal of the laboratory's measurement method.\n\n- Fasting C-peptide levels will only be considered valid with a concurrently obtained fasting glucose ≤ 225 mg/dL.\n\n- Levels only need to be documented once in the medical records.\n\nContinued coverage of the insulin pump would require that the patient be seen and evaluated by the treating physician at least every 3 months.\n\nThe pump must be ordered by and follow-up care of the patient must be managed by a physician who manages multiple patients with CSII and who works closely with a team including nurses, diabetes educators, and dietitians who are knowledgeable in the use of CSII.\n\nOther Uses of CSII\n\nThe Centers for Medicare & Medicaid Services will continue to allow coverage of all other uses of CSII in accordance with the Category B investigational device exemption clinical trials regulation (42 CFR 405.201) or as a routine cost under the clinical trials policy (Medicare National Coverage Determinations Manual 310.1).\n\nf. Other Uses\n\nOther uses of external infusion pumps are covered if the Medicare Administrative Contractor (MAC) medical staff verifies the appropriateness of the therapy and the prescribed pump for the individual patient.\n\nNOTE: Payment may also be made for drugs necessary for the effective use of a covered external infusion pump as long as the drug being used with the pump is itself reasonable and necessary for the patient's treatment.\n\n2. Implantable Infusion Pumps\n\na. Chemotherapy for Liver Cancer (Effective for Services Performed On or After September 26, 1984)\n\nThe implantable infusion pump is covered for intra-arterial infusion of 5-FUdR for the treatment of liver cancer for patients with primary hepatocellular carcinoma or Duke's Class D colorectal cancer, in whom the metastases are limited to the liver, and where: (1) the disease is unresectable, or, (2) the patient refuses surgical excision of the tumor.\n\nb. Anti-Spasmodic Drugs for Severe Spasticity\n\nAn implantable infusion pump is covered when used to administer anti-spasmodic drugs intrathecally (e.g., baclofen) to treat chronic intractable spasticity in patients who have proven unresponsive to less invasive medical therapy as determined by the following criteria:"
+      ]
+    },
+    {
+      "question": "What must a physician prescription document to justify a hospital bed?",
+      "response": {
+        "answer": "CMS evidence [0364e913-f508-5d9e-a928-d9266d5b7741]:\nB. Physician's Prescription\n\nThe physician's prescription, which must accompany the initial claim, and supplementing documentation when required, must establish that a hospital bed is medically necessary. If the stated reason for the need for a hospital bed is the patient's condition requires positioning, the prescription or other documentation must describe the medical condition, e.g., cardiac disease, chronic obstructive pulmonary disease, quadriplegia or paraplegia, and also the severity and frequency of the symptoms of the condition that necessitates a hospital bed for positioning.\n\nIf the stated reason for requiring a hospital bed is the patient's condition requires special attachments, the prescription must describe the patient's condition and specify the attachments that require a hospital bed.",
+        "citations": [
+          {
+            "document_id": "227",
+            "document_version": "1",
+            "title": "Hospital Beds",
+            "section": "B. Physician's Prescription",
+            "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "0364e913-f508-5d9e-a928-d9266d5b7741",
+          "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "180ced12-0b5a-5354-99d9-a858c8439b17",
+          "3b7f9637-9064-56ff-89da-04bff6434f08",
+          "1ff4fb31-6d93-5293-b2c6-4da5c49b709c"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+          "score": 0.79235315,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "B. Physician's Prescription"
+        },
+        {
+          "chunk_id": "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "score": 0.7160341,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "A. General Requirements for Coverage of Hospital Beds"
+        },
+        {
+          "chunk_id": "180ced12-0b5a-5354-99d9-a858c8439b17",
+          "score": 0.5265245,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "E. Side Rails"
+        },
+        {
+          "chunk_id": "3b7f9637-9064-56ff-89da-04bff6434f08",
+          "score": 0.4763174,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "D. Electric Powered Hospital Bed Adjustments"
+        },
+        {
+          "chunk_id": "1ff4fb31-6d93-5293-b2c6-4da5c49b709c",
+          "score": 0.4754994,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "C. Variable Height Feature"
+        }
+      ],
+      "context_chunk_ids": [
+        "0364e913-f508-5d9e-a928-d9266d5b7741",
+        "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b"
+      ],
+      "cited_evidence": [
+        "B. Physician's Prescription\n\nThe physician's prescription, which must accompany the initial claim, and supplementing documentation when required, must establish that a hospital bed is medically necessary. If the stated reason for the need for a hospital bed is the patient's condition requires positioning, the prescription or other documentation must describe the medical condition, e.g., cardiac disease, chronic obstructive pulmonary disease, quadriplegia or paraplegia, and also the severity and frequency of the symptoms of the condition that necessitates a hospital bed for positioning.\n\nIf the stated reason for requiring a hospital bed is the patient's condition requires special attachments, the prescription must describe the patient's condition and specify the attachments that require a hospital bed."
+      ]
+    },
+    {
+      "question": "Which unattended home sleep testing devices are covered to diagnose obstructive sleep apnea?",
+      "response": {
+        "answer": "CMS evidence [beae40ce-4792-5578-80c8-afd649db96aa]:\nB. Nationally Covered Indications\n\nEffective for claims with dates of service on and after March 3, 2009, the Centers for Medicare & Medicaid Services finds that the evidence is sufficient to determine that the results of the sleep tests identified below can be used by a beneficiary’s treating physician to diagnose OSA, that the use of such sleep testing technologies demonstrates improved health outcomes in Medicare beneficiaries who have OSA and receive the appropriate treatment, and that these tests are thus reasonable and necessary under section 1862(a)(1)(A) of the Social Security Act.\n\n1. Type I PSG is covered when used to aid the diagnosis of OSA in beneficiaries who have clinical signs and symptoms indicative of OSA if performed attended in a sleep lab facility.\n\n2. Type II or Type III sleep testing devices are covered when used to aid the diagnosis of OSA in beneficiaries who have clinical signs and symptoms indicative of OSA if performed unattended in or out of a sleep lab facility or attended in a sleep lab facility.\n\n3. Type IV sleep testing devices measuring three or more channels, one of which is airflow, are covered when used to aid the diagnosis of OSA in beneficiaries who have signs and symptoms indicative of OSA if performed unattended in or out of a sleep lab facility or attended in a sleep lab facility.\n\n4. Sleep testing devices measuring three or more channels that include actigraphy, oximetry, and peripheral arterial tone, are covered when used to aid the diagnosis of OSA in beneficiaries who have signs and symptoms indicative of OSA if performed unattended in or out of a sleep lab facility or attended in a sleep lab facility.",
+        "citations": [
+          {
+            "document_id": "330",
+            "document_version": "1",
+            "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "beae40ce-4792-5578-80c8-afd649db96aa",
+          "8f73630c-374b-5edd-bc33-187947a6b869",
+          "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+          "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "8d14e9d2-25fd-5e82-a621-9914d795f495"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+          "score": 0.65631896,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "8f73630c-374b-5edd-bc33-187947a6b869",
+          "score": 0.653273,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+          "score": 0.62699574,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "A. General"
+        },
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "score": 0.59918165,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+          "score": 0.5476309,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "C. Nationally Non-Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [
+        "beae40ce-4792-5578-80c8-afd649db96aa",
+        "8f73630c-374b-5edd-bc33-187947a6b869",
+        "9b7836ed-7fa4-5110-ab96-948b249fad0d"
+      ],
+      "cited_evidence": [
+        "B. Nationally Covered Indications\n\nEffective for claims with dates of service on and after March 3, 2009, the Centers for Medicare & Medicaid Services finds that the evidence is sufficient to determine that the results of the sleep tests identified below can be used by a beneficiary’s treating physician to diagnose OSA, that the use of such sleep testing technologies demonstrates improved health outcomes in Medicare beneficiaries who have OSA and receive the appropriate treatment, and that these tests are thus reasonable and necessary under section 1862(a)(1)(A) of the Social Security Act.\n\n1. Type I PSG is covered when used to aid the diagnosis of OSA in beneficiaries who have clinical signs and symptoms indicative of OSA if performed attended in a sleep lab facility.\n\n2. Type II or Type III sleep testing devices are covered when used to aid the diagnosis of OSA in beneficiaries who have clinical signs and symptoms indicative of OSA if performed unattended in or out of a sleep lab facility or attended in a sleep lab facility.\n\n3. Type IV sleep testing devices measuring three or more channels, one of which is airflow, are covered when used to aid the diagnosis of OSA in beneficiaries who have signs and symptoms indicative of OSA if performed unattended in or out of a sleep lab facility or attended in a sleep lab facility.\n\n4. Sleep testing devices measuring three or more channels that include actigraphy, oximetry, and peripheral arterial tone, are covered when used to aid the diagnosis of OSA in beneficiaries who have signs and symptoms indicative of OSA if performed unattended in or out of a sleep lab facility or attended in a sleep lab facility."
+      ]
+    },
+    {
+      "question": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+      "response": {
+        "answer": "CMS evidence [d760711e-bf95-5e64-9d58-31510aba392e]:\nB. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual’s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment.",
+        "citations": [
+          {
+            "document_id": "376",
+            "document_version": "1",
+            "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "d099d33f-7cb8-5474-814e-60f7bdc5f76a",
+          "d760711e-bf95-5e64-9d58-31510aba392e",
+          "3121e230-ac69-5af6-af4e-742c81f52b42",
+          "04585146-f808-5088-a9bb-c125bc955cc5",
+          "83d8a48c-77da-5c86-9cd4-c70e42cead80"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "d099d33f-7cb8-5474-814e-60f7bdc5f76a",
+          "score": 0.8321705,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+          "score": 0.7514848,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "3121e230-ac69-5af6-af4e-742c81f52b42",
+          "score": 0.7352155,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "section": "A. General"
+        },
+        {
+          "chunk_id": "04585146-f808-5088-a9bb-c125bc955cc5",
+          "score": 0.708594,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+          "score": 0.66142005,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [
+        "d760711e-bf95-5e64-9d58-31510aba392e",
+        "3121e230-ac69-5af6-af4e-742c81f52b42",
+        "04585146-f808-5088-a9bb-c125bc955cc5",
+        "83d8a48c-77da-5c86-9cd4-c70e42cead80"
+      ],
+      "cited_evidence": [
+        "B. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual’s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment."
+      ]
+    },
+    {
+      "question": "Is oxygen and carbon dioxide inhalation therapy for inner ear disease reasonable and necessary?",
+      "response": {
+        "answer": "CMS evidence [dc2a342a-5448-50b4-b087-836666a5fa08]:\nOxygen (95 percent) and carbon dioxide (5 percent) inhalation therapy for inner ear disease, such as endolymphatic hydrops and fluctuant hearing loss, is not reasonable and necessary. The therapeutic benefit deriving from this procedure is highly questionable.",
+        "citations": [
+          {
+            "document_id": "43",
+            "document_version": "1",
+            "title": "Oxygen Treatment of Inner Ear/Carbon Therapy",
+            "section": "indctn_lmtn",
+            "chunk_id": "dc2a342a-5448-50b4-b087-836666a5fa08",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=43&NCDver=1"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "dc2a342a-5448-50b4-b087-836666a5fa08",
+          "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "234fd16d-21df-524a-aa5d-1b781556bd00",
+          "89b2e399-7c47-5e3f-983f-aaac4fadb109"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      },
+      "retrieval": [
+        {
+          "chunk_id": "dc2a342a-5448-50b4-b087-836666a5fa08",
+          "score": 0.81787217,
+          "NCD_id": "43",
+          "NCD_vrsn_num": "1",
+          "section": "indctn_lmtn"
+        },
+        {
+          "chunk_id": "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "score": 0.48709178,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "score": 0.44193068,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "234fd16d-21df-524a-aa5d-1b781556bd00",
+          "score": 0.38771504,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+          "score": 0.38711947,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "section": "D. Other"
+        }
+      ],
+      "context_chunk_ids": [
+        "dc2a342a-5448-50b4-b087-836666a5fa08"
+      ],
+      "cited_evidence": [
+        "Oxygen (95 percent) and carbon dioxide (5 percent) inhalation therapy for inner ear disease, such as endolymphatic hydrops and fluctuant hearing loss, is not reasonable and necessary. The therapeutic benefit deriving from this procedure is highly questionable."
+      ]
+    },
+    {
+      "question": "What dental implant documentation is required?",
+      "response": {
+        "answer": "Insufficient evidence.",
+        "citations": [],
+        "insufficient_evidence": true,
+        "retrieved_chunk_ids": [
+          "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "21a43ec3-703b-5491-99a2-8732528de421",
+          "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+          "04585146-f808-5088-a9bb-c125bc955cc5",
+          "beae40ce-4792-5578-80c8-afd649db96aa"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": "no_eligible_evidence"
+      },
+      "retrieval": [
+        {
+          "chunk_id": "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "score": 0.2992202,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "A. General Requirements for Coverage of Hospital Beds"
+        },
+        {
+          "chunk_id": "21a43ec3-703b-5491-99a2-8732528de421",
+          "score": 0.2803363,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+          "score": 0.2509336,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "04585146-f808-5088-a9bb-c125bc955cc5",
+          "score": 0.24696209,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+          "score": 0.24428356,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "B. Nationally Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [],
+      "cited_evidence": []
+    },
+    {
+      "question": "What chemotherapy regimen treats pancreatic cancer?",
+      "response": {
+        "answer": "Insufficient evidence.",
+        "citations": [],
+        "insufficient_evidence": true,
+        "retrieved_chunk_ids": [
+          "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+          "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "21a43ec3-703b-5491-99a2-8732528de421",
+          "12e567b6-156e-588c-acda-0677bd65d97d",
+          "20d886d6-8b3a-5a22-a4b1-4236f4b94a61"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": "no_eligible_evidence"
+      },
+      "retrieval": [
+        {
+          "chunk_id": "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+          "score": 0.4574249,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "score": 0.33020332,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "21a43ec3-703b-5491-99a2-8732528de421",
+          "score": 0.28765228,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "12e567b6-156e-588c-acda-0677bd65d97d",
+          "score": 0.2322416,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+          "score": 0.227514,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "section": "B. Nationally Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [],
+      "cited_evidence": []
+    },
+    {
+      "question": "Is it covered?",
+      "response": {
+        "answer": "Insufficient evidence.",
+        "citations": [],
+        "insufficient_evidence": true,
+        "retrieved_chunk_ids": [],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": "ambiguous_question"
+      },
+      "retrieval": [
+        {
+          "chunk_id": "180ced12-0b5a-5354-99d9-a858c8439b17",
+          "score": 0.26351583,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "E. Side Rails"
+        },
+        {
+          "chunk_id": "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "score": 0.21319859,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "section": "A. General Requirements for Coverage of Hospital Beds"
+        },
+        {
+          "chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+          "score": 0.19524583,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "928f8263-6783-5bbb-9942-17e8e674eb4d",
+          "score": 0.16435137,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "score": 0.16386388,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "C. Nationally Non-Covered Indications"
+        }
+      ],
+      "context_chunk_ids": [],
+      "cited_evidence": []
+    },
+    {
+      "question": "How do I configure a Kubernetes ingress controller?",
+      "response": {
+        "answer": "Insufficient evidence.",
+        "citations": [],
+        "insufficient_evidence": true,
+        "retrieved_chunk_ids": [
+          "e40923e3-b175-58f0-97d7-b312ae009f1f",
+          "12e567b6-156e-588c-acda-0677bd65d97d",
+          "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "10388823-924d-5586-8bf6-16feba70ee3f"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": "no_eligible_evidence"
+      },
+      "retrieval": [
+        {
+          "chunk_id": "e40923e3-b175-58f0-97d7-b312ae009f1f",
+          "score": 0.16595934,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "A. General"
+        },
+        {
+          "chunk_id": "12e567b6-156e-588c-acda-0677bd65d97d",
+          "score": 0.15382785,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "D. Other"
+        },
+        {
+          "chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "score": 0.10619229,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "C. Nationally Non-Covered Indications"
+        },
+        {
+          "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "score": 0.1036483,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "section": "B. Nationally Covered Indications"
+        },
+        {
+          "chunk_id": "10388823-924d-5586-8bf6-16feba70ee3f",
+          "score": 0.097920164,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "section": "xref_txt"
+        }
+      ],
+      "context_chunk_ids": [],
+      "cited_evidence": []
+    }
+  ]
+}

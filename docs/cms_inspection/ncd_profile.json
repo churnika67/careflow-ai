@@ -1,0 +1,727 @@
+{
+  "archive_sha256": "735619558de8759427d5fe71989d06b48e5625376594fe94efa7a60f7e152ca3",
+  "archive_bytes": 1281194,
+  "outer_crc_valid": true,
+  "inner_crc_valid": true,
+  "outer_members": [
+    {
+      "name": "ncd data dictionary.pdf",
+      "bytes": 252324,
+      "compressed_bytes": 240151,
+      "sha256": "c34b1fcea645b8f5bef8412b93d0d4cfd4c82085455c3649445ae269c0fbb7c9"
+    },
+    {
+      "name": "ncd.mdb",
+      "bytes": 4960256,
+      "compressed_bytes": 618130,
+      "sha256": "3a34f511ca88022ddbf166261b1e2e04d451ac0fc9194c997e5980e496dff06d"
+    },
+    {
+      "name": "ncd_csv.zip",
+      "bytes": 421836,
+      "compressed_bytes": 421773,
+      "sha256": "a609a76327bf6deb5cae718b3012fd0cabe38e62911011df247fe003dcbf3dba"
+    },
+    {
+      "name": "readme_first.txt",
+      "bytes": 1789,
+      "compressed_bytes": 700,
+      "sha256": "a92426fb680356b64019c51ba7d305b2d9945a4ef55eaa1ebd3727af555b39a3"
+    }
+  ],
+  "inner_members": [
+    {
+      "name": "ncd_bnft_ctgry_ref.csv",
+      "bytes": 2877,
+      "compressed_bytes": 1298,
+      "sha256": "159152a46b625b51f1269e397dd26a67d7655b2efd638043400a1b492f7707fe"
+    },
+    {
+      "name": "ncd_pblctn_ref.csv",
+      "bytes": 1659,
+      "compressed_bytes": 759,
+      "sha256": "4264a074b54a43718afa9d1e51b26383f1b4408f1fd09f1ee7603dc57d6f019e"
+    },
+    {
+      "name": "ncd_trkg.csv",
+      "bytes": 1991031,
+      "compressed_bytes": 413309,
+      "sha256": "f22a0bee18d46b78fa73690fd91bff71668ec1c0793a720b105391f1fd23be75"
+    },
+    {
+      "name": "ncd_trkg_bnft_xref.csv",
+      "bytes": 29713,
+      "compressed_bytes": 5188,
+      "sha256": "624dca5c54eccab908087a4bd4fd6dc75baa96e2a4067d4eac071a9caa867995"
+    },
+    {
+      "name": "readme_first.txt",
+      "bytes": 1789,
+      "compressed_bytes": 700,
+      "sha256": "a92426fb680356b64019c51ba7d305b2d9945a4ef55eaa1ebd3727af555b39a3"
+    }
+  ],
+  "tables": {
+    "ncd_bnft_ctgry_ref.csv": {
+      "rows": 78,
+      "columns": [
+        "bnft_ctgry_cd",
+        "bnft_ctgry_desc"
+      ],
+      "encoding_verified": "utf-8",
+      "utf8_bom": false,
+      "primary_key": [
+        "bnft_ctgry_cd"
+      ],
+      "duplicate_primary_keys": 0,
+      "fields": {
+        "bnft_ctgry_cd": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 78,
+          "max_characters": 2
+        },
+        "bnft_ctgry_desc": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 78,
+          "max_characters": 78
+        }
+      }
+    },
+    "ncd_pblctn_ref.csv": {
+      "rows": 42,
+      "columns": [
+        "pblctn_cd",
+        "pblctn_num",
+        "pblctn_title"
+      ],
+      "encoding_verified": "utf-8",
+      "utf8_bom": false,
+      "primary_key": [
+        "pblctn_cd"
+      ],
+      "duplicate_primary_keys": 0,
+      "fields": {
+        "pblctn_cd": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 42,
+          "max_characters": 2
+        },
+        "pblctn_num": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 42,
+          "max_characters": 6
+        },
+        "pblctn_title": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 42,
+          "max_characters": 75
+        }
+      }
+    },
+    "ncd_trkg.csv": {
+      "rows": 357,
+      "columns": [
+        "NCD_id",
+        "NCD_vrsn_num",
+        "natl_cvrg_type",
+        "cvrg_lvl_cd",
+        "NCD_mnl_sect",
+        "NCD_mnl_sect_title",
+        "NCD_efctv_dt",
+        "NCD_impltn_dt",
+        "NCD_trmntn_dt",
+        "itm_srvc_desc",
+        "indctn_lmtn",
+        "xref_txt",
+        "othr_txt",
+        "trnsmtl_num",
+        "trnsmtl_issnc_dt",
+        "trnsmtl_url",
+        "chg_rqst_num",
+        "pblctn_cd",
+        "rev_hstry",
+        "under_rvw",
+        "creatd_tmstmp",
+        "last_updt_tmstmp",
+        "last_clrnc_tmstmp",
+        "NCD_lab",
+        "ncd_keyword",
+        "NCD_AMA"
+      ],
+      "encoding_verified": "utf-8",
+      "utf8_bom": false,
+      "primary_key": [
+        "NCD_id",
+        "NCD_vrsn_num"
+      ],
+      "duplicate_primary_keys": 0,
+      "fields": {
+        "NCD_id": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 357,
+          "max_characters": 3
+        },
+        "NCD_vrsn_num": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 9,
+          "max_characters": 2
+        },
+        "natl_cvrg_type": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 1,
+          "max_characters": 4
+        },
+        "cvrg_lvl_cd": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 4,
+          "max_characters": 1
+        },
+        "NCD_mnl_sect": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 357,
+          "max_characters": 8
+        },
+        "NCD_mnl_sect_title": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 357,
+          "max_characters": 175
+        },
+        "NCD_efctv_dt": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 173,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 357,
+            "min": "1966-01-01T00:00:00",
+            "max": "2026-06-08T00:00:00",
+            "fractional_second_values": 0
+          }
+        },
+        "NCD_impltn_dt": {
+          "empty": 139,
+          "whitespace_only": 0,
+          "distinct_including_empty": 115,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 218,
+            "min": "1983-03-11T00:00:00",
+            "max": "2027-01-04T00:00:00",
+            "fractional_second_values": 0
+          }
+        },
+        "NCD_trmntn_dt": {
+          "empty": 345,
+          "whitespace_only": 0,
+          "distinct_including_empty": 3,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 12,
+            "min": "2014-12-18T00:00:00",
+            "max": "2021-01-01T00:00:00",
+            "fractional_second_values": 0
+          }
+        },
+        "itm_srvc_desc": {
+          "empty": 112,
+          "whitespace_only": 0,
+          "distinct_including_empty": 244,
+          "max_characters": 7120,
+          "contains_html_tag": 244,
+          "contains_newline": 160,
+          "contains_table_tag": 0
+        },
+        "indctn_lmtn": {
+          "empty": 0,
+          "whitespace_only": 1,
+          "distinct_including_empty": 357,
+          "max_characters": 32758,
+          "contains_html_tag": 355,
+          "contains_newline": 283,
+          "contains_table_tag": 5
+        },
+        "xref_txt": {
+          "empty": 242,
+          "whitespace_only": 0,
+          "distinct_including_empty": 92,
+          "max_characters": 921,
+          "contains_html_tag": 115,
+          "contains_newline": 9,
+          "contains_table_tag": 0
+        },
+        "othr_txt": {
+          "empty": 334,
+          "whitespace_only": 0,
+          "distinct_including_empty": 24,
+          "max_characters": 7352,
+          "contains_html_tag": 23,
+          "contains_newline": 23,
+          "contains_table_tag": 0
+        },
+        "trnsmtl_num": {
+          "empty": 96,
+          "whitespace_only": 0,
+          "distinct_including_empty": 138,
+          "max_characters": 5
+        },
+        "trnsmtl_issnc_dt": {
+          "empty": 95,
+          "whitespace_only": 0,
+          "distinct_including_empty": 150,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 262,
+            "min": "1985-11-01T00:00:00",
+            "max": "2026-08-27T00:00:00",
+            "fractional_second_values": 0
+          }
+        },
+        "trnsmtl_url": {
+          "empty": 147,
+          "whitespace_only": 0,
+          "distinct_including_empty": 134,
+          "max_characters": 94
+        },
+        "chg_rqst_num": {
+          "empty": 146,
+          "whitespace_only": 0,
+          "distinct_including_empty": 125,
+          "max_characters": 5
+        },
+        "pblctn_cd": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 3,
+          "max_characters": 2
+        },
+        "rev_hstry": {
+          "empty": 102,
+          "whitespace_only": 0,
+          "distinct_including_empty": 238,
+          "max_characters": 23470,
+          "contains_html_tag": 252,
+          "contains_newline": 187,
+          "contains_table_tag": 0
+        },
+        "under_rvw": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 2,
+          "max_characters": 5
+        },
+        "creatd_tmstmp": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 357,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 357,
+            "min": "2002-11-27T12:10:46",
+            "max": "2026-08-27T17:35:25",
+            "fractional_second_values": 0
+          }
+        },
+        "last_updt_tmstmp": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 357,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 357,
+            "min": "2002-12-02T14:14:31",
+            "max": "2026-08-28T11:49:28",
+            "fractional_second_values": 0
+          }
+        },
+        "last_clrnc_tmstmp": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 301,
+          "max_characters": 26,
+          "dates": {
+            "nonempty_parsed": 357,
+            "min": "2002-11-27T12:11:00",
+            "max": "2026-08-28T11:49:28.133000",
+            "fractional_second_values": 142
+          }
+        },
+        "NCD_lab": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 2,
+          "max_characters": 5
+        },
+        "ncd_keyword": {
+          "empty": 195,
+          "whitespace_only": 0,
+          "distinct_including_empty": 139,
+          "max_characters": 154
+        },
+        "NCD_AMA": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 1,
+          "max_characters": 5
+        }
+      }
+    },
+    "ncd_trkg_bnft_xref.csv": {
+      "rows": 599,
+      "columns": [
+        "NCD_id",
+        "NCD_vrsn_num",
+        "bnft_ctgry_cd",
+        "creatd_tmstmp",
+        "last_updt_tmstmp"
+      ],
+      "encoding_verified": "utf-8",
+      "utf8_bom": false,
+      "primary_key": [
+        "NCD_id",
+        "NCD_vrsn_num",
+        "bnft_ctgry_cd"
+      ],
+      "duplicate_primary_keys": 0,
+      "fields": {
+        "NCD_id": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 357,
+          "max_characters": 3
+        },
+        "NCD_vrsn_num": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 9,
+          "max_characters": 2
+        },
+        "bnft_ctgry_cd": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 76,
+          "max_characters": 2
+        },
+        "creatd_tmstmp": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 358,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 599,
+            "min": "2004-07-08T13:28:20",
+            "max": "2026-08-28T11:49:28",
+            "fractional_second_values": 0
+          }
+        },
+        "last_updt_tmstmp": {
+          "empty": 0,
+          "whitespace_only": 0,
+          "distinct_including_empty": 358,
+          "max_characters": 19,
+          "dates": {
+            "nonempty_parsed": 599,
+            "min": "2004-07-08T13:28:20",
+            "max": "2026-08-28T11:49:28",
+            "fractional_second_values": 0
+          }
+        }
+      }
+    }
+  },
+  "relationships": {
+    "orphan_policy_crosswalks": 0,
+    "orphan_benefit_crosswalks": 0,
+    "orphan_publication_references": 0,
+    "policies_without_benefits": 0,
+    "min_benefits_per_policy": 1,
+    "max_benefits_per_policy": 72
+  },
+  "value_counts": {
+    "natl_cvrg_type": {
+      "True": 357
+    },
+    "cvrg_lvl_cd": {
+      "1": 82,
+      "2": 209,
+      "3": 64,
+      "4": 2
+    },
+    "under_rvw": {
+      "False": 186,
+      "True": 171
+    },
+    "NCD_lab": {
+      "False": 334,
+      "True": 23
+    },
+    "NCD_AMA": {
+      "False": 357
+    },
+    "pblctn_cd": {
+      "25": 355,
+      "26": 1,
+      "9": 1
+    }
+  },
+  "quality_observations": {
+    "undefined_coverage_level_records": [
+      {
+        "NCD_id": "73",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "240.6",
+        "NCD_mnl_sect_title": "Transvenous (Catheter) Pulmonary Embolectomy (TPE) - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "",
+        "cvrg_lvl_cd": "4"
+      },
+      {
+        "NCD_id": "368",
+        "NCD_vrsn_num": "1",
+        "NCD_mnl_sect": "140.9",
+        "NCD_mnl_sect_title": "Gender Dysphoria and Gender Reassignment Surgery",
+        "NCD_efctv_dt": "2016-08-30 00:00:00",
+        "NCD_trmntn_dt": "",
+        "cvrg_lvl_cd": "4"
+      }
+    ],
+    "retired_title_count": 41,
+    "retired_title_without_termination_count": 29,
+    "termination_before_effective_records": [
+      {
+        "NCD_id": "20",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "30.4",
+        "NCD_mnl_sect_title": "Electrosleep Therapy - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2021-01-01 00:00:00",
+        "cvrg_lvl_cd": "3"
+      },
+      {
+        "NCD_id": "78",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "160.9",
+        "NCD_mnl_sect_title": "Electronecephalographic (EEG) Monitoring During Open-Heart Surgery - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2014-12-18 00:00:00",
+        "cvrg_lvl_cd": "3"
+      },
+      {
+        "NCD_id": "85",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "50.6",
+        "NCD_mnl_sect_title": "Tinnitus Masking - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2014-12-18 00:00:00",
+        "cvrg_lvl_cd": "3"
+      },
+      {
+        "NCD_id": "91",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "100.9",
+        "NCD_mnl_sect_title": "Implantation of  Anti-Gastroesophageal Reflux Device - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2021-01-01 00:00:00",
+        "cvrg_lvl_cd": "2"
+      },
+      {
+        "NCD_id": "109",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "160.4",
+        "NCD_mnl_sect_title": "Stereotactic Cingulotomy as a Means of Psychosurgery - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2014-12-18 00:00:00",
+        "cvrg_lvl_cd": "3"
+      },
+      {
+        "NCD_id": "115",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "20.5",
+        "NCD_mnl_sect_title": "Extracorporeal Immunoadsorption (ECI) Using Protein A Columns (RETIRED)",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2021-01-01 00:00:00",
+        "cvrg_lvl_cd": "2"
+      },
+      {
+        "NCD_id": "182",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "190.4",
+        "NCD_mnl_sect_title": "Electron Microscope - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2014-12-18 00:00:00",
+        "cvrg_lvl_cd": "2"
+      },
+      {
+        "NCD_id": "199",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "220.8",
+        "NCD_mnl_sect_title": "Nuclear Radiology Procedure - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2014-12-18 00:00:00",
+        "cvrg_lvl_cd": "1"
+      },
+      {
+        "NCD_id": "236",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "160.6",
+        "NCD_mnl_sect_title": "Carotid Sinus Nerve Stimulator - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2014-12-18 00:00:00",
+        "cvrg_lvl_cd": "2"
+      },
+      {
+        "NCD_id": "287",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "220.2.1",
+        "NCD_mnl_sect_title": "Magnetic Resonance Spectroscopy - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2021-01-01 00:00:00",
+        "cvrg_lvl_cd": "3"
+      },
+      {
+        "NCD_id": "306",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "110.19",
+        "NCD_mnl_sect_title": "Abarelix for the Treatment of Prostate Cancer - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2021-01-01 00:00:00",
+        "cvrg_lvl_cd": "2"
+      },
+      {
+        "NCD_id": "323",
+        "NCD_vrsn_num": "3",
+        "NCD_mnl_sect": "220.6.16",
+        "NCD_mnl_sect_title": "FDG PET for Infection and Inflammation - RETIRED",
+        "NCD_efctv_dt": "2023-04-10 00:00:00",
+        "NCD_trmntn_dt": "2021-01-01 00:00:00",
+        "cvrg_lvl_cd": "2"
+      }
+    ],
+    "blank_indication_records": [
+      {
+        "NCD_id": "5",
+        "NCD_vrsn_num": "1",
+        "NCD_mnl_sect": "50.8",
+        "NCD_mnl_sect_title": "Ultrasonic Surgery",
+        "NCD_efctv_dt": "1966-01-01 00:00:00",
+        "NCD_trmntn_dt": "",
+        "cvrg_lvl_cd": "3"
+      }
+    ],
+    "implementation_after_snapshot": [
+      {
+        "NCD_id": "281",
+        "NCD_vrsn_num": "8",
+        "NCD_mnl_sect": "210.3",
+        "NCD_mnl_sect_title": "Colorectal Cancer Screening Tests",
+        "NCD_efctv_dt": "2026-06-08 00:00:00",
+        "NCD_trmntn_dt": "",
+        "cvrg_lvl_cd": "2",
+        "NCD_impltn_dt": "2027-01-04 00:00:00"
+      },
+      {
+        "NCD_id": "291",
+        "NCD_vrsn_num": "2",
+        "NCD_mnl_sect": "110.17",
+        "NCD_mnl_sect_title": "Anti-Cancer Chemotherapy for Colorectal Cancer - RETIRED",
+        "NCD_efctv_dt": "2026-02-25 00:00:00",
+        "NCD_trmntn_dt": "",
+        "cvrg_lvl_cd": "1",
+        "NCD_impltn_dt": "2026-10-05 00:00:00"
+      }
+    ]
+  },
+  "selected_records": [
+    {
+      "NCD_id": "43",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "50.5",
+      "NCD_mnl_sect_title": "Oxygen Treatment of Inner Ear/Carbon Therapy",
+      "NCD_efctv_dt": "1978-08-01 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "3",
+      "raw_text_characters": 272
+    },
+    {
+      "NCD_id": "169",
+      "NCD_vrsn_num": "2",
+      "NCD_mnl_sect": "240.2",
+      "NCD_mnl_sect_title": "Home Use of Oxygen",
+      "NCD_efctv_dt": "2021-09-27 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "2",
+      "raw_text_characters": 6557
+    },
+    {
+      "NCD_id": "219",
+      "NCD_vrsn_num": "2",
+      "NCD_mnl_sect": "280.3",
+      "NCD_mnl_sect_title": "Mobility Assistive Equipment (MAE)",
+      "NCD_efctv_dt": "2005-05-05 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "2",
+      "raw_text_characters": 10685
+    },
+    {
+      "NCD_id": "223",
+      "NCD_vrsn_num": "2",
+      "NCD_mnl_sect": "280.14",
+      "NCD_mnl_sect_title": "Infusion Pumps",
+      "NCD_efctv_dt": "2004-12-17 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "2",
+      "raw_text_characters": 11883
+    },
+    {
+      "NCD_id": "226",
+      "NCD_vrsn_num": "3",
+      "NCD_mnl_sect": "240.4",
+      "NCD_mnl_sect_title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+      "NCD_efctv_dt": "2008-03-13 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "2",
+      "raw_text_characters": 9178
+    },
+    {
+      "NCD_id": "227",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "280.7",
+      "NCD_mnl_sect_title": "Hospital Beds",
+      "NCD_efctv_dt": "1966-01-01 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "2",
+      "raw_text_characters": 3444
+    },
+    {
+      "NCD_id": "330",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "240.4.1",
+      "NCD_mnl_sect_title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+      "NCD_efctv_dt": "2009-03-03 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "1",
+      "raw_text_characters": 4100
+    },
+    {
+      "NCD_id": "376",
+      "NCD_vrsn_num": "1",
+      "NCD_mnl_sect": "280.16",
+      "NCD_mnl_sect_title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+      "NCD_efctv_dt": "2023-05-16 00:00:00",
+      "NCD_trmntn_dt": "",
+      "cvrg_lvl_cd": "1",
+      "raw_text_characters": 2957
+    }
+  ],
+  "selected_raw_text_characters": 49076
+}

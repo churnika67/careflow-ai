@@ -1,0 +1,633 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "cms-retrieval-v1",
+  "corpus_sha256": "1e55c381f68f3e0fe021b217a49ad05d246e87943a7f33cc5780e3e1bf31bcc2",
+  "snapshot_sha256": "735619558de8759427d5fe71989d06b48e5625376594fe94efa7a60f7e152ca3",
+  "label_method": "Agent-authored development questions after direct inspection of all 39 indexed chunks; exact excerpts and provenance validated programmatically. No clinician or independent annotator review. First eight cases reuse Phase 3–6 development questions. No ranking-based label tuning.",
+  "cases": [
+    {
+      "case_id": "cms-v1-001",
+      "query": "What clinical testing must support an initial claim for oxygen therapy at home?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "11f9eda3-b2d1-5c44-9ea4-a1b37768c254"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "ncd_id": "169",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "ordered and evaluated",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2",
+          "text_sha256": "0a1d928bc22a071576f192cb0ce0a2aca5e3bf303b12bed3e9333574cb795b7c",
+          "source_record_sha256": "0ad8222fa7f5d163bf0e84efcb22079af2ef3766a9758c91ea1c1f0679508d3e"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 1; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-002",
+      "query": "What diagnosis and sleep test documentation supports an initial 12-week CPAP trial?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "56903cee-00c9-5b23-a022-a4a1339e4c38"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "ncd_id": "226",
+          "ncd_version": "3",
+          "section": "B. Nationally Covered Indications",
+          "quote": "12-week period",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3",
+          "text_sha256": "cbdca29d417254b9e8feea6def44d5a622dbc1d832b71dbff9b002618a46818e",
+          "source_record_sha256": "24a101be3ddfe560197ee36e9acb789283ba351730920c088289ab2341612527"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 2; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-003",
+      "query": "How are mobility limitations in activities of daily living at home assessed for a wheelchair?",
+      "category": "known_failure",
+      "expected_chunk_ids": [
+        "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37",
+          "ncd_id": "219",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "mobility-related activities of daily living",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2",
+          "text_sha256": "b8f4bc8053a9615dcbadefcb2c3729c6d11b7d56e5f14c16b31e44fcb827b1ae",
+          "source_record_sha256": "86af1576a48771f5b25c56f1a95de7dc6273ecc090bb247b0be85b35bdcef22c"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 3; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-004",
+      "query": "What fasting C-peptide and glucose testing is required for an insulin infusion pump?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "fasting C-peptide",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "37a9a71ba2b3af2f06ac70abc52781ee196f47b2989fd1c0712bbcc92d25aba0",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 4; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-005",
+      "query": "What must a physician prescription document to justify a hospital bed?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "0364e913-f508-5d9e-a928-d9266d5b7741"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+          "ncd_id": "227",
+          "ncd_version": "1",
+          "section": "B. Physician's Prescription",
+          "quote": "must accompany the initial claim",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1",
+          "text_sha256": "6bf66ff52187b8a69182357ea3f12947c1a1f55a16e260a61d3e0aa7df0e433a",
+          "source_record_sha256": "0ec25b4b98cc2cf12a1b14455714b042c73613bb494b2c87c97629be4f000ce4"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 5; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-006",
+      "query": "Which unattended home sleep testing devices are covered to diagnose obstructive sleep apnea?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "beae40ce-4792-5578-80c8-afd649db96aa"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+          "ncd_id": "330",
+          "ncd_version": "1",
+          "section": "B. Nationally Covered Indications",
+          "quote": "Type II or Type III",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1",
+          "text_sha256": "eba4c927dee3171159a83cd220c161a73b6e6ff09f152de964c8b59ee518b952",
+          "source_record_sha256": "91c81d409d24a78d8e44aa2c2508ccb263551dad64d709629582186bb4533dd3"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 6; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-007",
+      "query": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+      "category": "known_failure",
+      "expected_chunk_ids": [
+        "d760711e-bf95-5e64-9d58-31510aba392e"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+          "ncd_id": "376",
+          "ncd_version": "1",
+          "section": "B. Nationally Covered Indications",
+          "quote": "specialty evaluation",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1",
+          "text_sha256": "5c2b0692384c3bb0ec41d037b7156b7cd30ceb018e54a8cc21319eb7dea1c0dd",
+          "source_record_sha256": "d966e340b01b9d95f2669a42f7b96b3bc0148dc51311ff736cf9b882631ce20f"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 7; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-008",
+      "query": "Is oxygen and carbon dioxide inhalation therapy for inner ear disease reasonable and necessary?",
+      "category": "known_failure",
+      "expected_chunk_ids": [
+        "dc2a342a-5448-50b4-b087-836666a5fa08"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "dc2a342a-5448-50b4-b087-836666a5fa08",
+          "ncd_id": "43",
+          "ncd_version": "1",
+          "section": "indctn_lmtn",
+          "quote": "not reasonable and necessary",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=43&NCDver=1",
+          "text_sha256": "fe40501d509773dfb65b5ba966b11aaddebc0d4fa86212c704c1af313a3353bc",
+          "source_record_sha256": "e15400719d9928c5e6acdbd636380c044a78984a51b221043aaac75828be70b0"
+        }
+      ],
+      "answerable": true,
+      "notes": "Preserved Phase 3–6 development question 8; labels checked against indexed text. Answerable means the corpus contains evidence, independently of the cosine gate."
+    },
+    {
+      "case_id": "cms-v1-009",
+      "query": "When arterial blood gas and oximetry studies conflict for home oxygen, which study is preferred?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "11f9eda3-b2d1-5c44-9ea4-a1b37768c254"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "ncd_id": "169",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "the arterial blood gas study is the preferred source",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2",
+          "text_sha256": "0a1d928bc22a071576f192cb0ce0a2aca5e3bf303b12bed3e9333574cb795b7c",
+          "source_record_sha256": "0ad8222fa7f5d163bf0e84efcb22079af2ef3766a9758c91ea1c1f0679508d3e"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-010",
+      "query": "How close to leaving the hospital must the qualifying home oxygen test be performed?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "11f9eda3-b2d1-5c44-9ea4-a1b37768c254"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "ncd_id": "169",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "For an inpatient hospital patient the time of need is within 2 days of discharge.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2",
+          "text_sha256": "0a1d928bc22a071576f192cb0ce0a2aca5e3bf303b12bed3e9333574cb795b7c",
+          "source_record_sha256": "0ad8222fa7f5d163bf0e84efcb22079af2ef3766a9758c91ea1c1f0679508d3e"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-011",
+      "query": "Which additional conditions qualify for Group II home oxygen with arterial PO2 of 56-59 mm Hg?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "b98117a8-1f53-50f4-902d-d62e8b671f90"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "b98117a8-1f53-50f4-902d-d62e8b671f90",
+          "ncd_id": "169",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "Group II: Coverage is available for patients whose arterial PO2 is 56-59 mm Hg",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2",
+          "text_sha256": "8067f54941b6424ab83395faba3351e205b4b64f545070ad352333eb4c1f403b",
+          "source_record_sha256": "0ad8222fa7f5d163bf0e84efcb22079af2ef3766a9758c91ea1c1f0679508d3e"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-012",
+      "query": "Is home oxygen covered for breathlessness without cor pulmonale or hypoxemia?",
+      "category": "hard_negative",
+      "expected_chunk_ids": [
+        "a9a1130f-8f6b-56f5-9713-a04ea7f1d517"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "ncd_id": "169",
+          "ncd_version": "2",
+          "section": "C. Nationally Non-Covered Indications",
+          "quote": "Breathlessness without cor pulmonale or evidence of hypoxemia.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2",
+          "text_sha256": "f548a07702a9181e7e129fb0d3cd647297c147d84c32ee225b8d4d4cf94e0b98",
+          "source_record_sha256": "0ad8222fa7f5d163bf0e84efcb22079af2ef3766a9758c91ea1c1f0679508d3e"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-013",
+      "query": "What should be checked before deciding whether a walking stick or walking frame sufficiently resolves the mobility deficit?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "266a9002-e18a-5b6b-950e-0705824077ee"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+          "ncd_id": "219",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "The cane or walker should be appropriately fitted",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2",
+          "text_sha256": "f454ca2e71db6574fd933baa5db675efe7fd72590df59e192715627e153b5d5c",
+          "source_record_sha256": "86af1576a48771f5b25c56f1a95de7dc6273ecc090bb247b0be85b35bdcef22c"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-014",
+      "query": "What strength and postural stability must a beneficiary have to operate a POV/scooter?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "266a9002-e18a-5b6b-950e-0705824077ee",
+        "83d8a48c-77da-5c86-9cd4-c70e42cead80"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+          "ncd_id": "219",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "The beneficiary must be able to maintain stability and position for adequate operation.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2",
+          "text_sha256": "f454ca2e71db6574fd933baa5db675efe7fd72590df59e192715627e153b5d5c",
+          "source_record_sha256": "86af1576a48771f5b25c56f1a95de7dc6273ecc090bb247b0be85b35bdcef22c"
+        },
+        {
+          "chunk_id": "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+          "ncd_id": "219",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "The beneficiary must be able to maintain stability and position for adequate operation.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2",
+          "text_sha256": "d167e737bd4c6ab7aa734cd42477480cf026a51984a6925a030cb967ca4bcfb6",
+          "source_record_sha256": "86af1576a48771f5b25c56f1a95de7dc6273ecc090bb247b0be85b35bdcef22c"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-015",
+      "query": "Is an implantable heparin infusion pump covered for recurrent thromboembolic disease?",
+      "category": "hard_negative",
+      "expected_chunk_ids": [
+        "d1c0773e-09e2-59ff-a2ea-008dfdbef476"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "C. Nationally Non-Covered Indications",
+          "quote": "the use of an implantable infusion pump for infusion of heparin in the treatment of recurrent thromboembolic disease is not covered.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "e49ccd92f04a33261aa3edb08997c7b2227084a737e2ff2bb760fa48d86fc696",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-016",
+      "query": "Does Medicare cover vancomycin as a durable medical equipment infusion pump benefit?",
+      "category": "hard_negative",
+      "expected_chunk_ids": [
+        "d1c0773e-09e2-59ff-a2ea-008dfdbef476"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "C. Nationally Non-Covered Indications",
+          "quote": "Medicare coverage of vancomycin as a durable medical equipment infusion pump benefit is not covered.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "e49ccd92f04a33261aa3edb08997c7b2227084a737e2ff2bb760fa48d86fc696",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-017",
+      "query": "What trials must precede an implanted baclofen pump for chronic intractable spasticity?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "21a43ec3-703b-5491-99a2-8732528de421"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "21a43ec3-703b-5491-99a2-8732528de421",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "As indicated by at least a 6-week trial",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "22bc4f2a55c60da78c5c9538daba10b14a08e45cdb8265780f884c80ebd7f825",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-018",
+      "query": "How often must a patient return to the treating physician to keep insulin pump coverage?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "seen and evaluated by the treating physician at least every 3 months.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "37a9a71ba2b3af2f06ac70abc52781ee196f47b2989fd1c0712bbcc92d25aba0",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-019",
+      "query": "What education must the CPAP provider conduct before use of the device?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "56903cee-00c9-5b23-a022-a4a1339e4c38"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "ncd_id": "226",
+          "ncd_version": "3",
+          "section": "B. Nationally Covered Indications",
+          "quote": "The provider of CPAP must conduct education of the beneficiary prior to the use of the CPAP device",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3",
+          "text_sha256": "cbdca29d417254b9e8feea6def44d5a622dbc1d832b71dbff9b002618a46818e",
+          "source_record_sha256": "24a101be3ddfe560197ee36e9acb789283ba351730920c088289ab2341612527"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-020",
+      "query": "For the initial CPAP trial, what symptoms or diagnoses support an AHI or RDI between 5 and 14 events per hour?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "56903cee-00c9-5b23-a022-a4a1339e4c38"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "ncd_id": "226",
+          "ncd_version": "3",
+          "section": "B. Nationally Covered Indications",
+          "quote": "documented symptoms of excessive daytime sleepiness, impaired cognition, mood disorders or insomnia",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3",
+          "text_sha256": "cbdca29d417254b9e8feea6def44d5a622dbc1d832b71dbff9b002618a46818e",
+          "source_record_sha256": "24a101be3ddfe560197ee36e9acb789283ba351730920c088289ab2341612527"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-021",
+      "query": "Why might someone with severe arthritis need a hospital bed whose height can change?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "1ff4fb31-6d93-5293-b2c6-4da5c49b709c"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "1ff4fb31-6d93-5293-b2c6-4da5c49b709c",
+          "ncd_id": "227",
+          "ncd_version": "1",
+          "section": "C. Variable Height Feature",
+          "quote": "place his or her feet on the floor while sitting on the edge of the bed",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1",
+          "text_sha256": "63ce56eaec1369f42b3940c7dcc958d2c8fbd42aca32ac7db4e9082a63c1f8e3",
+          "source_record_sha256": "0ec25b4b98cc2cf12a1b14455714b042c73613bb494b2c87c97629be4f000ce4"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-022",
+      "query": "When can electric powered hospital bed adjustments be covered?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "3b7f9637-9064-56ff-89da-04bff6434f08"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "3b7f9637-9064-56ff-89da-04bff6434f08",
+          "ncd_id": "227",
+          "ncd_version": "1",
+          "section": "D. Electric Powered Hospital Bed Adjustments",
+          "quote": "requires frequent change in body position",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1",
+          "text_sha256": "026372b19ebc319d43fca4ef7af2b0a2b98930ca5df0965c6a08d6dd05024f30",
+          "source_record_sha256": "0ec25b4b98cc2cf12a1b14455714b042c73613bb494b2c87c97629be4f000ce4"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-023",
+      "query": "Can a patient who needs bed side rails have them covered as a hospital bed accessory?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "180ced12-0b5a-5354-99d9-a858c8439b17"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "180ced12-0b5a-5354-99d9-a858c8439b17",
+          "ncd_id": "227",
+          "ncd_version": "1",
+          "section": "E. Side Rails",
+          "quote": "they can be covered when an integral part of, or an accessory to, a hospital bed.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1",
+          "text_sha256": "18f6e5d7ebe5a7330a291c6f204e1b6e73875613a8f5a5d0bea4c2181631530b",
+          "source_record_sha256": "0ec25b4b98cc2cf12a1b14455714b042c73613bb494b2c87c97629be4f000ce4"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-024",
+      "query": "How many monitored channels distinguish Type II and Type III portable sleep monitors?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "9b7836ed-7fa4-5110-ab96-948b249fad0d"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+          "ncd_id": "330",
+          "ncd_version": "1",
+          "section": "A. General",
+          "quote": "Type II monitors have a minimum of 7 channels",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1",
+          "text_sha256": "e5181f55c2eb862c51b22e7f24069e09309670a1b7829446b3225b5f1fa26e8e",
+          "source_record_sha256": "91c81d409d24a78d8e44aa2c2508ccb263551dad64d709629582186bb4533dd3"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-025",
+      "query": "Does the equipment that lifts a seated power wheelchair user also tilt the seat?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "3121e230-ac69-5af6-af4e-742c81f52b42"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "3121e230-ac69-5af6-af4e-742c81f52b42",
+          "ncd_id": "376",
+          "ncd_version": "1",
+          "section": "A. General",
+          "quote": "It does not change the seated angles or the seat’s angle relative to the ground.",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1",
+          "text_sha256": "112fa25246644fa46a82324cb4485496402aa9c2906f488b97c1a7a9c4bf8747",
+          "source_record_sha256": "d966e340b01b9d95f2669a42f7b96b3bc0148dc51311ff736cf9b882631ce20f"
+        }
+      ],
+      "answerable": true,
+      "notes": "Distinct provision inspected in the canonical CMS text before evaluating rankings. A noncoverage provision is positive answerable evidence; all policy conditions remain in the original chunk."
+    },
+    {
+      "case_id": "cms-v1-026",
+      "query": "Is it covered?",
+      "category": "ambiguous",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "No item, condition or service is identified; abstention is expected regardless of retrieved text."
+    },
+    {
+      "case_id": "cms-v1-027",
+      "query": "What documentation is required?",
+      "category": "ambiguous",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "No policy or service is specified; the canonical corpus contains several different documentation requirements."
+    },
+    {
+      "case_id": "cms-v1-028",
+      "query": "Does the pump qualify?",
+      "category": "ambiguous",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Pump type, indication and circumstances are unspecified; the corpus includes external, implantable and insulin pumps with different criteria."
+    },
+    {
+      "case_id": "cms-v1-029",
+      "query": "What dental implant documentation is required?",
+      "category": "out_of_corpus",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Reviewed all 39 chunks; no dental implant documentation policy is present. Infusion pump implantation is a near lexical match, not dental evidence."
+    },
+    {
+      "case_id": "cms-v1-030",
+      "query": "What chemotherapy regimen treats pancreatic cancer?",
+      "category": "out_of_corpus",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Reviewed all 39 chunks; infusion-pump text discusses liver cancer and pain, not a pancreatic cancer treatment regimen."
+    },
+    {
+      "case_id": "cms-v1-031",
+      "query": "How do I configure a Kubernetes ingress controller?",
+      "category": "out_of_corpus",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Reviewed all 39 chunks; these are Medicare policy records and contain no Kubernetes configuration instructions."
+    },
+    {
+      "case_id": "cms-v1-032",
+      "query": "Which insulin pump brand and exact basal dose should a newly diagnosed patient use?",
+      "category": "out_of_corpus",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Reviewed all 39 chunks; insulin-pump coverage requirements do not specify a patient-specific brand selection or basal dose."
+    }
+  ]
+}

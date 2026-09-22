@@ -1,0 +1,113 @@
+{
+  "api_url": "http://localhost:18000",
+  "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2__279ea98f",
+  "point_count": 39,
+  "snapshot_sha256": "735619558de8759427d5fe71989d06b48e5625376594fe94efa7a60f7e152ca3",
+  "cli_api_same_response": true,
+  "api_cases": [
+    {
+      "question": "What must a physician prescription document to justify a hospital bed?",
+      "status_code": 200,
+      "response": {
+        "answer": "CMS evidence [0364e913-f508-5d9e-a928-d9266d5b7741]:\nB. Physician's Prescription\n\nThe physician's prescription, which must accompany the initial claim, and supplementing documentation when required, must establish that a hospital bed is medically necessary. If the stated reason for the need for a hospital bed is the patient's condition requires positioning, the prescription or other documentation must describe the medical condition, e.g., cardiac disease, chronic obstructive pulmonary disease, quadriplegia or paraplegia, and also the severity and frequency of the symptoms of the condition that necessitates a hospital bed for positioning.\n\nIf the stated reason for requiring a hospital bed is the patient's condition requires special attachments, the prescription must describe the patient's condition and specify the attachments that require a hospital bed.",
+        "citations": [
+          {
+            "document_id": "227",
+            "document_version": "1",
+            "title": "Hospital Beds",
+            "section": "B. Physician's Prescription",
+            "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "0364e913-f508-5d9e-a928-d9266d5b7741",
+          "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "180ced12-0b5a-5354-99d9-a858c8439b17",
+          "3b7f9637-9064-56ff-89da-04bff6434f08",
+          "1ff4fb31-6d93-5293-b2c6-4da5c49b709c"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      }
+    },
+    {
+      "question": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+      "status_code": 200,
+      "response": {
+        "answer": "CMS evidence [d760711e-bf95-5e64-9d58-31510aba392e]:\nB. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual’s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment.",
+        "citations": [
+          {
+            "document_id": "376",
+            "document_version": "1",
+            "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+            "section": "B. Nationally Covered Indications",
+            "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+            "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+          }
+        ],
+        "insufficient_evidence": false,
+        "retrieved_chunk_ids": [
+          "d099d33f-7cb8-5474-814e-60f7bdc5f76a",
+          "d760711e-bf95-5e64-9d58-31510aba392e",
+          "3121e230-ac69-5af6-af4e-742c81f52b42",
+          "04585146-f808-5088-a9bb-c125bc955cc5",
+          "83d8a48c-77da-5c86-9cd4-c70e42cead80"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": null
+      }
+    },
+    {
+      "question": "What dental implant documentation is required?",
+      "status_code": 200,
+      "response": {
+        "answer": "Insufficient evidence.",
+        "citations": [],
+        "insufficient_evidence": true,
+        "retrieved_chunk_ids": [
+          "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "21a43ec3-703b-5491-99a2-8732528de421",
+          "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+          "04585146-f808-5088-a9bb-c125bc955cc5",
+          "beae40ce-4792-5578-80c8-afd649db96aa"
+        ],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": "no_eligible_evidence"
+      }
+    },
+    {
+      "question": "Is it covered?",
+      "status_code": 200,
+      "response": {
+        "answer": "Insufficient evidence.",
+        "citations": [],
+        "insufficient_evidence": true,
+        "retrieved_chunk_ids": [],
+        "model_provider": "deterministic",
+        "model_name": "first-evidence-v1",
+        "prompt_version": "cms-extractive-v1",
+        "abstention_reason": "ambiguous_question"
+      }
+    }
+  ],
+  "seat_elevation_top_k_1": {
+    "answer": "Insufficient evidence.",
+    "citations": [],
+    "insufficient_evidence": true,
+    "retrieved_chunk_ids": [
+      "d099d33f-7cb8-5474-814e-60f7bdc5f76a"
+    ],
+    "model_provider": "deterministic",
+    "model_name": "first-evidence-v1",
+    "prompt_version": "cms-extractive-v1",
+    "abstention_reason": "no_eligible_evidence"
+  }
+}

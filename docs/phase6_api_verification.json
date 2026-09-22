@@ -1,0 +1,275 @@
+{
+  "observed_at": "2026-09-22T15:39:03.988571+00:00",
+  "api_url": "http://localhost:18000",
+  "generation_provider": "deterministic",
+  "disabled_baseline_matches_phase4": true,
+  "disabled_response": {
+    "answer": "CMS evidence [0364e913-f508-5d9e-a928-d9266d5b7741]:\nB. Physician's Prescription\n\nThe physician's prescription, which must accompany the initial claim, and supplementing documentation when required, must establish that a hospital bed is medically necessary. If the stated reason for the need for a hospital bed is the patient's condition requires positioning, the prescription or other documentation must describe the medical condition, e.g., cardiac disease, chronic obstructive pulmonary disease, quadriplegia or paraplegia, and also the severity and frequency of the symptoms of the condition that necessitates a hospital bed for positioning.\n\nIf the stated reason for requiring a hospital bed is the patient's condition requires special attachments, the prescription must describe the patient's condition and specify the attachments that require a hospital bed.",
+    "citations": [
+      {
+        "document_id": "227",
+        "document_version": "1",
+        "title": "Hospital Beds",
+        "section": "B. Physician's Prescription",
+        "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+        "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+      }
+    ],
+    "insufficient_evidence": false,
+    "retrieved_chunk_ids": [
+      "0364e913-f508-5d9e-a928-d9266d5b7741",
+      "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+      "180ced12-0b5a-5354-99d9-a858c8439b17",
+      "3b7f9637-9064-56ff-89da-04bff6434f08",
+      "1ff4fb31-6d93-5293-b2c6-4da5c49b709c"
+    ],
+    "model_provider": "deterministic",
+    "model_name": "first-evidence-v1",
+    "prompt_version": "cms-extractive-v1",
+    "abstention_reason": null
+  },
+  "enabled": {
+    "retrieval_mode": "hybrid",
+    "rerank_enabled": true,
+    "candidate_k": 10,
+    "top_k": 5,
+    "cases": [
+      {
+        "question": "What must a physician prescription document to justify a hospital bed?",
+        "status_code": 200,
+        "response": {
+          "answer": "CMS evidence [0364e913-f508-5d9e-a928-d9266d5b7741]:\nB. Physician's Prescription\n\nThe physician's prescription, which must accompany the initial claim, and supplementing documentation when required, must establish that a hospital bed is medically necessary. If the stated reason for the need for a hospital bed is the patient's condition requires positioning, the prescription or other documentation must describe the medical condition, e.g., cardiac disease, chronic obstructive pulmonary disease, quadriplegia or paraplegia, and also the severity and frequency of the symptoms of the condition that necessitates a hospital bed for positioning.\n\nIf the stated reason for requiring a hospital bed is the patient's condition requires special attachments, the prescription must describe the patient's condition and specify the attachments that require a hospital bed.",
+          "citations": [
+            {
+              "document_id": "227",
+              "document_version": "1",
+              "title": "Hospital Beds",
+              "section": "B. Physician's Prescription",
+              "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+              "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+            }
+          ],
+          "insufficient_evidence": false,
+          "retrieved_chunk_ids": [
+            "0364e913-f508-5d9e-a928-d9266d5b7741",
+            "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+            "1ff4fb31-6d93-5293-b2c6-4da5c49b709c",
+            "180ced12-0b5a-5354-99d9-a858c8439b17",
+            "3b7f9637-9064-56ff-89da-04bff6434f08"
+          ],
+          "model_provider": "deterministic",
+          "model_name": "first-evidence-v1",
+          "prompt_version": "cms-extractive-v1",
+          "abstention_reason": null
+        }
+      },
+      {
+        "question": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+        "status_code": 200,
+        "response": {
+          "answer": "CMS evidence [d760711e-bf95-5e64-9d58-31510aba392e]:\nB. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual’s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment.",
+          "citations": [
+            {
+              "document_id": "376",
+              "document_version": "1",
+              "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+              "section": "B. Nationally Covered Indications",
+              "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+              "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+            }
+          ],
+          "insufficient_evidence": false,
+          "retrieved_chunk_ids": [
+            "d760711e-bf95-5e64-9d58-31510aba392e",
+            "3121e230-ac69-5af6-af4e-742c81f52b42",
+            "04585146-f808-5088-a9bb-c125bc955cc5",
+            "d099d33f-7cb8-5474-814e-60f7bdc5f76a",
+            "266a9002-e18a-5b6b-950e-0705824077ee"
+          ],
+          "model_provider": "deterministic",
+          "model_name": "first-evidence-v1",
+          "prompt_version": "cms-extractive-v1",
+          "abstention_reason": null
+        }
+      },
+      {
+        "question": "Is oxygen and carbon dioxide inhalation therapy for inner ear disease reasonable and necessary?",
+        "status_code": 200,
+        "response": {
+          "answer": "CMS evidence [dc2a342a-5448-50b4-b087-836666a5fa08]:\nOxygen (95 percent) and carbon dioxide (5 percent) inhalation therapy for inner ear disease, such as endolymphatic hydrops and fluctuant hearing loss, is not reasonable and necessary. The therapeutic benefit deriving from this procedure is highly questionable.",
+          "citations": [
+            {
+              "document_id": "43",
+              "document_version": "1",
+              "title": "Oxygen Treatment of Inner Ear/Carbon Therapy",
+              "section": "indctn_lmtn",
+              "chunk_id": "dc2a342a-5448-50b4-b087-836666a5fa08",
+              "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=43&NCDver=1"
+            }
+          ],
+          "insufficient_evidence": false,
+          "retrieved_chunk_ids": [
+            "dc2a342a-5448-50b4-b087-836666a5fa08",
+            "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+            "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+            "56903cee-00c9-5b23-a022-a4a1339e4c38",
+            "a9a1130f-8f6b-56f5-9713-a04ea7f1d517"
+          ],
+          "model_provider": "deterministic",
+          "model_name": "first-evidence-v1",
+          "prompt_version": "cms-extractive-v1",
+          "abstention_reason": null
+        }
+      },
+      {
+        "question": "What dental implant documentation is required?",
+        "status_code": 200,
+        "response": {
+          "answer": "Insufficient evidence.",
+          "citations": [],
+          "insufficient_evidence": true,
+          "retrieved_chunk_ids": [
+            "0364e913-f508-5d9e-a928-d9266d5b7741",
+            "21a43ec3-703b-5491-99a2-8732528de421",
+            "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+            "56903cee-00c9-5b23-a022-a4a1339e4c38",
+            "20d886d6-8b3a-5a22-a4b1-4236f4b94a61"
+          ],
+          "model_provider": "deterministic",
+          "model_name": "first-evidence-v1",
+          "prompt_version": "cms-extractive-v1",
+          "abstention_reason": "no_eligible_evidence"
+        }
+      },
+      {
+        "question": "What chemotherapy regimen treats pancreatic cancer?",
+        "status_code": 200,
+        "response": {
+          "answer": "Insufficient evidence.",
+          "citations": [],
+          "insufficient_evidence": true,
+          "retrieved_chunk_ids": [
+            "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+            "21a43ec3-703b-5491-99a2-8732528de421",
+            "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+            "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+            "d1c0773e-09e2-59ff-a2ea-008dfdbef476"
+          ],
+          "model_provider": "deterministic",
+          "model_name": "first-evidence-v1",
+          "prompt_version": "cms-extractive-v1",
+          "abstention_reason": "no_eligible_evidence"
+        }
+      },
+      {
+        "question": "How do I configure a Kubernetes ingress controller?",
+        "status_code": 200,
+        "response": {
+          "answer": "Insufficient evidence.",
+          "citations": [],
+          "insufficient_evidence": true,
+          "retrieved_chunk_ids": [
+            "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+            "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+            "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+            "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+            "872545e4-28bc-5797-b89c-d53742c95421"
+          ],
+          "model_provider": "deterministic",
+          "model_name": "first-evidence-v1",
+          "prompt_version": "cms-extractive-v1",
+          "abstention_reason": "no_eligible_evidence"
+        }
+      }
+    ]
+  },
+  "mae_known_limitation": {
+    "question": "How are mobility limitations in activities of daily living at home assessed for a wheelchair?",
+    "expected_retrieval_document": "219",
+    "expected_evidence_cosine": 0.5457982,
+    "gate_threshold": 0.6,
+    "response": {
+      "answer": "CMS evidence [d760711e-bf95-5e64-9d58-31510aba392e]:\nB. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual’s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment.",
+      "citations": [
+        {
+          "document_id": "376",
+          "document_version": "1",
+          "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+          "section": "B. Nationally Covered Indications",
+          "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+          "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+        }
+      ],
+      "insufficient_evidence": false,
+      "retrieved_chunk_ids": [
+        "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37",
+        "d760711e-bf95-5e64-9d58-31510aba392e",
+        "266a9002-e18a-5b6b-950e-0705824077ee",
+        "050d0c24-fb74-5004-94aa-b66ed0faec60",
+        "83d8a48c-77da-5c86-9cd4-c70e42cead80"
+      ],
+      "model_provider": "deterministic",
+      "model_name": "first-evidence-v1",
+      "prompt_version": "cms-extractive-v1",
+      "abstention_reason": null
+    },
+    "matches_native_observation": true
+  },
+  "long_query": {
+    "status_code": 422,
+    "response": {
+      "error": {
+        "code": "rerank_query_too_long"
+      }
+    }
+  },
+  "reranker": {
+    "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "device": "cpu",
+    "max_pair_tokens": 512,
+    "max_query_tokens": 128,
+    "window_overlap": 64,
+    "batch_size": 8,
+    "input": "query paired with title + newline + section + newline + text",
+    "aggregation": "maximum_raw_window_logit_v1",
+    "score_type": "raw_logit",
+    "packages": {
+      "sentence-transformers": "5.1.0",
+      "transformers": "4.55.4",
+      "torch": "2.8.0",
+      "numpy": "2.3.2"
+    }
+  },
+  "restored_default_matches_phase4": true,
+  "health": {
+    "status": "ok",
+    "service": "careflow-ai",
+    "version": "0.1.0",
+    "dependencies": {
+      "postgresql": {
+        "status": "ok"
+      },
+      "qdrant": {
+        "status": "ok"
+      },
+      "redis": {
+        "status": "ok"
+      }
+    }
+  },
+  "filtered_cli": {
+    "mode": "hybrid",
+    "rerank_enabled": true,
+    "document_id": "376",
+    "version": "1",
+    "source_field": "indctn_lmtn",
+    "requested_top_k": 5,
+    "returned": 3,
+    "chunk_ids": [
+      "d760711e-bf95-5e64-9d58-31510aba392e",
+      "04585146-f808-5088-a9bb-c125bc955cc5",
+      "d099d33f-7cb8-5474-814e-60f7bdc5f76a"
+    ]
+  }
+}

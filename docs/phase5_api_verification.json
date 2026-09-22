@@ -1,0 +1,121 @@
+{
+  "api_url": "http://localhost:18000",
+  "generation_provider": "deterministic",
+  "modes": {
+    "bm25": {
+      "top_k": 1,
+      "cases": [
+        {
+          "question": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+          "status_code": 200,
+          "response": {
+            "answer": "CMS evidence [d760711e-bf95-5e64-9d58-31510aba392e]:\nB. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual\u2019s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment.",
+            "citations": [
+              {
+                "document_id": "376",
+                "document_version": "1",
+                "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+                "section": "B. Nationally Covered Indications",
+                "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+                "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+              }
+            ],
+            "insufficient_evidence": false,
+            "retrieved_chunk_ids": [
+              "d760711e-bf95-5e64-9d58-31510aba392e"
+            ],
+            "model_provider": "deterministic",
+            "model_name": "first-evidence-v1",
+            "prompt_version": "cms-extractive-v1",
+            "abstention_reason": null
+          }
+        },
+        {
+          "question": "What dental implant documentation is required?",
+          "status_code": 200,
+          "response": {
+            "answer": "Insufficient evidence.",
+            "citations": [],
+            "insufficient_evidence": true,
+            "retrieved_chunk_ids": [
+              "0364e913-f508-5d9e-a928-d9266d5b7741"
+            ],
+            "model_provider": "deterministic",
+            "model_name": "first-evidence-v1",
+            "prompt_version": "cms-extractive-v1",
+            "abstention_reason": "no_eligible_evidence"
+          }
+        }
+      ]
+    },
+    "hybrid": {
+      "top_k": 1,
+      "cases": [
+        {
+          "question": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+          "status_code": 200,
+          "response": {
+            "answer": "CMS evidence [d760711e-bf95-5e64-9d58-31510aba392e]:\nB. Nationally Covered Indications\n\nEffective for services performed on or after May 16, 2023, power seat elevation equipment is reasonable and necessary for individuals using complex rehabilitative power-driven wheelchairs, when the following conditions are met:\n\n1. The individual has undergone a specialty evaluation that confirms the individual\u2019s ability to safely operate the seat elevation equipment in the home. This evaluation must be performed by a licensed/certified medical professional such as a physical therapist (PT), occupational therapist (OT), or other practitioner, who has specific training and experience in rehabilitation wheelchair evaluations; and,\n\n2. At least one of the following apply:\n\na. The individual performs weight bearing transfers to/from the power wheelchair while in the home, using either their upper extremities during a non-level (uneven) sitting transfer and/or their lower extremities during a sit to stand transfer. Transfers may be accomplished with or without caregiver assistance and/or the use of assistive equipment (e.g. sliding board, cane, crutch, walker, etc.); or,\n\nb. The individual requires a non-weight bearing transfer (e.g. a dependent transfer) to/from the power wheelchair while in the home. Transfers may be accomplished with or without a floor or mounted lift; or,\n\nc. The individual performs reaching from the power wheelchair to complete one or more mobility related activities of daily living (MRADLs) such as toileting, feeding, dressing, grooming and bathing in customary locations within the home. MRADLs may be accomplished with or without caregiver assistance and/or the use of assistive equipment.",
+            "citations": [
+              {
+                "document_id": "376",
+                "document_version": "1",
+                "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+                "section": "B. Nationally Covered Indications",
+                "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+                "source": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+              }
+            ],
+            "insufficient_evidence": false,
+            "retrieved_chunk_ids": [
+              "d760711e-bf95-5e64-9d58-31510aba392e"
+            ],
+            "model_provider": "deterministic",
+            "model_name": "first-evidence-v1",
+            "prompt_version": "cms-extractive-v1",
+            "abstention_reason": null
+          }
+        },
+        {
+          "question": "What dental implant documentation is required?",
+          "status_code": 200,
+          "response": {
+            "answer": "Insufficient evidence.",
+            "citations": [],
+            "insufficient_evidence": true,
+            "retrieved_chunk_ids": [
+              "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b"
+            ],
+            "model_provider": "deterministic",
+            "model_name": "first-evidence-v1",
+            "prompt_version": "cms-extractive-v1",
+            "abstention_reason": "no_eligible_evidence"
+          }
+        }
+      ]
+    }
+  },
+  "restored_default": {
+    "mode": "dense",
+    "top_k": 5,
+    "health": {
+      "status": "ok",
+      "service": "careflow-ai",
+      "version": "0.1.0",
+      "dependencies": {
+        "postgresql": {
+          "status": "ok"
+        },
+        "qdrant": {
+          "status": "ok"
+        },
+        "redis": {
+          "status": "ok"
+        }
+      }
+    },
+    "phase4_hospital_bed_response_unchanged": true,
+    "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2__279ea98f",
+    "points": 39
+  }
+}

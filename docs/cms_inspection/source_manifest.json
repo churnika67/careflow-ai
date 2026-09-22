@@ -1,0 +1,44 @@
+{
+  "recorded_at_utc": "2026-09-09T03:15:06.602208+00:00",
+  "cms_data_as_of": "2026-08-30",
+  "cms_release_date": "2026-09-03",
+  "resolved_listing_url": "https://www.cms.gov/medicare-coverage-database/downloads/downloads.aspx",
+  "notes": "CMS URLs are mutable. File modification times below record local writes, not CMS publication timestamps. The NCD dictionary was extracted from the archive.",
+  "files": [
+    {
+      "local_path": "data/raw/cms_coverage/ncd.zip",
+      "source": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/ncd.zip",
+      "bytes": 1281194,
+      "sha256": "735619558de8759427d5fe71989d06b48e5625376594fe94efa7a60f7e152ca3",
+      "local_file_modified_at_utc": "2026-09-09T03:09:29.469951+00:00"
+    },
+    {
+      "local_path": "data/raw/cms_coverage/downloads-page.html",
+      "source": "https://www.cms.gov/medicare-coverage-database/downloads/downloadable-databases.aspx",
+      "bytes": 114117,
+      "sha256": "29f6b87b1eb933e3422782a8ddd1a3ebb2575402b407234187e32db27aba3f97",
+      "local_file_modified_at_utc": "2026-09-09T03:12:46.409285+00:00"
+    },
+    {
+      "local_path": "data/raw/cms_coverage/lcd-data-dictionary.pdf",
+      "source": "https://www.cms.gov/medicare-coverage-database/downloads/lcd%20data%20dictionary.pdf",
+      "bytes": 339819,
+      "sha256": "170854cc52220c6cb7e210679aa99530187dc6b7ef725e7a59bac55fbabe13e0",
+      "local_file_modified_at_utc": "2026-09-09T03:09:47.321937+00:00"
+    },
+    {
+      "local_path": "data/raw/cms_coverage/article-data-dictionary.pdf",
+      "source": "https://www.cms.gov/medicare-coverage-database/downloads/article%20data%20dictionary.pdf",
+      "bytes": 423538,
+      "sha256": "30cea9bf916d9b2650b1fe274b6b83e3ed511335924657dbdb9754bcb1892570",
+      "local_file_modified_at_utc": "2026-09-09T03:09:50.887880+00:00"
+    },
+    {
+      "local_path": "data/raw/cms_coverage/ncd-data-dictionary.pdf",
+      "source": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/ncd.zip#member=ncd%20data%20dictionary.pdf",
+      "bytes": 252324,
+      "sha256": "c34b1fcea645b8f5bef8412b93d0d4cfd4c82085455c3649445ae269c0fbb7c9",
+      "local_file_modified_at_utc": "2026-09-09T03:10:03.373279+00:00"
+    }
+  ]
+}

@@ -1,0 +1,605 @@
+{
+  "verified_at_utc": "2026-09-09T18:15:05.568636+00:00",
+  "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2__279ea98f",
+  "queries": [
+    {
+      "query": "What clinical testing must support an initial claim for oxygen therapy at home?",
+      "expected_document_id": "169",
+      "expected_version": "2",
+      "expected_section": "B. Nationally Covered Indications",
+      "expected_evidence_phrase": "ordered and evaluated",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 1,
+      "top_results": [
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "score": 0.7036976,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 2911,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        },
+        {
+          "chunk_id": "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+          "score": 0.5977581,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 881,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        },
+        {
+          "chunk_id": "b98117a8-1f53-50f4-902d-d62e8b671f90",
+          "score": 0.5631713,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 2374,
+          "section_char_end": 4305,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        },
+        {
+          "chunk_id": "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "score": 0.55489486,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 845,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        },
+        {
+          "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+          "score": 0.5322531,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 1675,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+        }
+      ]
+    },
+    {
+      "query": "What diagnosis and sleep test documentation supports an initial 12-week CPAP trial?",
+      "expected_document_id": "226",
+      "expected_version": "3",
+      "expected_section": "B. Nationally Covered Indications",
+      "expected_evidence_phrase": "12-week period",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 1,
+      "top_results": [
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "score": 0.7708387,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 3034,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+        },
+        {
+          "chunk_id": "4ac07ec4-9790-5188-a040-a8e8fc2dddc3",
+          "score": 0.64317447,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 256,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+        },
+        {
+          "chunk_id": "234fd16d-21df-524a-aa5d-1b781556bd00",
+          "score": 0.6356814,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 51,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+        },
+        {
+          "chunk_id": "872545e4-28bc-5797-b89c-d53742c95421",
+          "score": 0.63171387,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 5214,
+          "section_char_end": 6762,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+        },
+        {
+          "chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+          "score": 0.63003707,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 281,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+        }
+      ]
+    },
+    {
+      "query": "How are mobility limitations in activities of daily living at home assessed for a wheelchair?",
+      "expected_document_id": "219",
+      "expected_version": "2",
+      "expected_section": "B. Nationally Covered Indications",
+      "expected_evidence_phrase": "mobility-related activities of daily living",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 5,
+      "top_results": [
+        {
+          "chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+          "score": 0.6507623,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "title": "Mobility Assistive Equipment (MAE)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 2767,
+          "section_char_end": 5939,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2"
+        },
+        {
+          "chunk_id": "050d0c24-fb74-5004-94aa-b66ed0faec60",
+          "score": 0.6085409,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "title": "Mobility Assistive Equipment (MAE)",
+          "source_field": "itm_srvc_desc",
+          "section": "A. General",
+          "section_char_start": 0,
+          "section_char_end": 1759,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2"
+        },
+        {
+          "chunk_id": "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+          "score": 0.60804045,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "title": "Mobility Assistive Equipment (MAE)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 5409,
+          "section_char_end": 7052,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2"
+        },
+        {
+          "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+          "score": 0.60508925,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 1668,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+        },
+        {
+          "chunk_id": "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37",
+          "score": 0.5457982,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "title": "Mobility Assistive Equipment (MAE)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 3360,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2"
+        }
+      ]
+    },
+    {
+      "query": "What fasting C-peptide and glucose testing is required for an insulin infusion pump?",
+      "expected_document_id": "223",
+      "expected_version": "2",
+      "expected_section": "B. Nationally Covered Indications",
+      "expected_evidence_phrase": "fasting C-peptide",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 1,
+      "top_results": [
+        {
+          "chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+          "score": 0.7394255,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "title": "Infusion Pumps",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 2643,
+          "section_char_end": 5893,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2"
+        },
+        {
+          "chunk_id": "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+          "score": 0.7180372,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "title": "Infusion Pumps",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 3238,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2"
+        },
+        {
+          "chunk_id": "12e567b6-156e-588c-acda-0677bd65d97d",
+          "score": 0.5473412,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "title": "Infusion Pumps",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 65,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2"
+        },
+        {
+          "chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+          "score": 0.4744569,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "title": "Infusion Pumps",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 1138,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2"
+        },
+        {
+          "chunk_id": "e40923e3-b175-58f0-97d7-b312ae009f1f",
+          "score": 0.42636263,
+          "NCD_id": "223",
+          "NCD_vrsn_num": "2",
+          "title": "Infusion Pumps",
+          "source_field": "itm_srvc_desc",
+          "section": "A. General",
+          "section_char_start": 0,
+          "section_char_end": 141,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2"
+        }
+      ]
+    },
+    {
+      "query": "What must a physician prescription document to justify a hospital bed?",
+      "expected_document_id": "227",
+      "expected_version": "1",
+      "expected_section": "B. Physician's Prescription",
+      "expected_evidence_phrase": "must accompany the initial claim",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 1,
+      "top_results": [
+        {
+          "chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+          "score": 0.79235315,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "title": "Hospital Beds",
+          "source_field": "indctn_lmtn",
+          "section": "B. Physician's Prescription",
+          "section_char_start": 0,
+          "section_char_end": 812,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+        },
+        {
+          "chunk_id": "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "score": 0.7160341,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "title": "Hospital Beds",
+          "source_field": "indctn_lmtn",
+          "section": "A. General Requirements for Coverage of Hospital Beds",
+          "section_char_start": 0,
+          "section_char_end": 662,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+        },
+        {
+          "chunk_id": "180ced12-0b5a-5354-99d9-a858c8439b17",
+          "score": 0.5265245,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "title": "Hospital Beds",
+          "source_field": "indctn_lmtn",
+          "section": "E. Side Rails",
+          "section_char_start": 0,
+          "section_char_end": 148,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+        },
+        {
+          "chunk_id": "3b7f9637-9064-56ff-89da-04bff6434f08",
+          "score": 0.4763174,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "title": "Hospital Beds",
+          "source_field": "indctn_lmtn",
+          "section": "D. Electric Powered Hospital Bed Adjustments",
+          "section_char_start": 0,
+          "section_char_end": 508,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+        },
+        {
+          "chunk_id": "1ff4fb31-6d93-5293-b2c6-4da5c49b709c",
+          "score": 0.4754994,
+          "NCD_id": "227",
+          "NCD_vrsn_num": "1",
+          "title": "Hospital Beds",
+          "source_field": "indctn_lmtn",
+          "section": "C. Variable Height Feature",
+          "section_char_start": 0,
+          "section_char_end": 1023,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1"
+        }
+      ]
+    },
+    {
+      "query": "Which unattended home sleep testing devices are covered to diagnose obstructive sleep apnea?",
+      "expected_document_id": "330",
+      "expected_version": "1",
+      "expected_section": "B. Nationally Covered Indications",
+      "expected_evidence_phrase": "Type II or Type III",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 1,
+      "top_results": [
+        {
+          "chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+          "score": 0.65631896,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 1675,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+        },
+        {
+          "chunk_id": "8f73630c-374b-5edd-bc33-187947a6b869",
+          "score": 0.653273,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 51,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+        },
+        {
+          "chunk_id": "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+          "score": 0.62699574,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+          "source_field": "itm_srvc_desc",
+          "section": "A. General",
+          "section_char_start": 0,
+          "section_char_end": 1874,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+        },
+        {
+          "chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+          "score": 0.59918165,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 3034,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+        },
+        {
+          "chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+          "score": 0.5476309,
+          "NCD_id": "330",
+          "NCD_vrsn_num": "1",
+          "title": "Sleep Testing for Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 281,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1"
+        }
+      ]
+    },
+    {
+      "query": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+      "expected_document_id": "376",
+      "expected_version": "1",
+      "expected_section": "B. Nationally Covered Indications",
+      "expected_evidence_phrase": "specialty evaluation",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 2,
+      "top_results": [
+        {
+          "chunk_id": "d099d33f-7cb8-5474-814e-60f7bdc5f76a",
+          "score": 0.8321705,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 42,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+        },
+        {
+          "chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+          "score": 0.7514848,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 1668,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+        },
+        {
+          "chunk_id": "3121e230-ac69-5af6-af4e-742c81f52b42",
+          "score": 0.7352155,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+          "source_field": "itm_srvc_desc",
+          "section": "A. General",
+          "section_char_start": 0,
+          "section_char_end": 413,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+        },
+        {
+          "chunk_id": "04585146-f808-5088-a9bb-c125bc955cc5",
+          "score": 0.708594,
+          "NCD_id": "376",
+          "NCD_vrsn_num": "1",
+          "title": "Seat Elevation Equipment (Power Operated) on Power Wheelchairs",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 633,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1"
+        },
+        {
+          "chunk_id": "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+          "score": 0.66142005,
+          "NCD_id": "219",
+          "NCD_vrsn_num": "2",
+          "title": "Mobility Assistive Equipment (MAE)",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 5409,
+          "section_char_end": 7052,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2"
+        }
+      ]
+    },
+    {
+      "query": "Is oxygen and carbon dioxide inhalation therapy for inner ear disease reasonable and necessary?",
+      "expected_document_id": "43",
+      "expected_version": "1",
+      "expected_section": "indctn_lmtn",
+      "expected_evidence_phrase": "not reasonable and necessary",
+      "expected_indications_in_top5": true,
+      "expected_evidence_rank": 1,
+      "top_results": [
+        {
+          "chunk_id": "dc2a342a-5448-50b4-b087-836666a5fa08",
+          "score": 0.81787217,
+          "NCD_id": "43",
+          "NCD_vrsn_num": "1",
+          "title": "Oxygen Treatment of Inner Ear/Carbon Therapy",
+          "source_field": "indctn_lmtn",
+          "section": "indctn_lmtn",
+          "section_char_start": 0,
+          "section_char_end": 260,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=43&NCDver=1"
+        },
+        {
+          "chunk_id": "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+          "score": 0.48709178,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "C. Nationally Non-Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 845,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        },
+        {
+          "chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+          "score": 0.44193068,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "B. Nationally Covered Indications",
+          "section_char_start": 0,
+          "section_char_end": 2911,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        },
+        {
+          "chunk_id": "234fd16d-21df-524a-aa5d-1b781556bd00",
+          "score": 0.38771504,
+          "NCD_id": "226",
+          "NCD_vrsn_num": "3",
+          "title": "Continuous Positive Airway Pressure (CPAP) Therapy For Obstructive Sleep Apnea (OSA)",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 51,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3"
+        },
+        {
+          "chunk_id": "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+          "score": 0.38711947,
+          "NCD_id": "169",
+          "NCD_vrsn_num": "2",
+          "title": "Home Use of Oxygen",
+          "source_field": "indctn_lmtn",
+          "section": "D. Other",
+          "section_char_start": 0,
+          "section_char_end": 881,
+          "viewer_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2"
+        }
+      ]
+    }
+  ],
+  "cases_passed": 8,
+  "cases_total": 8,
+  "filters_verified": {
+    "NCD_id": "226",
+    "NCD_vrsn_num": "3",
+    "source_field": "indctn_lmtn",
+    "coverage_code": "2"
+  },
+  "filter_result_count": 5,
+  "absent_document_returns_empty": true,
+  "all_returned_payloads_match_source_chunks": true,
+  "embedding": {
+    "provider": "sentence-transformers",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "dimension": 384,
+    "device": "cpu",
+    "normalization": "l2",
+    "document_input": "title + newline + section + newline + evidence_text",
+    "query_input": "unmodified_query",
+    "long_text_strategy": "token_weighted_window_mean_v1",
+    "window_tokens": 254,
+    "window_overlap": 0,
+    "max_seq_length": 256,
+    "packages": {
+      "sentence-transformers": "5.1.0",
+      "transformers": "4.55.4",
+      "torch": "2.8.0",
+      "numpy": "2.3.2"
+    }
+  }
+}

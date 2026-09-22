@@ -1,0 +1,77 @@
+{
+  "method": "Direct comparison of saved responses with actual cited CMS chunk text during Phase 4; not an independent clinical review or quality benchmark.",
+  "cases": [
+    {
+      "question": "What clinical testing must support an initial claim for oxygen therapy at home?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "Direct support for ordered/evaluated testing, qualified testing providers and timing. The excerpt also contains partial Group I criteria; it is not a complete oxygen-coverage checklist."
+    },
+    {
+      "question": "What diagnosis and sleep test documentation supports an initial 12-week CPAP trial?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "Direct support for clinical evaluation, sleep tests, physician order and initial trial thresholds. The excerpt ends inside CED criteria, so it is not a complete CPAP policy."
+    },
+    {
+      "question": "How are mobility limitations in activities of daily living at home assessed for a wheelchair?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "Partial answer only: the top chunk covers safety, home layout, manual wheelchairs and scooters but omits the preceding definition of mobility limitation. Exact citation does not establish answer completeness."
+    },
+    {
+      "question": "What fasting C-peptide and glucose testing is required for an insulin infusion pump?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "Direct support for C-peptide, concurrent glucose, renal exception and one-time documentation. The chunk includes unrelated pump uses and starts/ends mid-section. It is overinclusive, not a complete eligibility decision."
+    },
+    {
+      "question": "What must a physician prescription document to justify a hospital bed?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "Both complete prescription paragraphs answer the question: medical necessity, condition, symptom severity/frequency for positioning, and special attachments when applicable."
+    },
+    {
+      "question": "Which unattended home sleep testing devices are covered to diagnose obstructive sleep apnea?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "The excerpt preserves device types, channel requirements and symptoms qualifiers, directly supporting the question."
+    },
+    {
+      "question": "What specialty evaluation is required for power wheelchair seat elevation equipment?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "Original rank 1 is the N/A-only section; general context filtering excludes it. Rank 2 supplies the specialty evaluation, evaluator qualifications and accompanying conditions. No ranking or query-specific rules were changed."
+    },
+    {
+      "question": "Is oxygen and carbon dioxide inhalation therapy for inner ear disease reasonable and necessary?",
+      "observed_insufficient_evidence": false,
+      "citation_ids_present_in_context": true,
+      "review": "The complete short evidence explicitly states not reasonable and necessary; no individual medical recommendation is added."
+    },
+    {
+      "question": "What dental implant documentation is required?",
+      "observed_insufficient_evidence": true,
+      "citation_ids_present_in_context": true,
+      "review": "No eligible evidence at the development score floor. Corpus does not contain a dental-implant policy."
+    },
+    {
+      "question": "What chemotherapy regimen treats pancreatic cancer?",
+      "observed_insufficient_evidence": true,
+      "citation_ids_present_in_context": true,
+      "review": "No eligible evidence at the score floor. An infusion-pump policy mentions other cancers, which does not answer this regimen question."
+    },
+    {
+      "question": "Is it covered?",
+      "observed_insufficient_evidence": true,
+      "citation_ids_present_in_context": true,
+      "review": "Ambiguous question rejected before retrieval in the service. This script separately measures retrieval for inspection only."
+    },
+    {
+      "question": "How do I configure a Kubernetes ingress controller?",
+      "observed_insufficient_evidence": true,
+      "citation_ids_present_in_context": true,
+      "review": "No eligible evidence at the score floor; unrelated technical question."
+    }
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "ingestion": {
+    "completed_at_utc": "2026-09-09T18:13:15.825143+00:00",
+    "source": {
+      "source_records": 357,
+      "selected_documents": 8,
+      "unselected_records": 349,
+      "source_observations": [
+        {
+          "NCD_id": "5",
+          "version": "1",
+          "flags": [
+            "blank_indications"
+          ]
+        },
+        {
+          "NCD_id": "20",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "36",
+          "version": "4",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "50",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "62",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "73",
+          "version": "3",
+          "flags": [
+            "unknown_coverage_code",
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "78",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "85",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "91",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "109",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "111",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "115",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "178",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "182",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "195",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "199",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "211",
+          "version": "7",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "215",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "236",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "242",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "246",
+          "version": "8",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "273",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "287",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "291",
+          "version": "2",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "293",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "295",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "296",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "297",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "299",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "300",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "301",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "302",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "303",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "304",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "305",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "306",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "308",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "323",
+          "version": "3",
+          "flags": [
+            "retirement_evidence",
+            "termination_before_effective"
+          ]
+        },
+        {
+          "NCD_id": "326",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "343",
+          "version": "3",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "351",
+          "version": "2",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "356",
+          "version": "2",
+          "flags": [
+            "retirement_evidence"
+          ]
+        },
+        {
+          "NCD_id": "368",
+          "version": "1",
+          "flags": [
+            "unknown_coverage_code"
+          ]
+        }
+      ],
+      "selected_failures": 0
+    },
+    "documents": 8,
+    "sections": 32,
+    "chunks": 39,
+    "chunking": {
+      "target_tokens": 700,
+      "overlap_tokens": 120,
+      "version": "section-paragraph-v1"
+    },
+    "embedding": {
+      "provider": "sentence-transformers",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "dimension": 384,
+      "device": "cpu",
+      "normalization": "l2",
+      "document_input": "title + newline + section + newline + evidence_text",
+      "query_input": "unmodified_query",
+      "long_text_strategy": "token_weighted_window_mean_v1",
+      "window_tokens": 254,
+      "window_overlap": 0,
+      "max_seq_length": 256,
+      "packages": {
+        "sentence-transformers": "5.1.0",
+        "transformers": "4.55.4",
+        "torch": "2.8.0",
+        "numpy": "2.3.2"
+      }
+    },
+    "index": {
+      "alias": "careflow_cms_ncd",
+      "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2__279ea98f",
+      "previous_collection": "careflow_cms_ncd__5ce29cd4691dc56423f2",
+      "index_fingerprint": "5ce29cd4691dc56423f21b2b197aae87cffd6590b1c85f23b6d52da1987c7ce7",
+      "points": 39,
+      "dimension": 384,
+      "distance": "Cosine",
+      "read_back_verified": true
+    },
+    "chunk_counts_by_document": {
+      "cms:ncd:43:v1": 1,
+      "cms:ncd:169:v2": 5,
+      "cms:ncd:219:v2": 7,
+      "cms:ncd:223:v2": 6,
+      "cms:ncd:226:v3": 7,
+      "cms:ncd:227:v1": 5,
+      "cms:ncd:330:v1": 4,
+      "cms:ncd:376:v1": 4
+    },
+    "max_chunk_tokens": 699
+  },
+  "idempotency": {
+    "first_index": {
+      "alias": "careflow_cms_ncd",
+      "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2",
+      "previous_collection": "careflow_cms_ncd__38d120ac69f9bcf6d63c",
+      "index_fingerprint": "5ce29cd4691dc56423f21b2b197aae87cffd6590b1c85f23b6d52da1987c7ce7",
+      "points": 39,
+      "dimension": 384,
+      "distance": "Cosine",
+      "read_back_verified": true
+    },
+    "repeat_index": {
+      "alias": "careflow_cms_ncd",
+      "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2",
+      "previous_collection": "careflow_cms_ncd__5ce29cd4691dc56423f2",
+      "index_fingerprint": "5ce29cd4691dc56423f21b2b197aae87cffd6590b1c85f23b6d52da1987c7ce7",
+      "points": 39,
+      "dimension": 384,
+      "distance": "Cosine",
+      "read_back_verified": true
+    },
+    "reindexed_index": {
+      "alias": "careflow_cms_ncd",
+      "collection": "careflow_cms_ncd__5ce29cd4691dc56423f2__279ea98f",
+      "previous_collection": "careflow_cms_ncd__5ce29cd4691dc56423f2",
+      "index_fingerprint": "5ce29cd4691dc56423f21b2b197aae87cffd6590b1c85f23b6d52da1987c7ce7",
+      "points": 39,
+      "dimension": 384,
+      "distance": "Cosine",
+      "read_back_verified": true
+    },
+    "same_point_count": true,
+    "same_fingerprint": true,
+    "same_chunk_payloads_after_reindex": true,
+    "chunk_ids": [
+      "dc2a342a-5448-50b4-b087-836666a5fa08",
+      "6f72416a-2fbd-58d4-9914-f95bb7d7563c",
+      "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+      "b98117a8-1f53-50f4-902d-d62e8b671f90",
+      "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+      "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+      "050d0c24-fb74-5004-94aa-b66ed0faec60",
+      "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37",
+      "266a9002-e18a-5b6b-950e-0705824077ee",
+      "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+      "928f8263-6783-5bbb-9942-17e8e674eb4d",
+      "3f4952a5-fbc0-5f5e-bf04-cc2cbe6a07a2",
+      "10388823-924d-5586-8bf6-16feba70ee3f",
+      "e40923e3-b175-58f0-97d7-b312ae009f1f",
+      "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+      "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+      "21a43ec3-703b-5491-99a2-8732528de421",
+      "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+      "12e567b6-156e-588c-acda-0677bd65d97d",
+      "a65ef70f-99b4-5e5a-9862-6d352a740862",
+      "56903cee-00c9-5b23-a022-a4a1339e4c38",
+      "20d886d6-8b3a-5a22-a4b1-4236f4b94a61",
+      "872545e4-28bc-5797-b89c-d53742c95421",
+      "4ac07ec4-9790-5188-a040-a8e8fc2dddc3",
+      "234fd16d-21df-524a-aa5d-1b781556bd00",
+      "be14401a-3679-5e1a-a476-c3034f46249d",
+      "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+      "0364e913-f508-5d9e-a928-d9266d5b7741",
+      "1ff4fb31-6d93-5293-b2c6-4da5c49b709c",
+      "3b7f9637-9064-56ff-89da-04bff6434f08",
+      "180ced12-0b5a-5354-99d9-a858c8439b17",
+      "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+      "beae40ce-4792-5578-80c8-afd649db96aa",
+      "8d14e9d2-25fd-5e82-a621-9914d795f495",
+      "8f73630c-374b-5edd-bc33-187947a6b869",
+      "3121e230-ac69-5af6-af4e-742c81f52b42",
+      "d760711e-bf95-5e64-9d58-31510aba392e",
+      "d099d33f-7cb8-5474-814e-60f7bdc5f76a",
+      "04585146-f808-5088-a9bb-c125bc955cc5"
+    ],
+    "live_old_and_new_collections_verified": true,
+    "live_payloads_identical": true,
+    "live_alias_points_to_reindexed_generation": true
+  }
+}

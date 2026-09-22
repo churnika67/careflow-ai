@@ -1,0 +1,84 @@
+name: careflow-ai
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-careflow}:${POSTGRES_PASSWORD:-careflow_local_only}@postgres:5432/${POSTGRES_DB:-careflow}
+      QDRANT_URL: http://qdrant:6333
+      REDIS_URL: redis://redis:6379/0
+      ENVIRONMENT: ${ENVIRONMENT:-local}
+      HEALTH_TIMEOUT_SECONDS: ${HEALTH_TIMEOUT_SECONDS:-3}
+      RAG_PROVIDER: ${RAG_PROVIDER:-deterministic}
+      RAG_MODEL: ${RAG_MODEL:-gpt-4.1-mini}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      RAG_PROVIDER_TIMEOUT_SECONDS: ${RAG_PROVIDER_TIMEOUT_SECONDS:-30}
+      RAG_TOP_K: ${RAG_TOP_K:-5}
+      RAG_MIN_SCORE: ${RAG_MIN_SCORE:-0.6}
+      RAG_CONTEXT_CHARS: ${RAG_CONTEXT_CHARS:-24000}
+      RAG_MODEL_CACHE: /models
+      RAG_EMBEDDING_OFFLINE: "true"
+      RAG_QDRANT_ALIAS: ${RAG_QDRANT_ALIAS:-careflow_cms_ncd}
+      RETRIEVAL_MODE: ${RETRIEVAL_MODE:-dense}
+      RETRIEVAL_CANDIDATE_K: ${RETRIEVAL_CANDIDATE_K:-10}
+      RETRIEVAL_RRF_CONSTANT: ${RETRIEVAL_RRF_CONSTANT:-60}
+      BM25_K1: ${BM25_K1:-1.2}
+      BM25_B: ${BM25_B:-0.75}
+      RERANK_ENABLED: ${RERANK_ENABLED:-false}
+      RERANK_CANDIDATE_K: ${RERANK_CANDIDATE_K:-10}
+      RERANK_MODEL_CACHE: /models
+      RERANK_OFFLINE: "true"
+      HF_HOME: /tmp/huggingface
+    volumes:
+      - ./.cache/models:/models:ro
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    restart: unless-stopped
+  postgres:
+    image: postgres:17.6-bookworm
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-careflow}
+      POSTGRES_USER: ${POSTGRES_USER:-careflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-careflow_local_only}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+  qdrant:
+    image: qdrant/qdrant:v1.15.4
+    ports:
+      - "127.0.0.1:${QDRANT_PORT:-6333}:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+  redis:
+    image: redis:7.4.5-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  qdrant_data:
+  redis_data:
