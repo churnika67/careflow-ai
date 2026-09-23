@@ -5,15 +5,21 @@ verified phases. The planned system combines public Medicare coverage policies
 with synthetic claims and patient records to support documentation review.
 It is an engineering portfolio project, not a clinical decision system.
 
-**Current scope: Phase 8 — structured healthcare data engineering.** The existing
-retrieval/RAG pipeline (Phases 1-7) is unchanged. Phase 8 adds a separate,
-independent structured-data layer: CMS DE-SynPUF synthetic claims and Synthea
-synthetic FHIR R4 patient records, ingested into PostgreSQL with checksum-gated
-source validation, per-record quarantine, provenance, and idempotent loading.
-This layer is not yet connected to the RAG pipeline — see the
-[Phase 8 guide](docs/phase8_structured_health_data.md) for the architecture,
-real data-modeling findings (multi-coding, `Observation.value[x]` diversity,
-claim identity), schema, and reproduction steps.
+**Current scope: Phase 9 — LangGraph router & structured tools.** Phase 8 added
+an independent structured-data layer: CMS DE-SynPUF synthetic claims and
+Synthea synthetic FHIR R4 patient records in PostgreSQL, behind a
+parameterized-SQL-only repository layer (checksum-gated source validation,
+per-record quarantine, provenance, idempotent loading). Phase 9 adds a small
+real `langgraph.StateGraph` that routes a request to either the existing,
+unchanged Phase 1-7 policy RAG pipeline or one of 18 Phase 8 structured tools
+— deterministically by default, with no route (including policy) getting
+unmatched free text as a fallback. See the
+[Phase 8 guide](docs/phase8_structured_health_data.md) and
+[Phase 9 guide](docs/phase9_langgraph_orchestration.md) for architecture,
+real findings (multi-coding, `Observation.value[x]` diversity, claim
+identity, two strict-validation bugs caught live), schema/graph, and
+reproduction steps. `POST /orchestrate` is new; `POST /query`'s contract is
+unchanged.
 
 The Phase 7 retrieval evaluation below remains the last verified state of the
 unstructured pipeline: a versioned 32-case development dataset measuring
@@ -134,12 +140,14 @@ flowchart LR
     Gen --> Validate[Exact quotes and citations]
 ```
 
-Planned: Next.js/TypeScript → FastAPI → LangGraph router → policy retrieval and
-restricted structured-data tools → analysis → validation → cited report and human review.
-Implemented retrieval supports dense, BM25, RRF hybrid search and optional cross-encoder reranking.
-Phase 7 evaluation and Phase 8 structured DE-SynPUF/FHIR ingestion are implemented as an
-independent layer, not yet connected to retrieval; the LangGraph router and remaining
-roadmap are planned.
+Planned: Next.js/TypeScript frontend → analysis → validation → cited report and
+human review. Implemented retrieval supports dense, BM25, RRF hybrid search and
+optional cross-encoder reranking. Phase 7 evaluation and Phase 8 structured
+DE-SynPUF/FHIR ingestion are implemented as an independent layer. Phase 9 adds
+a real `langgraph.StateGraph` router (`POST /orchestrate`) that dispatches
+deterministically to policy retrieval or restricted structured-data tools —
+see the [Phase 9 guide](docs/phase9_langgraph_orchestration.md). Multi-agent
+behavior and the remaining roadmap are planned (Phase 10+).
 
 ## Repository
 
