@@ -7,37 +7,13 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from app.agents.graph import build_multi_agent_graph
-from app.agents.models import (
-    MultiAgentRequest,
-    MultiAgentResponse,
-    MultiAgentState,
-    WorkflowDecision,
-)
+from app.agents.graph import build_response as _to_response
+from app.agents.models import MultiAgentRequest, MultiAgentResponse, MultiAgentState
 from app.core.config import get_settings
 from app.generation.providers import GenerationError
-from app.orchestration.models import Status
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
-
-
-def _to_response(request_id: str, result: dict) -> MultiAgentResponse:
-    structured_results = result.get("structured_results")
-    structured = None
-    if structured_results is not None:
-        route = result.get("structured_route")
-        structured = {"route": route.value if route else None, "results": structured_results}
-    return MultiAgentResponse(
-        request_id=request_id,
-        workflow=result.get("workflow") or WorkflowDecision.ABSTAIN,
-        status=result.get("status") or Status.ERROR,
-        policy=result.get("policy_result"),
-        structured=structured,
-        validation=result.get("validation"),
-        final_summary=None,
-        abstention_reason=result.get("abstention_reason"),
-        error=result.get("error"),
-    )
 
 
 @router.post(

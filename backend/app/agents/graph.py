@@ -25,12 +25,18 @@ from typing import Any
 
 from langgraph.graph import END, START, StateGraph
 
-from app.agents.models import AbstentionReason, MultiAgentState, WorkflowDecision
+from app.agents.models import (
+    AbstentionReason,
+    MultiAgentResponse,
+    MultiAgentState,
+    WorkflowDecision,
+)
 from app.agents.structured_specialist import run_structured_specialist
 from app.agents.supervisor import classify_workflow
 from app.agents.validator import validate_node
 from app.core.config import Settings
 from app.orchestration.graph import policy_node as _phase9_policy_node
+from app.orchestration.models import Status
 
 logger = logging.getLogger(__name__)
 
@@ -163,3 +169,29 @@ def build_multi_agent_graph(settings: Settings) -> Any:
     graph.add_edge("abstain", "validate")
     graph.add_edge("validate", END)
     return graph.compile()
+
+
+def build_response(request_id: str, result: dict) -> MultiAgentResponse:
+    """Converts a final MultiAgentState (the dict build_multi_agent_graph's
+    compiled graph returns from ainvoke) into the public MultiAgentResponse
+    shape. Moved here from api/multi_agent.py (Phase 10, unchanged in
+    substance — pure rename/relocation, verified byte-for-byte identical
+    behavior via the full Phase 1-10 regression suite) so Phase 11's
+    /reviewable-query can build the exact same response without a second,
+    divergence-prone copy of this translation."""
+    structured_results = result.get("structured_results")
+    structured = None
+    if structured_results is not None:
+        route = result.get("structured_route")
+        structured = {"route": route.value if route else None, "results": structured_results}
+    return MultiAgentResponse(
+        request_id=request_id,
+        workflow=result.get("workflow") or WorkflowDecision.ABSTAIN,
+        status=result.get("status") or Status.ERROR,
+        policy=result.get("policy_result"),
+        structured=structured,
+        validation=result.get("validation"),
+        final_summary=None,
+        abstention_reason=result.get("abstention_reason"),
+        error=result.get("error"),
+    )

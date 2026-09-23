@@ -4,6 +4,7 @@ from app.api.health import router as health_router
 from app.api.multi_agent import router as multi_agent_router
 from app.api.orchestrate import router as orchestrate_router
 from app.api.query import router as query_router
+from app.api.reviews import router as reviews_router
 
 app = FastAPI(
     title="CareFlow AI",
@@ -14,3 +15,4 @@ app.include_router(health_router)
 app.include_router(query_router)
 app.include_router(orchestrate_router)
 app.include_router(multi_agent_router)
+app.include_router(reviews_router)
