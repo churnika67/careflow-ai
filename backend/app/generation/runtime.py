@@ -33,6 +33,11 @@ def retrieve(question: str, settings: Settings) -> list[dict]:
         # The shared tokenizer changes padding state during inference.
         with _embedding_lock:
             embedding = load_embedding(settings.rag_model_cache, settings.rag_embedding_offline)
+            if settings.query_embedding_cache_enabled:
+                from app.generation.embedding_cache import CachingQueryEmbedding
+                from app.infrastructure.cache import get_sync_cache_client
+
+                embedding = CachingQueryEmbedding(embedding, settings, get_sync_cache_client())
             with closing(QdrantClient(url=settings.qdrant_url, timeout=10)) as client:
                 depth = (
                     max(settings.rag_top_k, settings.rerank_candidate_k)

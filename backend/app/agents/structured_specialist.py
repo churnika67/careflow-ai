@@ -5,7 +5,6 @@ no tool creation. Every attempted tool call's outcome — success or failure —
 is preserved in the returned list; a failed tool call never silently
 disappears from the result."""
 
-import json
 import logging
 from time import perf_counter
 from typing import Any
@@ -13,6 +12,7 @@ from typing import Any
 from app.agents.models import MAX_STRUCTURED_TOOL_CALLS, MultiAgentState
 from app.core.config import Settings
 from app.db.connection import connect
+from app.observability.logging import log_event
 from app.orchestration.models import AbstentionReason, Route
 from app.orchestration.tools import execute_tool
 
@@ -20,11 +20,11 @@ logger = logging.getLogger(__name__)
 
 
 def _log_event(request_id: str | None, **fields: object) -> None:
-    # Deliberately no patient/beneficiary/claim record contents — only
-    # routing/tool metadata, counts, and reason codes.
-    logger.info(
-        "%s", json.dumps({"event": "agent_node_complete", "request_id": request_id, **fields})
-    )
+    # Thin, signature-preserving shim over the central helper -- see
+    # agents/graph.py's identical shim for the same rationale. Deliberately
+    # no patient/beneficiary/claim record contents — only routing/tool
+    # metadata, counts, and reason codes, exactly as before this migration.
+    log_event(logger, "agent_node_complete", request_id=request_id, **fields)
 
 
 _DEFAULT_TOOL_BY_ROUTE = {

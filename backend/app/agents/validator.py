@@ -13,7 +13,6 @@ is not a validation failure — it is the system working correctly — so it
 still reports passed=True.
 """
 
-import json
 import logging
 
 from app.agents.models import (
@@ -23,17 +22,18 @@ from app.agents.models import (
     ValidationResult,
     WorkflowDecision,
 )
+from app.observability.logging import log_event
 from app.orchestration.models import AbstentionReason, Route, Status
 
 logger = logging.getLogger(__name__)
 
 
 def _log_event(request_id: str | None, **fields: object) -> None:
-    # Deliberately no patient/beneficiary/claim record contents — only
-    # routing/tool metadata, counts, and reason codes.
-    logger.info(
-        "%s", json.dumps({"event": "agent_node_complete", "request_id": request_id, **fields})
-    )
+    # Thin, signature-preserving shim over the central helper -- see
+    # agents/graph.py's identical shim for the same rationale. Deliberately
+    # no patient/beneficiary/claim record contents — only routing/tool
+    # metadata, counts, and reason codes, exactly as before this migration.
+    log_event(logger, "agent_node_complete", request_id=request_id, **fields)
 
 
 _EXPECTED_SOURCE_BY_ROUTE = {Route.FHIR: "synthea_fhir", Route.SYNPUF: "cms_desynpuf"}

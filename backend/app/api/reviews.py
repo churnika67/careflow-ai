@@ -1,4 +1,3 @@
-import json
 import logging
 from time import perf_counter
 from uuid import uuid4
@@ -10,6 +9,7 @@ from fastapi.responses import JSONResponse
 from app.core.config import get_settings
 from app.db.connection import connect
 from app.generation.providers import GenerationError
+from app.observability.logging import get_request_id, log_event
 from app.review.models import (
     DEFAULT_REVIEW_QUEUE_LIMIT,
     MAX_REVIEW_QUEUE_LIMIT,
@@ -29,11 +29,17 @@ logger = logging.getLogger(__name__)
 
 
 def _log(**fields: object) -> None:
-    # Deliberately no evidence_snapshot, policy answer text, citation
-    # excerpts, structured record contents, or reviewer free-text reason.
-    # Callers pass their own correlating id (request_id or review_id) as an
-    # explicit keyword — never mislabeled under the wrong key.
-    logger.info("%s", json.dumps({"event": "review_action_complete", **fields}, default=str))
+    # Thin, signature-preserving shim over the central helper -- which now
+    # also *enforces* (not just documents) exclusion of evidence_snapshot,
+    # policy answer text, citation excerpts, structured record contents,
+    # and reviewer free-text reason via FORBIDDEN_FIELD_NAMES. Callers pass
+    # their own correlating id (request_id or review_id) as an explicit
+    # keyword — never mislabeled under the wrong key. A call that passes
+    # request_id explicitly keeps it; one that only passes review_id (the
+    # decision/detail endpoints below) now also picks up the enclosing
+    # HTTP request's ID automatically from context, which is new -- those
+    # two endpoints had no request correlation at all before this slice.
+    log_event(logger, "review_action_complete", **fields)
 
 
 @router.post(
@@ -47,7 +53,9 @@ def _log(**fields: object) -> None:
     },
 )
 async def reviewable_query(request: ReviewableQueryRequest):
-    request_id = str(uuid4())
+    # See api/multi_agent.py's identical comment: sourced from
+    # RequestContextMiddleware, with a defensive direct-call fallback.
+    request_id = get_request_id() or str(uuid4())
     settings = get_settings()
     connection = await connect(settings)
     started = perf_counter()

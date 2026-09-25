@@ -1,4 +1,3 @@
-import json
 import logging
 from time import perf_counter
 from uuid import uuid4
@@ -11,6 +10,7 @@ from app.agents.graph import build_response as _to_response
 from app.agents.models import MultiAgentRequest, MultiAgentResponse, MultiAgentState
 from app.core.config import get_settings
 from app.generation.providers import GenerationError
+from app.observability.logging import get_request_id, log_event
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -26,7 +26,12 @@ logger = logging.getLogger(__name__)
     },
 )
 async def multi_agent(request: MultiAgentRequest):
-    request_id = str(uuid4())
+    # Sourced from RequestContextMiddleware (one ID per HTTP request) with a
+    # defensive fallback for callers that invoke this handler directly
+    # without going through the app's middleware stack (e.g. a bare unit
+    # test) -- never a second, unrelated ID generated alongside the
+    # middleware's when middleware IS present.
+    request_id = get_request_id() or str(uuid4())
     settings = get_settings()
     state: MultiAgentState = {
         "request_id": request_id,
@@ -70,11 +75,8 @@ async def multi_agent(request: MultiAgentRequest):
 
 
 def _log(request_id: str, **fields) -> None:
-    # Deliberately no patient/beneficiary/claim record contents — only
-    # routing/tool metadata, counts, and reason codes.
-    logger.info(
-        "%s",
-        json.dumps(
-            {"event": "multi_agent_complete", "request_id": request_id, **fields}, default=str
-        ),
-    )
+    # Thin, signature-preserving shim over the central helper -- see
+    # agents/graph.py's identical shim for the same rationale. Deliberately
+    # no patient/beneficiary/claim record contents — only routing/tool
+    # metadata, counts, and reason codes, exactly as before this migration.
+    log_event(logger, "multi_agent_complete", request_id=request_id, **fields)

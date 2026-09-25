@@ -1,4 +1,3 @@
-import json
 import logging
 from time import perf_counter
 from uuid import uuid4
@@ -8,6 +7,7 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import get_settings
 from app.generation.providers import GenerationError
+from app.observability.logging import get_request_id, log_event
 from app.orchestration.graph import build_graph
 from app.orchestration.models import (
     GraphState,
@@ -49,7 +49,9 @@ def _to_response(request_id: str, result: dict) -> OrchestrationResponse:
     },
 )
 async def orchestrate(request: OrchestrationRequest):
-    request_id = str(uuid4())
+    # See api/multi_agent.py's identical comment: sourced from
+    # RequestContextMiddleware, with a defensive direct-call fallback.
+    request_id = get_request_id() or str(uuid4())
     settings = get_settings()
     state: GraphState = {
         "request_id": request_id,
@@ -91,11 +93,7 @@ async def orchestrate(request: OrchestrationRequest):
 
 
 def _log(request_id: str, **fields) -> None:
-    # Deliberately no patient/claim record contents — only routing/tool
-    # metadata and counts.
-    logger.info(
-        "%s",
-        json.dumps(
-            {"event": "orchestration_complete", "request_id": request_id, **fields}, default=str
-        ),
-    )
+    # Thin, signature-preserving shim over the central helper. Deliberately
+    # no patient/claim record contents — only routing/tool metadata and
+    # counts, exactly as before this migration.
+    log_event(logger, "orchestration_complete", request_id=request_id, **fields)

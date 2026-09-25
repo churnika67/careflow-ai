@@ -277,19 +277,35 @@ def test_invalid_citation_after_reranking():
     assert answer.abstention_reason == "invalid_citation" and answer.citations == []
 
 
-def test_reranking_log_contains_only_debug_identifiers(caplog):
+def test_reranking_log_contains_only_debug_identifiers():
+    # Deliberately not caplog: Phase 13 Slice 4's configure_logging() sets
+    # propagate=False on the "app" logger namespace (by design -- see
+    # backend/app/observability/config.py -- so a future root-logger
+    # configuration can never cause a duplicate print of the same event),
+    # and caplog's default capture relies on root-logger propagation, so
+    # it no longer observes these records. A directly-attached handler
+    # sidesteps that and observes exactly what reranking/service.py
+    # actually logged -- every original assertion below is unchanged.
+    import io
     import json
     import logging
 
-    with caplog.at_level(logging.INFO, logger="app.reranking.service"):
+    buffer = io.StringIO()
+    handler = logging.StreamHandler(buffer)
+    handler.setFormatter(logging.Formatter("%(message)s"))
+    app_logger = logging.getLogger("app")
+    app_logger.addHandler(handler)
+    try:
         rerank("private question", candidates(), FakeScorer([1, 2, 3]))
-    record = json.loads(caplog.records[-1].message)
+    finally:
+        app_logger.removeHandler(handler)
+
+    log_text = buffer.getvalue()
+    record = json.loads(log_text.strip().splitlines()[-1])
     assert record["candidate_count"] == 3
     assert record["final_chunk_ids"] == ["c", "b", "a"]
     assert record["latency_ms"] >= 0
-    assert (
-        "private question" not in caplog.text and "A prescription is required." not in caplog.text
-    )
+    assert "private question" not in log_text and "A prescription is required." not in log_text
 
 
 @pytest.mark.parametrize("enabled", [False, True])

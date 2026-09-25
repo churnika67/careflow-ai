@@ -1,8 +1,8 @@
-import json
 import logging
 import math
 from time import perf_counter
 
+from app.observability.logging import log_event
 from app.reranking.cross_encoder import Reranker
 
 logger = logging.getLogger(__name__)
@@ -42,21 +42,20 @@ def rerank(query: str, candidates: list[dict], provider: Reranker, top_k: int = 
     ]
     hits.sort(key=lambda hit: (-hit["rerank_score"], hit["chunk_id"]))
     result = [hit | {"rerank_rank": rank} for rank, hit in enumerate(hits[:top_k], 1)]
-    logger.info(
-        "%s",
-        json.dumps(
-            {
-                "event": "reranking_complete",
-                "rerank_enabled": True,
-                "retrieval_modes": sorted(
-                    {h.get("retrieval_method", "unknown") for h in candidates}
-                ),
-                "candidate_count": len(candidates),
-                "top_k": top_k,
-                "model": identity["model"],
-                "latency_ms": (perf_counter() - start) * 1000,
-                "final_chunk_ids": [h["chunk_id"] for h in result],
-            }
-        ),
+    # No request_id parameter exists on this function's signature -- and
+    # none is added, to keep this a mechanical migration. log_event() picks
+    # it up automatically from the ambient request-id context (set by
+    # RequestContextMiddleware for the enclosing HTTP request), which is
+    # exactly the scenario this context mechanism exists for.
+    log_event(
+        logger,
+        "reranking_complete",
+        rerank_enabled=True,
+        retrieval_modes=sorted({h.get("retrieval_method", "unknown") for h in candidates}),
+        candidate_count=len(candidates),
+        top_k=top_k,
+        model=identity["model"],
+        latency_ms=(perf_counter() - start) * 1000,
+        final_chunk_ids=[h["chunk_id"] for h in result],
     )
     return result

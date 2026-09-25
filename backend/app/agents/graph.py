@@ -18,7 +18,6 @@ this same test to run exactly once per request, after both branches (when
 both run) have completed.
 """
 
-import json
 import logging
 from time import perf_counter
 from typing import Any
@@ -35,6 +34,7 @@ from app.agents.structured_specialist import run_structured_specialist
 from app.agents.supervisor import classify_workflow
 from app.agents.validator import validate_node
 from app.core.config import Settings
+from app.observability.logging import log_event
 from app.orchestration.graph import policy_node as _phase9_policy_node
 from app.orchestration.models import Status
 
@@ -42,11 +42,13 @@ logger = logging.getLogger(__name__)
 
 
 def _log_event(request_id: str | None, **fields: object) -> None:
-    # Deliberately no patient/beneficiary/claim record contents — only
-    # routing/tool metadata, counts, and reason codes.
-    logger.info(
-        "%s", json.dumps({"event": "agent_node_complete", "request_id": request_id, **fields})
-    )
+    # Thin, signature-preserving shim over the central helper -- keeps this
+    # module's call sites unchanged (still `_log_event(request_id, ...)`),
+    # while event structure/serialization/forbidden-field policy are now
+    # owned centrally by app.observability.logging. Deliberately no
+    # patient/beneficiary/claim record contents — only routing/tool
+    # metadata, counts, and reason codes, exactly as before this migration.
+    log_event(logger, "agent_node_complete", request_id=request_id, **fields)
 
 
 def supervisor_node(state: MultiAgentState) -> dict:
