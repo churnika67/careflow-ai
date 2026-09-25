@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "cms-retrieval-heldout-v1",
+  "corpus_sha256": "1e55c381f68f3e0fe021b217a49ad05d246e87943a7f33cc5780e3e1bf31bcc2",
+  "snapshot_sha256": "735619558de8759427d5fe71989d06b48e5625376594fe94efa7a60f7e152ca3",
+  "label_method": "Phase 12 project-authored held-out engineering evaluation set. Constructed after freezing the v1 development/regression dataset and before running any Phase 12 comparative retrieval, chunking, threshold, or reranker experiment. Cases are drawn exclusively from the 20 of 39 indexed chunks never used as expected evidence in the v1 dataset, selected to cover exact_lexical, semantic, mixed, hard_negative, out_of_corpus, and adversarial_specificity categories where the corpus genuinely supports them, and to include long-section (>700 token) evidence for chunking-experiment sensitivity. Agent-authored against directly inspected indexed text; exact excerpts and provenance validated programmatically against the live corpus, identical process to the v1 dataset. No clinician or independent annotator review -- this is NOT an independently annotated, externally validated, or clinician-validated benchmark. No ranking-based label tuning; cases were not chosen or adjusted based on any retrieval, chunking, or threshold experiment outcome.",
+  "created_at": "2026-09-23T20:22:56.278119+00:00",
+  "cases": [
+    {
+      "case_id": "cms-v1-h001",
+      "query": "What must a physician's prescription establish to support Medicare coverage of a hospital bed?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+          "ncd_id": "227",
+          "ncd_version": "1",
+          "section": "A. General Requirements for Coverage of Hospital Beds",
+          "quote": "must establish the medical necessity for a hospital bed",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=227&NCDver=1",
+          "text_sha256": "de4a2b804a0a373d38071e80c8ea10417d8690c91915759c3f99979a771e249c",
+          "source_record_sha256": "0ec25b4b98cc2cf12a1b14455714b042c73613bb494b2c87c97629be4f000ce4"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: previously unused NCD 227 section ('A. General Requirements'), distinct from the v1 dev set's Physician's Prescription/Variable Height/Electric Adjustment/Side Rails sections of the same NCD. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h002",
+      "query": "What kinds of equipment does Medicare classify as mobility assistive equipment?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "050d0c24-fb74-5004-94aa-b66ed0faec60"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "050d0c24-fb74-5004-94aa-b66ed0faec60",
+          "ncd_id": "219",
+          "ncd_version": "2",
+          "section": "A. General",
+          "quote": "canes, crutches, walkers, manual wheelchairs, power wheelchairs, and scooters",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2",
+          "text_sha256": "7c2902a3ac82e9cccfa5bebf306d504cff1369b67a0bb289befaab07297d7373",
+          "source_record_sha256": "86af1576a48771f5b25c56f1a95de7dc6273ecc090bb247b0be85b35bdcef22c"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: previously unused NCD 219 'A. General' section (348 tokens), distinct from the v1 dev set's 'B. Nationally Covered Indications' section (1510 tokens) of the same NCD. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h003",
+      "query": "When is an external infusion pump covered for treating acute iron poisoning?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "b7bf5640-cd19-5701-a863-3f86a2109ba7"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "B. Nationally Covered Indications",
+          "quote": "administration of deferoxamine for the treatment of acute iron poisoning",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "94d4ce306cb4226d8e0e54c366cca9e7f3e206d1aadff0895e3912745136f881",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set, long-section coverage: first chunk (676 tokens, non-continuation) of NCD 223's 1797-token 'B. Nationally Covered Indications' section, a section the v1 dev set already uses via different (baclofen-pump-related) chunks. Deliberately included to give the chunking experiment (Slice 3) held-out sensitivity to long-section boundaries. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h004",
+      "query": "What public reporting requirements apply to a CPAP coverage-with-evidence-development research study?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "872545e4-28bc-5797-b89c-d53742c95421"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "872545e4-28bc-5797-b89c-d53742c95421",
+          "ncd_id": "226",
+          "ncd_version": "3",
+          "section": "B. Nationally Covered Indications",
+          "quote": "results must be made public within 24 months of the end of data collection",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3",
+          "text_sha256": "a134497e79f9ce2f434667d8c63d917efba14d5a66849db7d91fb1017320d6ac",
+          "source_record_sha256": "24a101be3ddfe560197ee36e9acb789283ba351730920c088289ab2341612527"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set, long-section coverage: continuation chunk of NCD 226's 1369-token 'B. Nationally Covered Indications' section, a section the v1 dev set already uses via different (12-week-trial-related) chunks. Deliberately included for chunking-experiment sensitivity. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h005",
+      "query": "How are apnea and hypopnea defined for calculating the apnea-hypopnea index used in a sleep study?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "a65ef70f-99b4-5e5a-9862-6d352a740862"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "a65ef70f-99b4-5e5a-9862-6d352a740862",
+          "ncd_id": "226",
+          "ncd_version": "3",
+          "section": "A. General",
+          "quote": "Apnea is defined as a cessation of airflow for at least 10 seconds",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=226&NCDver=3",
+          "text_sha256": "d8bf73f892e203f4136f64de73af3772e682240c18703979131b4a2a45e2a769",
+          "source_record_sha256": "24a101be3ddfe560197ee36e9acb789283ba351730920c088289ab2341612527"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: previously unused NCD 226 'A. General' section (261 tokens). Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h006",
+      "query": "Is mobility assistive equipment covered for a beneficiary who does not meet the documented clinical criteria?",
+      "category": "hard_negative",
+      "expected_chunk_ids": [
+        "928f8263-6783-5bbb-9942-17e8e674eb4d"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "928f8263-6783-5bbb-9942-17e8e674eb4d",
+          "ncd_id": "219",
+          "ncd_version": "2",
+          "section": "C. Nationally Non-Covered Indications",
+          "quote": "would not be eligible for Medicare coverage of the MAE",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=219&NCDver=2",
+          "text_sha256": "156466a0a2863aea287e500f92ecb10d0602c2f08a4c5580878b993af0e2b01d",
+          "source_record_sha256": "86af1576a48771f5b25c56f1a95de7dc6273ecc090bb247b0be85b35bdcef22c"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: a noncoverage provision (NCD 219 'C. Nationally Non-Covered Indications') is positive answerable evidence, same pattern as the v1 dev set's hard_negative cases for other NCDs. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h007",
+      "query": "Are alternative diagnostic sleep tests sufficient to support CPAP coverage after March 2009?",
+      "category": "hard_negative",
+      "expected_chunk_ids": [
+        "8d14e9d2-25fd-5e82-a621-9914d795f495"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+          "ncd_id": "330",
+          "ncd_version": "1",
+          "section": "C. Nationally Non-Covered Indications",
+          "quote": "are not sufficient for the coverage of CPAP and are not covered",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=330&NCDver=1",
+          "text_sha256": "fdb25d21ea6b9a9d87cae2396d8374c6a5d0fc6f562970846721bd383b8d6876",
+          "source_record_sha256": "91c81d409d24a78d8e44aa2c2508ccb263551dad64d709629582186bb4533dd3"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: a noncoverage provision (NCD 330 'C. Nationally Non-Covered Indications'), same hard_negative pattern extended to a NCD the v1 dev set never used this section of. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h008",
+      "query": "How does CMS define an infusion pump for Medicare coverage purposes?",
+      "category": "exact_lexical",
+      "expected_chunk_ids": [
+        "e40923e3-b175-58f0-97d7-b312ae009f1f"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "e40923e3-b175-58f0-97d7-b312ae009f1f",
+          "ncd_id": "223",
+          "ncd_version": "2",
+          "section": "A. General",
+          "quote": "medical devices used to deliver solutions containing parenteral drugs under pressure at a regulated flow rate",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=223&NCDver=2",
+          "text_sha256": "8c86617e0270c4601b554367242c724321d2fe4615326c336d3fc66bf87b1798",
+          "source_record_sha256": "e02a5255ff4cf5b4309bf885f45e13bad8993a424ff0b8ad957c2f45a7d20d2b"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: previously unused NCD 223 'A. General' section (25 tokens, single short chunk). Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h009",
+      "query": "Can a Medicare contractor extend home oxygen coverage to a patient whose condition is not described in the standard covered indications?",
+      "category": "semantic",
+      "expected_chunk_ids": [
+        "89b2e399-7c47-5e3f-983f-aaac4fadb109"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+          "ncd_id": "169",
+          "ncd_version": "2",
+          "section": "D. Other",
+          "quote": "The MAC may determine reasonable and necessary coverage of oxygen therapy",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=169&NCDver=2",
+          "text_sha256": "8c1ccd0265929c2953dea7257d558d63230c6ffb1a3fa83baf553cb405f1ebe8",
+          "source_record_sha256": "0ad8222fa7f5d163bf0e84efcb22079af2ef3766a9758c91ea1c1f0679508d3e"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: previously unused NCD 169 'D. Other' section (188 tokens). Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h010",
+      "query": "Who has discretion to determine reasonable and necessary coverage of power seat elevation equipment?",
+      "category": "mixed",
+      "expected_chunk_ids": [
+        "04585146-f808-5088-a9bb-c125bc955cc5"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "04585146-f808-5088-a9bb-c125bc955cc5",
+          "ncd_id": "376",
+          "ncd_version": "1",
+          "section": "D. Other",
+          "quote": "The Durable Medical Equipment Medicare Administrative Contractor (DME MAC) has discretion",
+          "source_url": "https://www.cms.gov/medicare-coverage-database/view/ncd.aspx?NCDId=376&NCDver=1",
+          "text_sha256": "cb45e5b6771d0b335b40343f3b59844db0da712153b33982c5c108ea361ded86",
+          "source_record_sha256": "d966e340b01b9d95f2669a42f7b96b3bc0148dc51311ff736cf9b882631ce20f"
+        }
+      ],
+      "answerable": true,
+      "notes": "Held-out set: previously unused NCD 376 'D. Other' section (127 tokens). Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h011",
+      "query": "What immunizations are recommended before international travel?",
+      "category": "out_of_corpus",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Held-out set: genuinely unrelated topic; none of the 9 indexed NCDs (oxygen, CPAP, mobility assistive equipment, infusion pumps, hospital beds, sleep testing, seat elevation, inner-ear oxygen) address immunization or travel medicine. Distinct wording from the v1 dev set's dental/chemotherapy/Kubernetes out_of_corpus cases. Frozen before any comparative experiment."
+    },
+    {
+      "case_id": "cms-v1-h012",
+      "query": "What is the maximum monthly rental amount Medicare pays for a semi-electric hospital bed?",
+      "category": "adversarial_specificity",
+      "expected_chunk_ids": [],
+      "evidence": [],
+      "answerable": false,
+      "notes": "Held-out set: an in-corpus topic (hospital beds, NCD 227) paired with an invented specific detail (a dollar rental amount) that NCD coverage-criteria text does not supply -- that is a separate DME fee-schedule matter, not an NCD. Same pattern as v1's cms-v1-032 (insulin pump brand/dose), which predates this category and stays labeled out_of_corpus there; not retroactively relabeled. Frozen before any comparative experiment."
+    }
+  ]
+}

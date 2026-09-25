@@ -1,9 +1,25 @@
 import math
+from enum import StrEnum
 from statistics import median
 
 from pydantic import Field, model_validator
 
 from evaluation.dataset import StrictModel
+
+
+class FailureCategory(StrEnum):
+    """Formalizes only failure categories already produced by this
+    codebase's own existing analysis logic (analysis.py's flag strings) —
+    not a wishlist. Each value below has a real, currently-observable
+    detector; categories requiring labels this project does not have
+    (LEXICAL_MISMATCH, SEMANTIC_MISMATCH, UNSUPPORTED_ANSWER, VALIDATOR_MISS,
+    UNNECESSARY_REVIEW, MISSED_REVIEW) are deliberately excluded until a
+    defensible label source exists for them."""
+
+    NO_RELEVANT_IN_TOP_K = "no_relevant_in_top_k"
+    BELOW_EVIDENCE_THRESHOLD = "below_evidence_threshold"
+    RERANK_REGRESSION = "rerank_regression"
+    INCORRECT_ABSTENTION = "incorrect_abstention"
 
 
 def first_rank(hits: list[dict], expected: list[str]) -> int | None:
@@ -13,14 +29,21 @@ def first_rank(hits: list[dict], expected: list[str]) -> int | None:
 
 def retrieval_metrics(ranks: list[int | None]) -> dict:
     if not ranks:
-        return {"count": 0, "Hit@1": None, "Hit@3": None, "Hit@5": None, "MRR@5": None}
-    return {
-        "count": len(ranks),
-        **{
-            f"Hit@{k}": sum(r is not None and r <= k for r in ranks) / len(ranks) for k in (1, 3, 5)
-        },
-        "MRR@5": sum(1 / r for r in ranks if r is not None and r <= 5) / len(ranks),
-    }
+        result: dict = {"count": 0, "MRR@5": None}
+        for k in (1, 3, 5):
+            result[f"Hit@{k}"] = None
+            result[f"Hit@{k}_hits"] = 0
+            result[f"Hit@{k}_total"] = 0
+        return result
+    total = len(ranks)
+    result = {"count": total}
+    for k in (1, 3, 5):
+        hits = sum(r is not None and r <= k for r in ranks)
+        result[f"Hit@{k}"] = hits / total
+        result[f"Hit@{k}_hits"] = hits
+        result[f"Hit@{k}_total"] = total
+    result["MRR@5"] = sum(1 / r for r in ranks if r is not None and r <= 5) / total
+    return result
 
 
 def aggregate(cases: list[dict], mode: str) -> dict:
@@ -33,6 +56,25 @@ def aggregate(cases: list[dict], mode: str) -> dict:
             )
             for category in sorted({c["category"] for c in cases})
         },
+    }
+
+
+def derived_abstention_rates(entry: dict, positive_cases: int) -> dict:
+    """False-answer rate and false-abstention rate, with explicit
+    denominators, computed from the same confusion counts the existing
+    abstention table already produces (entry: negative_cases,
+    incorrect_answer_attempts=FN, positive_abstentions=FP). Both are
+    independently computed, not derived from precision/recall, so the two
+    framings can be cross-checked against each other. Null when the
+    denominator is zero — never a fabricated ratio."""
+    negatives = entry["negative_cases"]
+    return {
+        "false_answer_rate": (
+            entry["incorrect_answer_attempts"] / negatives if negatives else None
+        ),
+        "false_abstention_rate": (
+            entry["positive_abstentions"] / positive_cases if positive_cases else None
+        ),
     }
 
 

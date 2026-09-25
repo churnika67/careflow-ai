@@ -14,6 +14,13 @@ Category = Literal[
     "out_of_corpus",
     "hard_negative",
     "known_failure",
+    # Added for the Phase 12 held-out set: an in-corpus topic paired with an
+    # invented specific detail (a brand, dose, or dollar amount) the policy
+    # text does not supply — distinct from out_of_corpus, which is an
+    # entirely unrelated topic. cms-v1-032 in the v1 dev set is this same
+    # pattern but predates the category and stays labeled out_of_corpus
+    # there — the frozen v1 dataset is not retroactively relabeled.
+    "adversarial_specificity",
 ]
 
 
@@ -33,7 +40,11 @@ class EvidenceReference(StrictModel):
 
 
 class GoldenCase(StrictModel):
-    case_id: str = Field(pattern=r"^cms-v1-\d{3}$")
+    # "cms-v1-NNN" is the original dev/regression set's id shape; "cms-v1-hNNN"
+    # is the Phase 12 held-out set's own namespace, kept visually and
+    # structurally distinct so a case's provenance is unambiguous from its id
+    # alone.
+    case_id: str = Field(pattern=r"^cms-v1-(?:\d{3}|h\d{3})$")
     query: str = Field(min_length=1, max_length=4000)
     category: Category
     expected_chunk_ids: list[str]
@@ -48,17 +59,31 @@ class GoldenCase(StrictModel):
             raise ValueError("Blank query or duplicate evidence")
         if self.expected_chunk_ids != ids or self.answerable != bool(ids):
             raise ValueError("Answerability, expected IDs and evidence must agree")
-        if self.category in {"ambiguous", "out_of_corpus"} and self.answerable:
-            raise ValueError("Ambiguous/out-of-corpus cases must not be answerable")
+        if (
+            self.category in {"ambiguous", "out_of_corpus", "adversarial_specificity"}
+            and self.answerable
+        ):
+            raise ValueError(
+                "Ambiguous/out-of-corpus/adversarial-specificity cases must not be answerable"
+            )
         return self
 
 
 class GoldenDataset(StrictModel):
     schema_version: Literal["1.0"]
-    dataset_version: Literal["cms-retrieval-v1"]
+    # "cms-retrieval-v1" is the original Phase 7 dev/regression dataset — its
+    # own limitations disclosure already states 8/32 cases reuse Phase 3-6
+    # development questions, so it is not independent held-out data.
+    # "cms-retrieval-heldout-v1" is the Phase 12 held-out set: constructed
+    # from chunks never used as expected evidence in v1, frozen before any
+    # comparative experiment was run against it.
+    dataset_version: Literal["cms-retrieval-v1", "cms-retrieval-heldout-v1"]
     corpus_sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
     snapshot_sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
     label_method: str = Field(min_length=10)
+    # Absent on the original v1 file (predates this field) — optional so
+    # that file still validates unchanged. Always populated on new datasets.
+    created_at: str | None = None
     cases: list[GoldenCase] = Field(min_length=1)
 
     @model_validator(mode="after")

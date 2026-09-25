@@ -1,0 +1,40 @@
+{
+  "development": {
+    "source_experiment_id": "eb59bc90_774ea9a697a1",
+    "hybrid_candidates_with_gate": {
+      "calls": 96,
+      "median_ms": 26.77468748879619,
+      "p95_ms": 42.72808297537267,
+      "min_ms": 20.967624965123832,
+      "max_ms": 53.44020901247859
+    },
+    "rerank_only": {
+      "calls": 96,
+      "median_ms": 426.34239548351616,
+      "p95_ms": 643.400916014798,
+      "min_ms": 277.5191250257194,
+      "max_ms": 711.503874976188
+    },
+    "descriptive_summed_stage_medians_ms": 453.11708297231235,
+    "rerank_to_hybrid_median_ratio": 15.923337878805055
+  },
+  "held_out": {
+    "source_experiment_id": "eb59bc90_a223469082ce",
+    "hybrid_candidates_with_gate": {
+      "calls": 36,
+      "median_ms": 27.366937982151285,
+      "p95_ms": 38.55854202993214,
+      "min_ms": 21.265958028379828,
+      "max_ms": 41.37645801529288
+    },
+    "rerank_only": {
+      "calls": 36,
+      "median_ms": 474.01612499379553,
+      "p95_ms": 746.7432909761555,
+      "min_ms": 337.3336670338176,
+      "max_ms": 780.9125409694389
+    },
+    "descriptive_summed_stage_medians_ms": 501.3830629759468,
+    "rerank_to_hybrid_median_ratio": 17.32075854825077
+  }
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "case_id": "multi_agent_policy_only",
+    "workflow": "policy_only",
+    "source_dataset": "cms_ncd_policy",
+    "request_shape_category": "fixed_documented_request",
+    "read_only": true,
+    "repetitions": 10
+  },
+  {
+    "case_id": "multi_agent_structured_only",
+    "workflow": "structured_only",
+    "source_dataset": "cms_desynpuf",
+    "request_shape_category": "fixed_documented_request",
+    "read_only": true,
+    "repetitions": 10
+  },
+  {
+    "case_id": "multi_agent_policy_and_structured",
+    "workflow": "policy_and_structured",
+    "source_dataset": "cms_ncd_policy",
+    "request_shape_category": "fixed_documented_request",
+    "read_only": true,
+    "repetitions": 10
+  },
+  {
+    "case_id": "multi_agent_abstain",
+    "workflow": "abstain",
+    "source_dataset": "none",
+    "request_shape_category": "fixed_documented_request",
+    "read_only": true,
+    "repetitions": 10
+  },
+  {
+    "case_id": "structured_get_beneficiary_summary",
+    "tool": "get_beneficiary_summary",
+    "source_dataset": "cms_desynpuf",
+    "request_shape_category": "simple_id_lookup",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "structured_get_claims_for_beneficiary",
+    "tool": "get_claims_for_beneficiary",
+    "source_dataset": "cms_desynpuf",
+    "request_shape_category": "list_by_id",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "structured_get_claim_details",
+    "tool": "get_claim_details",
+    "source_dataset": "cms_desynpuf",
+    "request_shape_category": "single_record_by_uuid",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "structured_get_patient_summary",
+    "tool": "get_patient_summary",
+    "source_dataset": "synthea_fhir",
+    "request_shape_category": "simple_id_lookup",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "structured_fhir_condition_frequency",
+    "tool": "fhir_condition_frequency",
+    "source_dataset": "synthea_fhir",
+    "request_shape_category": "bounded_aggregate",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "review_policy_review_not_required",
+    "workflow": "determine_review_requirement",
+    "source_dataset": "synthetic_in_memory_response",
+    "request_shape_category": "pure_function",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "review_policy_review_required",
+    "workflow": "determine_review_requirement",
+    "source_dataset": "synthetic_in_memory_response",
+    "request_shape_category": "pure_function",
+    "read_only": true,
+    "repetitions": 30
+  },
+  {
+    "case_id": "review_persistence_create",
+    "workflow": "create_review",
+    "source_dataset": "postgres_review",
+    "request_shape_category": "db_write_isolated_benchmark_rows",
+    "read_only": false,
+    "repetitions": 10
+  },
+  {
+    "case_id": "review_persistence_decide",
+    "workflow": "apply_decision",
+    "source_dataset": "postgres_review",
+    "request_shape_category": "db_write_isolated_benchmark_rows",
+    "read_only": false,
+    "repetitions": 10
+  }
+]

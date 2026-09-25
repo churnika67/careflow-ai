@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "Phase 12 Slice 7",
+  "gaps": [
+    {
+      "gap_id": "EVAL-RUNTIME-CONFIG-DRIFT",
+      "title": "Evaluated retrieval configuration differs from the live multi-agent runtime configuration",
+      "category": "configuration",
+      "status": "OPEN",
+      "evidence": "Slice 5 audited app.core.config.get_settings() directly and found retrieval_mode=dense, rerank_enabled=false in this environment's live runtime, while the Phase 12 evaluation package's PRODUCTION_SETTINGS object (evaluation/run_experiment.py) fixes hybrid retrieval with reranking enabled for Slices 2-4 and 6.",
+      "impact_on_claims": "Retrieval-quality and reranker-comparison results (Slices 2, 3, 4, 6) describe the hybrid+rerank pipeline, not the currently deployed multi-agent request path. Slice 5's own multi-agent POLICY_ONLY latency numbers reflect the cheaper dense/no-rerank path, not the evaluated pipeline. The two result sets must never be cited interchangeably.",
+      "future_evaluation_needed": "A future engineering decision should explicitly resolve whether the evaluated retrieval configuration and the deployed runtime configuration should be aligned, and re-run the relevant evaluation slices if the runtime configuration changes.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-ANSWER-CORRECTNESS-NOT-EVALUATED",
+      "title": "General answer/factual/clinical correctness has not been evaluated",
+      "category": "measurement-gap",
+      "status": "OUT_OF_SCOPE_PHASE12",
+      "evidence": "evaluate()'s DeterministicProvider mechanically quotes the first eligible evidence chunk (documented in evaluation/run_retrieval_eval.py's own limitations list and re-audited in Slice 4). No entailment, correctness, or clinical-accuracy check exists anywhere in this codebase.",
+      "impact_on_claims": "No Phase 12 result may be cited as evidence of answer correctness, factual correctness, or clinical correctness under any wording.",
+      "future_evaluation_needed": "A clinician-reviewed answer-correctness dataset and/or a validated LLM-judge methodology, neither of which exists today.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-CITATION-ENTAILMENT-NOT-EVALUATED",
+      "title": "Citation semantic entailment and completeness have not been evaluated",
+      "category": "measurement-gap",
+      "status": "OUT_OF_SCOPE_PHASE12",
+      "evidence": "Slice 4 explicitly scoped CITATION_REFERENCES_EXPECTED_EVIDENCE as the sole deterministic metric, separating it from entailment/completeness/sufficiency, none of which are computed.",
+      "impact_on_claims": "Citation-related claims are limited to 'at least one validated citation references expected evidence' -- never 'citations are accurate,' 'complete,' or 'sufficient.'",
+      "future_evaluation_needed": "A semantic entailment methodology (e.g. an LLM-judge or NLI model) with its own validation, not built in this project.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-ROUTING-ACCURACY-NOT-EVALUATED",
+      "title": "No representative routing-accuracy benchmark exists",
+      "category": "measurement-gap",
+      "status": "OPEN",
+      "evidence": "Phase 9's deterministic classifier (app.orchestration.classify) is covered by unit/integration tests asserting specific coded input->route mappings, but no independently-labeled representative routing dataset was ever constructed.",
+      "impact_on_claims": "Only 'deterministic router behavior is tested' is supported. No routing-accuracy percentage may be stated.",
+      "future_evaluation_needed": "A labeled dataset of realistic queries with ground-truth intended routes.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-MULTI-AGENT-ANSWER-QUALITY-NOT-EVALUATED",
+      "title": "Multi-agent answer quality and agent-vs-single-agent superiority have not been evaluated",
+      "category": "measurement-gap",
+      "status": "OUT_OF_SCOPE_PHASE12",
+      "evidence": "Phase 10 tests and Slice 5's benchmark validate graph structural invariants and latency only, never answer quality or a comparison against a single-agent baseline.",
+      "impact_on_claims": "'Bounded multi-agent orchestration is structurally tested' is supported; 'multi-agent answers are accurate' or 'agents outperform a single-agent baseline' is not.",
+      "future_evaluation_needed": "A representative task set with quality labels and a defined single-agent baseline to compare against.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-HITL-EFFECTIVENESS-NOT-EVALUATED",
+      "title": "Human-in-the-loop review effectiveness has not been evaluated",
+      "category": "measurement-gap",
+      "status": "OUT_OF_SCOPE_PHASE12",
+      "evidence": "Phase 11 tests cover the review_cases/review_events state machine, CAS concurrency, and audit events only. No human reviewer has ever used the system.",
+      "impact_on_claims": "'The human-review state machine and persistence layer are tested' is supported; 'HITL improves answer correctness' or any reviewer-agreement/accuracy figure is not.",
+      "future_evaluation_needed": "A study with real reviewers measuring agreement, time-to-decision, and impact on downstream correctness.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-PRODUCTION-LOAD-LATENCY-NOT-EVALUATED",
+      "title": "Production-scale, cloud, or load-tested latency has not been measured",
+      "category": "measurement-gap",
+      "status": "OPEN",
+      "evidence": "Slice 5 measured only local development-machine, service-level, single-request latency at named boundaries -- explicitly no concurrency or load test.",
+      "impact_on_claims": "No SLA, throughput, RPS, autoscaling, or cloud/hospital-deployment latency claim is supported by any Phase 12 artifact.",
+      "future_evaluation_needed": "A dedicated load-testing exercise against a production-like deployment, out of scope for Phase 12.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-SMALL-HELDOUT-SAMPLE",
+      "title": "The held-out evaluation set is small (12 cases, 10 positive)",
+      "category": "sample-size",
+      "status": "DOCUMENTED_LIMITATION",
+      "evidence": "docs/evaluation/golden_retrieval_heldout_v1.json -- frozen at Slice 1, 10 positive + 2 negative cases, constrained by the 39-chunk corpus's limited supply of previously-unused evidence.",
+      "impact_on_claims": "One flipped positive case changes positive-only Hit@1 by 10 percentage points; one flipped negative case changes a negative-case rate by 50 percentage points. Every held-out rate is a descriptive engineering signal, not a statistically robust estimate; no confidence interval is attached anywhere.",
+      "future_evaluation_needed": "A larger, still project-authored or (ideally) independently-annotated held-out set, contingent on a larger source corpus.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-SMALL-POLICY-CORPUS",
+      "title": "The evaluated policy corpus is small (8 NCD document versions, 32 sections, 39 chunks)",
+      "category": "corpus-scope",
+      "status": "DOCUMENTED_LIMITATION",
+      "evidence": "Corpus fingerprint 1e55c381f68f3e0fe021b217a49ad05d246e87943a7f33cc5780e3e1bf31bcc2, constant across Slices 1-6; verified 39 production Qdrant points throughout.",
+      "impact_on_claims": "Chunking and reranking results measured against this corpus may not generalize to large policy corpora (thousands to millions of chunks) or to non-CMS-NCD healthcare policy domains.",
+      "future_evaluation_needed": "Re-running the relevant evaluation slices against a substantially larger and/or more diverse policy corpus.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-SYNTHETIC-STRUCTURED-DATA-SCALE",
+      "title": "Structured-data benchmarks ran against small synthetic subsets only",
+      "category": "data-scope",
+      "status": "DOCUMENTED_LIMITATION",
+      "evidence": "Slice 5 verified exact counts: DE-SynPUF 15 beneficiaries/219 claims/732 diagnoses/29 procedures/848 lines; Synthea 5 patients/177 encounters/187 conditions/234 procedures/1341 observations/865 components/116 medication requests.",
+      "impact_on_claims": "No Phase 12 result generalizes structured-tool latency or behavior to hospital-scale production data volumes.",
+      "future_evaluation_needed": "Benchmarking against a substantially larger synthetic or de-identified dataset.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-UNSUPPORTED-HIGH-SIMILARITY",
+      "title": "cms-v1-032: an unsupported/out-of-corpus case answers even at the production threshold",
+      "category": "case-specific",
+      "status": "OPEN",
+      "evidence": "Slice 4's threshold sweep measured cms-v1-032 ('Which insulin pump brand and exact basal dose should a newly diagnosed patient use?', out_of_corpus, unsupported) with a top-hit gate score of approximately 0.613495 -- above every tested threshold including production's 0.60 -- so it answers (without citing expected evidence, since none exists) at every point in the 0.40-0.60 grid.",
+      "impact_on_claims": "Demonstrates that retrieval-score thresholding alone is insufficient to guarantee abstention on an unsupported request whose surface phrasing is lexically/semantically close to in-corpus content. Not fixed and no special-case rule was added.",
+      "future_evaluation_needed": "Investigation of a complementary abstention signal (e.g. a dedicated out-of-scope classifier) if this failure mode is judged to matter for a production decision -- out of scope for Phase 12.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-RERANKER-FALSE-ABSTENTION",
+      "title": "cms-v1-h003: reranking flips answered->abstained even though expected-evidence rank is unchanged at 1",
+      "category": "case-specific",
+      "status": "OPEN",
+      "evidence": "Slice 6's same-candidate-pool comparison measured cms-v1-h003 with hybrid_rank=1, hybrid_reranked_rank=1, identical unchanged gate_score=0.4949534 (below 0.60 in both), yet hybrid_abstained=false while hybrid_reranked_abstained=true. Root cause traced to the reranker's top-5 truncation removing a different, non-expected candidate that had let the pre-rerank context builder find some threshold-passing (but non-expected) evidence to answer with.",
+      "impact_on_claims": "This is described as an observed interaction between reranked top-k composition and downstream evidence gating -- not asserted as a model bug, since no code defect was identified; both the pre- and post-rerank answers were unsupported by expected evidence regardless (cites_expected=false in both).",
+      "future_evaluation_needed": "Further investigation of whether this interaction recurs at larger scale, out of scope for Phase 12.",
+      "production_change_required_now": false
+    },
+    {
+      "gap_id": "EVAL-SLICE2-CANDIDATE-DEPTH-CONFOUND",
+      "title": "Slice 2's stored hybrid (depth-5) rows are not a clean reranker ablation against hybrid_reranked (depth-10 pool)",
+      "category": "methodology",
+      "status": "DOCUMENTED_LIMITATION",
+      "evidence": "Audited directly in evaluate() (evaluation/run_retrieval_eval.py): the 'hybrid' mode per-query row comes from search.search(query,\"hybrid\",5,for_rag=True), while 'hybrid_reranked' reranks search.search(query,\"hybrid\",10,for_rag=True) -- a separate, shallower call. Confirmed materially different in Slice 6: cms-v1-h008 shows rank None at depth 5 vs rank 7 at depth 10 for the identical query/corpus/config.",
+      "impact_on_claims": "Slice 2's hybrid-vs-hybrid_reranked rows remain valid as each operational mode's own real end-to-end result, but must never be read as an isolated causal reranker comparison -- that comparison is Slice 6's, which holds the candidate pool identical. Slice 2 artifacts are not deleted or rewritten; this gap documents their correct scope.",
+      "future_evaluation_needed": "None -- superseded by Slice 6 for this specific question; recorded here for provenance.",
+      "production_change_required_now": false
+    }
+  ]
+}

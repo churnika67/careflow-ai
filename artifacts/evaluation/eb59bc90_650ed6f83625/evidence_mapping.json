@@ -1,0 +1,288 @@
+[
+  {
+    "case_id": "cms-v1-001",
+    "original_chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+    "ncd_id": "169",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "181b8fdc-c11f-5368-9b9c-eb998f9a592d"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-002",
+    "original_chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+    "ncd_id": "226",
+    "ncd_version": "3",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "3a324323-90ef-51fe-a0f1-0db61b46c82b"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-003",
+    "original_chunk_id": "c5266e78-a4d3-55c9-9fa9-64ef7fc57d37",
+    "ncd_id": "219",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "db34c550-d918-5d86-a209-62c2b0cf5784"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-004",
+    "original_chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "9614f515-e3cf-5238-be5f-034c1f9eb171"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-005",
+    "original_chunk_id": "0364e913-f508-5d9e-a928-d9266d5b7741",
+    "ncd_id": "227",
+    "ncd_version": "1",
+    "section": "B. Physician's Prescription",
+    "mapped_chunk_ids": [
+      "23edf098-6673-50b9-8880-d8e8ea9909ee"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-006",
+    "original_chunk_id": "beae40ce-4792-5578-80c8-afd649db96aa",
+    "ncd_id": "330",
+    "ncd_version": "1",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "397166f6-4765-5012-8f05-34499fb225d5"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-007",
+    "original_chunk_id": "d760711e-bf95-5e64-9d58-31510aba392e",
+    "ncd_id": "376",
+    "ncd_version": "1",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "ad6a1db5-4aa5-5379-96ec-f166be7a68a6"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-008",
+    "original_chunk_id": "dc2a342a-5448-50b4-b087-836666a5fa08",
+    "ncd_id": "43",
+    "ncd_version": "1",
+    "section": "indctn_lmtn",
+    "mapped_chunk_ids": [
+      "0f47deed-7d14-52fe-9165-1d494f3d6961"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-009",
+    "original_chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+    "ncd_id": "169",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "181b8fdc-c11f-5368-9b9c-eb998f9a592d"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-010",
+    "original_chunk_id": "11f9eda3-b2d1-5c44-9ea4-a1b37768c254",
+    "ncd_id": "169",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "181b8fdc-c11f-5368-9b9c-eb998f9a592d"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-011",
+    "original_chunk_id": "b98117a8-1f53-50f4-902d-d62e8b671f90",
+    "ncd_id": "169",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "181b8fdc-c11f-5368-9b9c-eb998f9a592d"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-012",
+    "original_chunk_id": "a9a1130f-8f6b-56f5-9713-a04ea7f1d517",
+    "ncd_id": "169",
+    "ncd_version": "2",
+    "section": "C. Nationally Non-Covered Indications",
+    "mapped_chunk_ids": [
+      "ef46ff35-e089-50c6-a772-3368487c802e"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-013",
+    "original_chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+    "ncd_id": "219",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "db34c550-d918-5d86-a209-62c2b0cf5784"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-014",
+    "original_chunk_id": "266a9002-e18a-5b6b-950e-0705824077ee",
+    "ncd_id": "219",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "fa795148-6c15-5752-898b-ee28e0b10a27"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-014",
+    "original_chunk_id": "83d8a48c-77da-5c86-9cd4-c70e42cead80",
+    "ncd_id": "219",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "fa795148-6c15-5752-898b-ee28e0b10a27"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-015",
+    "original_chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "C. Nationally Non-Covered Indications",
+    "mapped_chunk_ids": [
+      "9ab0a5d4-2771-5f11-8806-e7ba7104b689"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-016",
+    "original_chunk_id": "d1c0773e-09e2-59ff-a2ea-008dfdbef476",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "C. Nationally Non-Covered Indications",
+    "mapped_chunk_ids": [
+      "9ab0a5d4-2771-5f11-8806-e7ba7104b689"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-017",
+    "original_chunk_id": "21a43ec3-703b-5491-99a2-8732528de421",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "b7241d3d-1348-52e7-9ddc-087db0bb8ff3"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-018",
+    "original_chunk_id": "8b3af28a-4941-5cab-a5a5-a0b4bbbf6a6a",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "9614f515-e3cf-5238-be5f-034c1f9eb171"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-019",
+    "original_chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+    "ncd_id": "226",
+    "ncd_version": "3",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "3a324323-90ef-51fe-a0f1-0db61b46c82b"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-020",
+    "original_chunk_id": "56903cee-00c9-5b23-a022-a4a1339e4c38",
+    "ncd_id": "226",
+    "ncd_version": "3",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "3a324323-90ef-51fe-a0f1-0db61b46c82b"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-021",
+    "original_chunk_id": "1ff4fb31-6d93-5293-b2c6-4da5c49b709c",
+    "ncd_id": "227",
+    "ncd_version": "1",
+    "section": "C. Variable Height Feature",
+    "mapped_chunk_ids": [
+      "f920bbeb-13b6-5e99-9380-b169b73a038d"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-022",
+    "original_chunk_id": "3b7f9637-9064-56ff-89da-04bff6434f08",
+    "ncd_id": "227",
+    "ncd_version": "1",
+    "section": "D. Electric Powered Hospital Bed Adjustments",
+    "mapped_chunk_ids": [
+      "ef9a0689-b3c2-5ded-9298-c590f36bafca"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-023",
+    "original_chunk_id": "180ced12-0b5a-5354-99d9-a858c8439b17",
+    "ncd_id": "227",
+    "ncd_version": "1",
+    "section": "E. Side Rails",
+    "mapped_chunk_ids": [
+      "b0304f99-6612-5f98-91a8-55a0d11d723a"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-024",
+    "original_chunk_id": "9b7836ed-7fa4-5110-ab96-948b249fad0d",
+    "ncd_id": "330",
+    "ncd_version": "1",
+    "section": "A. General",
+    "mapped_chunk_ids": [
+      "8fba8006-8128-5b4f-9c52-75e6a8895bdf"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-025",
+    "original_chunk_id": "3121e230-ac69-5af6-af4e-742c81f52b42",
+    "ncd_id": "376",
+    "ncd_version": "1",
+    "section": "A. General",
+    "mapped_chunk_ids": [
+      "1ae1b1a5-ea07-5de4-a60e-c3aa8d58a5f8"
+    ],
+    "method": "section_and_quote_span"
+  }
+]

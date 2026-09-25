@@ -1,0 +1,195 @@
+{
+  "development": {
+    "dataset": "development",
+    "case_count": 32,
+    "positive_cases": 25,
+    "negative_cases": 7,
+    "hybrid_metrics": {
+      "count": 25,
+      "Hit@1": 0.96,
+      "Hit@1_hits": 24,
+      "Hit@1_total": 25,
+      "Hit@3": 1.0,
+      "Hit@3_hits": 25,
+      "Hit@3_total": 25,
+      "Hit@5": 1.0,
+      "Hit@5_hits": 25,
+      "Hit@5_total": 25,
+      "MRR@5": 0.98
+    },
+    "hybrid_reranked_metrics": {
+      "count": 25,
+      "Hit@1": 0.96,
+      "Hit@1_hits": 24,
+      "Hit@1_total": 25,
+      "Hit@3": 1.0,
+      "Hit@3_hits": 25,
+      "Hit@3_total": 25,
+      "Hit@5": 1.0,
+      "Hit@5_hits": 25,
+      "Hit@5_total": 25,
+      "MRR@5": 0.98
+    },
+    "metric_deltas": {
+      "Hit@1": 0.0,
+      "Hit@3": 0.0,
+      "Hit@5": 0.0,
+      "MRR@5": 0.0
+    },
+    "rank_change_counts": {
+      "improved": 1,
+      "unchanged": 23,
+      "degraded": 1
+    },
+    "hybrid_abstention": {
+      "negative_cases": 7,
+      "positive_cases": 25,
+      "correct_abstentions": 6,
+      "incorrect_answer_attempts": 1,
+      "positive_abstentions": 3,
+      "supported_answered": 22,
+      "supported_abstained": 3,
+      "unsupported_answered": 1,
+      "unsupported_abstained": 6,
+      "supported_answer_rate": 0.88,
+      "false_abstention_rate": 0.12,
+      "correct_abstention_rate": 0.8571428571428571,
+      "false_answer_rate": 0.14285714285714285
+    },
+    "hybrid_reranked_abstention": {
+      "negative_cases": 7,
+      "positive_cases": 25,
+      "correct_abstentions": 6,
+      "incorrect_answer_attempts": 1,
+      "positive_abstentions": 3,
+      "supported_answered": 22,
+      "supported_abstained": 3,
+      "unsupported_answered": 1,
+      "unsupported_abstained": 6,
+      "supported_answer_rate": 0.88,
+      "false_abstention_rate": 0.12,
+      "correct_abstention_rate": 0.8571428571428571,
+      "false_answer_rate": 0.14285714285714285
+    },
+    "abstention_transitions": [],
+    "hybrid_citation_expected_evidence": {
+      "answered_supported_cases": 22,
+      "citation_expected_hits": 21,
+      "citation_expected_evidence_rate": 0.9545454545454546
+    },
+    "hybrid_reranked_citation_expected_evidence": {
+      "answered_supported_cases": 22,
+      "citation_expected_hits": 21,
+      "citation_expected_evidence_rate": 0.9545454545454546
+    },
+    "long_section_cases": [],
+    "candidate_set_equal_for_all_cases": true
+  },
+  "held_out": {
+    "dataset": "held_out",
+    "case_count": 12,
+    "positive_cases": 10,
+    "negative_cases": 2,
+    "hybrid_metrics": {
+      "count": 10,
+      "Hit@1": 0.7,
+      "Hit@1_hits": 7,
+      "Hit@1_total": 10,
+      "Hit@3": 0.9,
+      "Hit@3_hits": 9,
+      "Hit@3_total": 10,
+      "Hit@5": 0.9,
+      "Hit@5_hits": 9,
+      "Hit@5_total": 10,
+      "MRR@5": 0.7833333333333333
+    },
+    "hybrid_reranked_metrics": {
+      "count": 10,
+      "Hit@1": 0.7,
+      "Hit@1_hits": 7,
+      "Hit@1_total": 10,
+      "Hit@3": 1.0,
+      "Hit@3_hits": 10,
+      "Hit@3_total": 10,
+      "Hit@5": 1.0,
+      "Hit@5_hits": 10,
+      "Hit@5_total": 10,
+      "MRR@5": 0.8333333333333334
+    },
+    "metric_deltas": {
+      "Hit@1": 0.0,
+      "Hit@3": 0.09999999999999998,
+      "Hit@5": 0.09999999999999998,
+      "MRR@5": 0.050000000000000044
+    },
+    "rank_change_counts": {
+      "improved": 2,
+      "unchanged": 8,
+      "degraded": 0
+    },
+    "hybrid_abstention": {
+      "negative_cases": 2,
+      "positive_cases": 10,
+      "correct_abstentions": 2,
+      "incorrect_answer_attempts": 0,
+      "positive_abstentions": 0,
+      "supported_answered": 10,
+      "supported_abstained": 0,
+      "unsupported_answered": 0,
+      "unsupported_abstained": 2,
+      "supported_answer_rate": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate": 1.0,
+      "false_answer_rate": 0.0
+    },
+    "hybrid_reranked_abstention": {
+      "negative_cases": 2,
+      "positive_cases": 10,
+      "correct_abstentions": 2,
+      "incorrect_answer_attempts": 0,
+      "positive_abstentions": 1,
+      "supported_answered": 9,
+      "supported_abstained": 1,
+      "unsupported_answered": 0,
+      "unsupported_abstained": 2,
+      "supported_answer_rate": 0.9,
+      "false_abstention_rate": 0.1,
+      "correct_abstention_rate": 1.0,
+      "false_answer_rate": 0.0
+    },
+    "abstention_transitions": [
+      {
+        "case_id": "cms-v1-h003",
+        "answerable": true,
+        "hybrid_abstained": false,
+        "hybrid_reranked_abstained": true,
+        "effect": "creates_false_abstention"
+      }
+    ],
+    "hybrid_citation_expected_evidence": {
+      "answered_supported_cases": 10,
+      "citation_expected_hits": 7,
+      "citation_expected_evidence_rate": 0.7
+    },
+    "hybrid_reranked_citation_expected_evidence": {
+      "answered_supported_cases": 9,
+      "citation_expected_hits": 7,
+      "citation_expected_evidence_rate": 0.7777777777777778
+    },
+    "long_section_cases": [
+      {
+        "case_id": "cms-v1-h003",
+        "hybrid_rank": 1,
+        "hybrid_reranked_rank": 1,
+        "rank_change_class": "unchanged"
+      },
+      {
+        "case_id": "cms-v1-h004",
+        "hybrid_rank": 3,
+        "hybrid_reranked_rank": 2,
+        "rank_change_class": "improved"
+      }
+    ],
+    "candidate_set_equal_for_all_cases": true
+  }
+}

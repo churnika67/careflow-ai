@@ -1,0 +1,112 @@
+[
+  {
+    "case_id": "cms-v1-h001",
+    "original_chunk_id": "d9eb65be-cab7-5ee4-9fdb-d94e370fd15b",
+    "ncd_id": "227",
+    "ncd_version": "1",
+    "section": "A. General Requirements for Coverage of Hospital Beds",
+    "mapped_chunk_ids": [
+      "faba6c72-d562-593b-b86d-1cf133b033ed"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h002",
+    "original_chunk_id": "050d0c24-fb74-5004-94aa-b66ed0faec60",
+    "ncd_id": "219",
+    "ncd_version": "2",
+    "section": "A. General",
+    "mapped_chunk_ids": [
+      "4a195506-e646-55e9-9458-c60725803006"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h003",
+    "original_chunk_id": "b7bf5640-cd19-5701-a863-3f86a2109ba7",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "d70b07fc-d678-5955-9ae1-bc2f86133a32"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h004",
+    "original_chunk_id": "872545e4-28bc-5797-b89c-d53742c95421",
+    "ncd_id": "226",
+    "ncd_version": "3",
+    "section": "B. Nationally Covered Indications",
+    "mapped_chunk_ids": [
+      "93b433cf-5ec7-5541-bebc-de33de817ab4"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h005",
+    "original_chunk_id": "a65ef70f-99b4-5e5a-9862-6d352a740862",
+    "ncd_id": "226",
+    "ncd_version": "3",
+    "section": "A. General",
+    "mapped_chunk_ids": [
+      "10eb81ed-c698-5adc-8bce-79198db06b68"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h006",
+    "original_chunk_id": "928f8263-6783-5bbb-9942-17e8e674eb4d",
+    "ncd_id": "219",
+    "ncd_version": "2",
+    "section": "C. Nationally Non-Covered Indications",
+    "mapped_chunk_ids": [
+      "3c71a9b8-4b66-51c2-81e4-dc65fdf77cde"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h007",
+    "original_chunk_id": "8d14e9d2-25fd-5e82-a621-9914d795f495",
+    "ncd_id": "330",
+    "ncd_version": "1",
+    "section": "C. Nationally Non-Covered Indications",
+    "mapped_chunk_ids": [
+      "749be9ef-69e7-5da3-9e41-a36dc1ffce2e"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h008",
+    "original_chunk_id": "e40923e3-b175-58f0-97d7-b312ae009f1f",
+    "ncd_id": "223",
+    "ncd_version": "2",
+    "section": "A. General",
+    "mapped_chunk_ids": [
+      "e395d14a-5e8f-58f0-bcab-495d79350898"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h009",
+    "original_chunk_id": "89b2e399-7c47-5e3f-983f-aaac4fadb109",
+    "ncd_id": "169",
+    "ncd_version": "2",
+    "section": "D. Other",
+    "mapped_chunk_ids": [
+      "d4edb0a5-ca95-5b61-aff6-e9e486f015d9"
+    ],
+    "method": "section_and_quote_span"
+  },
+  {
+    "case_id": "cms-v1-h010",
+    "original_chunk_id": "04585146-f808-5088-a9bb-c125bc955cc5",
+    "ncd_id": "376",
+    "ncd_version": "1",
+    "section": "D. Other",
+    "mapped_chunk_ids": [
+      "9227a02c-0f01-5890-b67f-4b0af5835255"
+    ],
+    "method": "section_and_quote_span"
+  }
+]

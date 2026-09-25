@@ -1,0 +1,18 @@
+{
+  "python_version": "3.12.13",
+  "platform": "macOS-26.6.2",
+  "cpu_architecture": "arm64",
+  "cpu_count": 10,
+  "git_commit": "eb59bc9084f8bad5281bea590a5b7b3e7ec28b12",
+  "package_versions": {
+    "sentence-transformers": "5.1.0",
+    "transformers": "4.55.4",
+    "torch": "2.8.0",
+    "numpy": "2.3.2",
+    "qdrant-client": "1.15.1",
+    "psycopg": "3.2.9",
+    "fastapi": "0.116.1",
+    "pydantic": "2.13.5"
+  },
+  "setup_ms": 2327.17608299572
+}

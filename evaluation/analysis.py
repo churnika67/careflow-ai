@@ -3,7 +3,7 @@ from statistics import mean
 
 from app.generation.context import build_context, substantive_text
 
-from evaluation.metrics import aggregate, latency_summary
+from evaluation.metrics import FailureCategory, aggregate, derived_abstention_rates, latency_summary
 
 MODES = ("dense", "bm25", "hybrid", "hybrid_reranked")
 
@@ -34,28 +34,33 @@ def eligibility(hits, expected, threshold, context_chars):
 def summarize(cases, timings):
     metrics = {mode: aggregate(cases, mode) for mode in MODES}
     negatives = [c for c in cases if not c["answerable"]]
+    positives = [c for c in cases if c["answerable"]]
     abstention = {}
     for mode in MODES:
         tp = sum(c["modes"][mode]["abstained"] for c in negatives)
-        fp = sum(c["modes"][mode]["abstained"] for c in cases if c["answerable"])
+        fp = sum(c["modes"][mode]["abstained"] for c in positives)
         abstention[mode] = {
             "negative_cases": len(negatives),
+            "positive_cases": len(positives),
             "correct_abstentions": tp,
             "incorrect_answer_attempts": len(negatives) - tp,
             "positive_abstentions": fp,
             "precision": tp / (tp + fp) if tp + fp else None,
             "recall": tp / len(negatives) if negatives else None,
         }
+        abstention[mode].update(derived_abstention_rates(abstention[mode], len(positives)))
     changes = [c["reranking_change"] for c in cases if c["answerable"]]
     deltas = [c["observed_rank_delta"] for c in changes if c["observed_rank_delta"] is not None]
     failures = []
     for c in cases:
         ranks = {m: c["modes"][m]["rank"] for m in MODES}
         flags = []
+        categories = set()
         if c["answerable"]:
-            flags += [
-                f"{m}: expected absent from top5" for m, rank in ranks.items() if rank is None
-            ]
+            for m, rank in ranks.items():
+                if rank is None:
+                    flags.append(f"{m}: expected absent from top5")
+                    categories.add(FailureCategory.NO_RELEVANT_IN_TOP_K)
             for a, b in [("bm25", "dense"), ("dense", "bm25")]:
                 if ranks[a] is not None and ranks[b] is None:
                     flags.append(f"{a} succeeds where {b} misses top5")
@@ -66,19 +71,34 @@ def summarize(cases, timings):
                 flags.append("hybrid worse than at least one component")
             if c["reranking_change"]["classification"] == "degraded":
                 flags.append("reranker degraded first acceptable rank")
+                categories.add(FailureCategory.RERANK_REGRESSION)
         for mode, result in c["modes"].items():
             if any(
                 h["expected"] and not h["cosine_eligible"] for h in result["eligibility"]["hits"]
             ):
                 flags.append(f"{mode}: retrieved expected evidence rejected by cosine gate")
+                categories.add(FailureCategory.BELOW_EVIDENCE_THRESHOLD)
             if any(not h["substantive"] and h["rank"] <= 3 for h in result["eligibility"]["hits"]):
                 flags.append(f"{mode}: non-substantive evidence in top3")
             if c["answerable"] and not result["abstained"] and not result["cites_expected"]:
                 flags.append(f"{mode}: answer cites no expected evidence")
+            if c["answerable"] and result["abstained"]:
+                flags.append(f"{mode}: incorrectly abstained on answerable case")
+                categories.add(FailureCategory.INCORRECT_ABSTENTION)
             if not c["answerable"] and result["hits"]:
                 flags.append(f"{mode}: negative question retrieves nonanswer evidence")
+            if not c["answerable"] and not result["abstained"]:
+                flags.append(f"{mode}: failed to abstain on unanswerable case")
+                categories.add(FailureCategory.INCORRECT_ABSTENTION)
         if flags:
-            failures.append({"case_id": c["case_id"], "query": c["query"], "flags": flags})
+            failures.append(
+                {
+                    "case_id": c["case_id"],
+                    "query": c["query"],
+                    "flags": flags,
+                    "categories": sorted(categories),
+                }
+            )
     return {
         "metrics": metrics,
         "abstention": abstention,

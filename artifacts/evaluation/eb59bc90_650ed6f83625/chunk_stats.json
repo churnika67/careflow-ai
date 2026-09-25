@@ -1,0 +1,18 @@
+{
+  "section_count": 32,
+  "chunk_count": 35,
+  "min_tokens": 10,
+  "median_tokens": 127,
+  "mean_tokens": 272.14285714285717,
+  "max_tokens": 1193,
+  "chunks_per_ncd": {
+    "43": 1,
+    "169": 4,
+    "219": 6,
+    "223": 5,
+    "226": 6,
+    "227": 5,
+    "330": 4,
+    "376": 4
+  }
+}

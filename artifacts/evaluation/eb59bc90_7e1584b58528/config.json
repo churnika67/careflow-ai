@@ -1,0 +1,43 @@
+{
+  "experiment_type": "chunking",
+  "dataset_version": "cms-retrieval-v1",
+  "dataset_sha256": "4660c975324b5d86ff2282b0cae220eabc09d271a986265cf0778f5526781b91",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "chunk_size": 400,
+  "chunk_overlap": 0,
+  "candidate_k": 10,
+  "rrf_k": 60,
+  "rerank_enabled": true,
+  "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+  "rerank_candidates": 10,
+  "final_top_k": 5,
+  "evidence_threshold": 0.6,
+  "generation_provider": "deterministic",
+  "generation_model": "first-evidence-v1",
+  "git_commit": "eb59bc9084f8bad5281bea590a5b7b3e7ec28b12",
+  "timestamp": "2026-09-23T21:25:02.627208+00:00",
+  "working_tree_clean": false,
+  "modified_files": [
+    "evaluation/analysis.py",
+    "evaluation/dataset.py",
+    "evaluation/metrics.py"
+  ],
+  "untracked_files": [
+    "artifacts/",
+    "docs/evaluation/golden_retrieval_heldout_v1.json",
+    "docs/evaluation/phase12_methodology.md",
+    "evaluation/artifacts.py",
+    "evaluation/chunking_experiment.py",
+    "evaluation/config.py",
+    "evaluation/environment.py",
+    "evaluation/run_experiment.py",
+    "tests/test_evaluation_artifacts.py",
+    "tests/test_evaluation_chunking_experiment.py",
+    "tests/test_evaluation_config.py",
+    "tests/test_evaluation_environment.py",
+    "tests/test_evaluation_heldout_dataset.py",
+    "tests/test_evaluation_run_experiment.py"
+  ]
+}

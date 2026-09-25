@@ -1,0 +1,281 @@
+{
+  "retrieval_and_reranker": {
+    "development": {
+      "source_experiment_id": "eb59bc90_774ea9a697a1",
+      "stages": {
+        "dense": {
+          "calls": 96,
+          "median_ms": 16.0188959853258,
+          "p95_ms": 22.11245900252834,
+          "min_ms": 10.747416992671788,
+          "max_ms": 38.28149999026209
+        },
+        "bm25": {
+          "calls": 96,
+          "median_ms": 14.432229014346376,
+          "p95_ms": 18.821457982994616,
+          "min_ms": 9.540041966829449,
+          "max_ms": 31.06179099995643
+        },
+        "hybrid": {
+          "calls": 96,
+          "median_ms": 26.03012550389394,
+          "p95_ms": 32.11479197489098,
+          "min_ms": 19.94862500578165,
+          "max_ms": 52.66004195436835
+        },
+        "hybrid_candidates_with_gate": {
+          "calls": 96,
+          "median_ms": 26.77468748879619,
+          "p95_ms": 42.72808297537267,
+          "min_ms": 20.967624965123832,
+          "max_ms": 53.44020901247859
+        },
+        "rerank_only": {
+          "calls": 96,
+          "median_ms": 426.34239548351616,
+          "p95_ms": 643.400916014798,
+          "min_ms": 277.5191250257194,
+          "max_ms": 711.503874976188
+        }
+      }
+    },
+    "held_out": {
+      "source_experiment_id": "eb59bc90_a223469082ce",
+      "stages": {
+        "dense": {
+          "calls": 36,
+          "median_ms": 16.901521012187004,
+          "p95_ms": 28.39649998350069,
+          "min_ms": 12.364624999463558,
+          "max_ms": 31.05529199820012
+        },
+        "bm25": {
+          "calls": 36,
+          "median_ms": 15.810437966138124,
+          "p95_ms": 25.54987499024719,
+          "min_ms": 10.966458998154849,
+          "max_ms": 27.234707958996296
+        },
+        "hybrid": {
+          "calls": 36,
+          "median_ms": 25.956083001801744,
+          "p95_ms": 50.50675000529736,
+          "min_ms": 21.55000000493601,
+          "max_ms": 57.45437502628192
+        },
+        "hybrid_candidates_with_gate": {
+          "calls": 36,
+          "median_ms": 27.366937982151285,
+          "p95_ms": 38.55854202993214,
+          "min_ms": 21.265958028379828,
+          "max_ms": 41.37645801529288
+        },
+        "rerank_only": {
+          "calls": 36,
+          "median_ms": 474.01612499379553,
+          "p95_ms": 746.7432909761555,
+          "min_ms": 337.3336670338176,
+          "max_ms": 780.9125409694389
+        }
+      }
+    }
+  },
+  "boundaries": {
+    "multi_agent": {
+      "policy_only": {
+        "cold_first_ms": 27.781707991380244,
+        "warmup_count": 1,
+        "measured_calls": 10,
+        "successful_calls": 10,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 10,
+        "median_ms": 24.524000007659197,
+        "p95_ms": 27.749040978960693,
+        "min_ms": 23.21700000902638,
+        "max_ms": 27.749040978960693
+      },
+      "structured_only": {
+        "cold_first_ms": 7.751790981274098,
+        "warmup_count": 1,
+        "measured_calls": 10,
+        "successful_calls": 10,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 10,
+        "median_ms": 7.3464789893478155,
+        "p95_ms": 7.821374980267137,
+        "min_ms": 6.7324170377105474,
+        "max_ms": 7.821374980267137
+      },
+      "policy_and_structured": {
+        "cold_first_ms": 26.249541027937084,
+        "warmup_count": 1,
+        "measured_calls": 10,
+        "successful_calls": 10,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 10,
+        "median_ms": 26.901583012659103,
+        "p95_ms": 42.198415962047875,
+        "min_ms": 25.932249962352216,
+        "max_ms": 42.198415962047875
+      },
+      "abstain": {
+        "cold_first_ms": 1.3000000035390258,
+        "warmup_count": 1,
+        "measured_calls": 10,
+        "successful_calls": 10,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 10,
+        "median_ms": 1.0413955023977906,
+        "p95_ms": 1.2927500065416098,
+        "min_ms": 0.9980000322684646,
+        "max_ms": 1.2927500065416098
+      }
+    },
+    "structured_tools": {
+      "get_beneficiary_summary": {
+        "cold_first_ms": 0.41937496280297637,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.25554149760864675,
+        "p95_ms": 0.5016670329496264,
+        "min_ms": 0.2358750207349658,
+        "max_ms": 0.5183330504223704
+      },
+      "get_claims_for_beneficiary": {
+        "cold_first_ms": 0.35279098665341735,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.2539579872973263,
+        "p95_ms": 0.3177089965902269,
+        "min_ms": 0.23979099933058023,
+        "max_ms": 1.4237500145100057
+      },
+      "get_claim_details": {
+        "cold_first_ms": 1.3325420441105962,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.9567290253471583,
+        "p95_ms": 2.809916972182691,
+        "min_ms": 0.8774999878369272,
+        "max_ms": 2.874333004001528
+      },
+      "get_patient_summary": {
+        "cold_first_ms": 0.5886250291951001,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.30606251675635576,
+        "p95_ms": 0.7016249583102763,
+        "min_ms": 0.24220900377258658,
+        "max_ms": 1.0096249752677977
+      },
+      "fhir_condition_frequency": {
+        "cold_first_ms": 1.1174159590154886,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.2916664816439152,
+        "p95_ms": 1.0763750178739429,
+        "min_ms": 0.262040994130075,
+        "max_ms": 1.5781670226715505
+      }
+    },
+    "review_policy": {
+      "review_not_required": {
+        "cold_first_ms": null,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.000667001586407423,
+        "p95_ms": 0.0008330098353326321,
+        "min_ms": 0.0006249756552278996,
+        "max_ms": 0.0008749775588512421
+      },
+      "review_required": {
+        "cold_first_ms": null,
+        "warmup_count": 3,
+        "measured_calls": 30,
+        "successful_calls": 30,
+        "failed_calls": 0,
+        "failures": [],
+        "calls": 30,
+        "median_ms": 0.0007079797796905041,
+        "p95_ms": 0.0007500057108700275,
+        "min_ms": 0.000625033862888813,
+        "max_ms": 0.0007919734343886375
+      }
+    },
+    "review_persistence": {
+      "review_case_creation": {
+        "cold_first_ms": 2.595999976620078,
+        "warmup_count": 0,
+        "measured_calls": 10,
+        "successful_calls": 10,
+        "failed_calls": 0,
+        "calls": 10,
+        "median_ms": 0.9260210208594799,
+        "p95_ms": 2.3038340150378644,
+        "min_ms": 0.8606670307926834,
+        "max_ms": 2.3038340150378644
+      },
+      "review_decision_and_event": {
+        "cold_first_ms": 1.3663749559782445,
+        "warmup_count": 0,
+        "measured_calls": 10,
+        "successful_calls": 10,
+        "failed_calls": 0,
+        "calls": 10,
+        "median_ms": 1.2184170191176236,
+        "p95_ms": 2.151167020201683,
+        "min_ms": 0.7962079835124314,
+        "max_ms": 2.151167020201683
+      }
+    }
+  },
+  "concurrency_analysis": {
+    "determination": "CONCURRENT",
+    "policy_only_median_ms": 24.524000007659197,
+    "structured_only_median_ms": 7.3464789893478155,
+    "policy_and_structured_median_ms": 26.901583012659103,
+    "predicted_if_sequential_ms": 31.870478997007012,
+    "predicted_if_concurrent_ms": 24.524000007659197,
+    "distance_to_sequential_prediction_ms": 4.96889598434791,
+    "distance_to_concurrent_prediction_ms": 2.377583004999906
+  },
+  "review_persistence_counts": {
+    "before": {
+      "review_cases": 0,
+      "review_events": 0
+    },
+    "after_cleanup": {
+      "review_cases": 0,
+      "review_events": 0
+    }
+  }
+}

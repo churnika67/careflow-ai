@@ -1,0 +1,58 @@
+[
+  {
+    "case_id": "cms-v1-h012",
+    "mode": "dense",
+    "from_threshold": 0.45,
+    "to_threshold": 0.5,
+    "from_status": "answered",
+    "to_status": "abstained"
+  },
+  {
+    "case_id": "cms-v1-h003",
+    "mode": "bm25",
+    "from_threshold": 0.5,
+    "to_threshold": 0.55,
+    "from_status": "answered",
+    "to_status": "abstained"
+  },
+  {
+    "case_id": "cms-v1-h012",
+    "mode": "bm25",
+    "from_threshold": 0.45,
+    "to_threshold": 0.5,
+    "from_status": "answered",
+    "to_status": "abstained"
+  },
+  {
+    "case_id": "cms-v1-h003",
+    "mode": "hybrid",
+    "from_threshold": 0.5,
+    "to_threshold": 0.55,
+    "from_status": "answered",
+    "to_status": "abstained"
+  },
+  {
+    "case_id": "cms-v1-h012",
+    "mode": "hybrid",
+    "from_threshold": 0.45,
+    "to_threshold": 0.5,
+    "from_status": "answered",
+    "to_status": "abstained"
+  },
+  {
+    "case_id": "cms-v1-h003",
+    "mode": "hybrid_reranked",
+    "from_threshold": 0.5,
+    "to_threshold": 0.55,
+    "from_status": "answered",
+    "to_status": "abstained"
+  },
+  {
+    "case_id": "cms-v1-h012",
+    "mode": "hybrid_reranked",
+    "from_threshold": 0.45,
+    "to_threshold": 0.5,
+    "from_status": "answered",
+    "to_status": "abstained"
+  }
+]

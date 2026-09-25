@@ -1,0 +1,449 @@
+{
+  "dataset_version": "cms-retrieval-heldout-v1",
+  "dataset_sha256": "a144fc2e1611b41dca66dff0dc5a3415f3b1a11476de2d19555a2a3bacfe0158",
+  "case_count": 12,
+  "positive_cases": 10,
+  "negative_cases": 2,
+  "metrics": {
+    "dense": {
+      "overall": {
+        "count": 10,
+        "Hit@1": 0.6,
+        "Hit@1_hits": 6,
+        "Hit@1_total": 10,
+        "Hit@3": 1.0,
+        "Hit@3_hits": 10,
+        "Hit@3_total": 10,
+        "Hit@5": 1.0,
+        "Hit@5_hits": 10,
+        "Hit@5_total": 10,
+        "MRR@5": 0.7333333333333333
+      },
+      "categories": {
+        "adversarial_specificity": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "exact_lexical": {
+          "count": 2,
+          "Hit@1": 0.5,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 2,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 2,
+          "Hit@3_total": 2,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 2,
+          "Hit@5_total": 2,
+          "MRR@5": 0.6666666666666666
+        },
+        "hard_negative": {
+          "count": 2,
+          "Hit@1": 0.0,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 2,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 2,
+          "Hit@3_total": 2,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 2,
+          "Hit@5_total": 2,
+          "MRR@5": 0.3333333333333333
+        },
+        "mixed": {
+          "count": 3,
+          "Hit@1": 0.6666666666666666,
+          "Hit@1_hits": 2,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 0.7777777777777778
+        },
+        "out_of_corpus": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "semantic": {
+          "count": 3,
+          "Hit@1": 1.0,
+          "Hit@1_hits": 3,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 1.0
+        }
+      }
+    },
+    "bm25": {
+      "overall": {
+        "count": 10,
+        "Hit@1": 0.7,
+        "Hit@1_hits": 7,
+        "Hit@1_total": 10,
+        "Hit@3": 0.8,
+        "Hit@3_hits": 8,
+        "Hit@3_total": 10,
+        "Hit@5": 0.9,
+        "Hit@5_hits": 9,
+        "Hit@5_total": 10,
+        "MRR@5": 0.775
+      },
+      "categories": {
+        "adversarial_specificity": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "exact_lexical": {
+          "count": 2,
+          "Hit@1": 0.5,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 2,
+          "Hit@3": 0.5,
+          "Hit@3_hits": 1,
+          "Hit@3_total": 2,
+          "Hit@5": 0.5,
+          "Hit@5_hits": 1,
+          "Hit@5_total": 2,
+          "MRR@5": 0.5
+        },
+        "hard_negative": {
+          "count": 2,
+          "Hit@1": 1.0,
+          "Hit@1_hits": 2,
+          "Hit@1_total": 2,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 2,
+          "Hit@3_total": 2,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 2,
+          "Hit@5_total": 2,
+          "MRR@5": 1.0
+        },
+        "mixed": {
+          "count": 3,
+          "Hit@1": 1.0,
+          "Hit@1_hits": 3,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 1.0
+        },
+        "out_of_corpus": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "semantic": {
+          "count": 3,
+          "Hit@1": 0.3333333333333333,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 3,
+          "Hit@3": 0.6666666666666666,
+          "Hit@3_hits": 2,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 0.5833333333333334
+        }
+      }
+    },
+    "hybrid": {
+      "overall": {
+        "count": 10,
+        "Hit@1": 0.5,
+        "Hit@1_hits": 5,
+        "Hit@1_total": 10,
+        "Hit@3": 0.9,
+        "Hit@3_hits": 9,
+        "Hit@3_total": 10,
+        "Hit@5": 0.9,
+        "Hit@5_hits": 9,
+        "Hit@5_total": 10,
+        "MRR@5": 0.7
+      },
+      "categories": {
+        "adversarial_specificity": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "exact_lexical": {
+          "count": 2,
+          "Hit@1": 0.5,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 2,
+          "Hit@3": 0.5,
+          "Hit@3_hits": 1,
+          "Hit@3_total": 2,
+          "Hit@5": 0.5,
+          "Hit@5_hits": 1,
+          "Hit@5_total": 2,
+          "MRR@5": 0.5
+        },
+        "hard_negative": {
+          "count": 2,
+          "Hit@1": 0.5,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 2,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 2,
+          "Hit@3_total": 2,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 2,
+          "Hit@5_total": 2,
+          "MRR@5": 0.75
+        },
+        "mixed": {
+          "count": 3,
+          "Hit@1": 0.6666666666666666,
+          "Hit@1_hits": 2,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 0.8333333333333334
+        },
+        "out_of_corpus": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "semantic": {
+          "count": 3,
+          "Hit@1": 0.3333333333333333,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 0.6666666666666666
+        }
+      }
+    },
+    "hybrid_reranked": {
+      "overall": {
+        "count": 10,
+        "Hit@1": 0.8,
+        "Hit@1_hits": 8,
+        "Hit@1_total": 10,
+        "Hit@3": 0.9,
+        "Hit@3_hits": 9,
+        "Hit@3_total": 10,
+        "Hit@5": 1.0,
+        "Hit@5_hits": 10,
+        "Hit@5_total": 10,
+        "MRR@5": 0.8583333333333334
+      },
+      "categories": {
+        "adversarial_specificity": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "exact_lexical": {
+          "count": 2,
+          "Hit@1": 0.5,
+          "Hit@1_hits": 1,
+          "Hit@1_total": 2,
+          "Hit@3": 0.5,
+          "Hit@3_hits": 1,
+          "Hit@3_total": 2,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 2,
+          "Hit@5_total": 2,
+          "MRR@5": 0.625
+        },
+        "hard_negative": {
+          "count": 2,
+          "Hit@1": 1.0,
+          "Hit@1_hits": 2,
+          "Hit@1_total": 2,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 2,
+          "Hit@3_total": 2,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 2,
+          "Hit@5_total": 2,
+          "MRR@5": 1.0
+        },
+        "mixed": {
+          "count": 3,
+          "Hit@1": 1.0,
+          "Hit@1_hits": 3,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 1.0
+        },
+        "out_of_corpus": {
+          "count": 0,
+          "MRR@5": null,
+          "Hit@1": null,
+          "Hit@1_hits": 0,
+          "Hit@1_total": 0,
+          "Hit@3": null,
+          "Hit@3_hits": 0,
+          "Hit@3_total": 0,
+          "Hit@5": null,
+          "Hit@5_hits": 0,
+          "Hit@5_total": 0
+        },
+        "semantic": {
+          "count": 3,
+          "Hit@1": 0.6666666666666666,
+          "Hit@1_hits": 2,
+          "Hit@1_total": 3,
+          "Hit@3": 1.0,
+          "Hit@3_hits": 3,
+          "Hit@3_total": 3,
+          "Hit@5": 1.0,
+          "Hit@5_hits": 3,
+          "Hit@5_total": 3,
+          "MRR@5": 0.7777777777777778
+        }
+      }
+    }
+  },
+  "abstention": {
+    "dense": {
+      "negative_cases": 2,
+      "positive_cases": 10,
+      "correct_abstentions": 2,
+      "incorrect_answer_attempts": 0,
+      "positive_abstentions": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "false_answer_rate": 0.0,
+      "false_abstention_rate": 0.0
+    },
+    "bm25": {
+      "negative_cases": 2,
+      "positive_cases": 10,
+      "correct_abstentions": 2,
+      "incorrect_answer_attempts": 0,
+      "positive_abstentions": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "false_answer_rate": 0.0,
+      "false_abstention_rate": 0.0
+    },
+    "hybrid": {
+      "negative_cases": 2,
+      "positive_cases": 10,
+      "correct_abstentions": 2,
+      "incorrect_answer_attempts": 0,
+      "positive_abstentions": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "false_answer_rate": 0.0,
+      "false_abstention_rate": 0.0
+    },
+    "hybrid_reranked": {
+      "negative_cases": 2,
+      "positive_cases": 10,
+      "correct_abstentions": 2,
+      "incorrect_answer_attempts": 0,
+      "positive_abstentions": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "false_answer_rate": 0.0,
+      "false_abstention_rate": 0.0
+    }
+  },
+  "reranking": {
+    "counts": {
+      "unchanged": 5,
+      "improved": 4,
+      "degraded": 1
+    },
+    "mean_observed_rank_delta": 0.2222222222222222,
+    "both_found_count": 9
+  },
+  "failure_category_counts": {
+    "below_evidence_threshold": 1,
+    "no_relevant_in_top_k": 1,
+    "rerank_regression": 1
+  }
+}
