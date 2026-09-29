@@ -18,6 +18,11 @@ class Settings(BaseSettings):
         "postgresql://careflow:careflow_local_only@localhost:55432/careflow"
     )
     qdrant_url: str = "http://localhost:6333"
+    # Unset for local/unauthenticated Qdrant (every existing dev/CI/test
+    # environment) -- Qdrant Cloud clusters require this for every request,
+    # including the /readyz health probe. Never logged, never required
+    # locally.
+    qdrant_api_key: SecretStr | None = None
     redis_url: SecretStr = SecretStr("redis://localhost:6379/0")
     health_timeout_seconds: float = Field(default=3, gt=0, le=30)
     # Deliberately short and separate from health_timeout_seconds: a cache

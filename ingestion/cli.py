@@ -18,6 +18,10 @@ from ingestion.pipeline import ingest
 
 def main():
     defaults = get_settings()
+    # Read from settings (QDRANT_API_KEY env var), never a CLI flag -- a
+    # flag would put the secret in shell history and process listings.
+    # Unset for local/unauthenticated Qdrant, required for Qdrant Cloud.
+    qdrant_api_key = defaults.qdrant_api_key.get_secret_value() if defaults.qdrant_api_key else None
     parser = argparse.ArgumentParser(description="Ingest and search the reviewed CMS NCD subset")
     commands = parser.add_subparsers(dest="command", required=True)
     for name in ("ingest", "search", "rag"):
@@ -149,7 +153,9 @@ def main():
         with FileLock(".cache/cms-ingestion.lock", timeout=0):
             provider = SentenceTransformerEmbedding(args.model_cache, args.offline)
             chunks = chunk_documents(documents, provider.tokenizer, config)
-            with closing(QdrantClient(url=args.qdrant_url, timeout=30)) as client:
+            with closing(
+                QdrantClient(url=args.qdrant_url, api_key=qdrant_api_key, timeout=30)
+            ) as client:
                 result = ingest(
                     documents,
                     chunks,
@@ -177,7 +183,9 @@ def main():
             }.items()
             if value is not None
         }
-        with closing(QdrantClient(url=args.qdrant_url, timeout=30)) as client:
+        with closing(
+            QdrantClient(url=args.qdrant_url, api_key=qdrant_api_key, timeout=30)
+        ) as client:
             depth = max(args.top_k, args.rerank_candidates) if args.rerank else args.top_k
             result = Retriever(
                 NCDIndex(client, args.alias),

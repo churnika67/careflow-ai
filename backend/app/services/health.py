@@ -58,8 +58,11 @@ async def check_postgres(settings: Settings) -> None:
 
 
 async def check_qdrant(settings: Settings) -> None:
+    headers = (
+        {"api-key": settings.qdrant_api_key.get_secret_value()} if settings.qdrant_api_key else {}
+    )
     async with httpx.AsyncClient(timeout=settings.health_timeout_seconds) as client:
-        response = await client.get(f"{settings.qdrant_url.rstrip('/')}/readyz")
+        response = await client.get(f"{settings.qdrant_url.rstrip('/')}/readyz", headers=headers)
         response.raise_for_status()
 
 

@@ -38,7 +38,12 @@ def retrieve(question: str, settings: Settings) -> list[dict]:
                 from app.infrastructure.cache import get_sync_cache_client
 
                 embedding = CachingQueryEmbedding(embedding, settings, get_sync_cache_client())
-            with closing(QdrantClient(url=settings.qdrant_url, timeout=10)) as client:
+            qdrant_api_key = (
+                settings.qdrant_api_key.get_secret_value() if settings.qdrant_api_key else None
+            )
+            with closing(
+                QdrantClient(url=settings.qdrant_url, api_key=qdrant_api_key, timeout=10)
+            ) as client:
                 depth = (
                     max(settings.rag_top_k, settings.rerank_candidate_k)
                     if settings.rerank_enabled
