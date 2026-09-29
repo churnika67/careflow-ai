@@ -1,0 +1,8 @@
+.notice {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  background: var(--color-status-checking-bg);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  max-width: 60ch;
+}

@@ -1,0 +1,171 @@
+.page {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.subheading {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  max-width: 65ch;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.filterLabel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.filterSelect {
+  font: inherit;
+  font-size: 0.9375rem;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.refreshButton {
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.blockedReason {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.loading,
+.empty {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.statusBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 999px;
+  background: var(--color-status-checking-bg);
+  color: var(--color-text);
+}
+
+.statusBadge[data-status="approved"] {
+  background: var(--color-status-ok-bg);
+  color: var(--color-status-ok);
+}
+
+.statusBadge[data-status="rejected"] {
+  background: var(--color-status-unavailable-bg);
+  color: var(--color-status-unavailable);
+}
+
+.statusBadge[data-status="revision_requested"] {
+  background: var(--color-status-degraded-bg);
+  color: var(--color-status-degraded);
+}
+
+.workflow {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.triggerReasons {
+  font-size: 0.9375rem;
+}
+
+.meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.technicalDetail {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-geist-mono, monospace);
+  overflow-wrap: anywhere;
+}
+
+.viewLink {
+  align-self: flex-start;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: var(--space-xs);
+}
+
+.pagination {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.pageButton {
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

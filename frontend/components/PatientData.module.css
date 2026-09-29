@@ -1,0 +1,81 @@
+.page {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.headingRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-sm);
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.viewTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.tab,
+.activeTab {
+  font: inherit;
+  font-size: 0.8125rem;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.activeTab {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.tab:disabled,
+.activeTab:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.recordList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.recordCount {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.allCodings {
+  margin-top: var(--space-sm);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.componentList {
+  margin-top: var(--space-sm);
+  padding-left: var(--space-lg);
+  font-size: 0.875rem;
+  color: var(--color-text);
+}

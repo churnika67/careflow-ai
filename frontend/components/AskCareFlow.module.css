@@ -1,0 +1,131 @@
+.page {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.subheading {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.textarea {
+  font: inherit;
+  font-size: 0.9375rem;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  resize: vertical;
+  min-height: 5rem;
+  width: 100%;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.textarea:disabled {
+  opacity: 0.7;
+}
+
+.validationError {
+  color: var(--color-status-unavailable);
+  font-size: 0.8125rem;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs) var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.examplesLabel {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.exampleChip {
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.exampleChip:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+}
+
+.exampleChip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+.submitButton {
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.blockedReason {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.searching {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Error/retry/technical-detail styling now reuses
+   components/structured/StructuredResultStates.module.css directly (Slice
+   7) -- this was byte-for-byte duplicate CSS under different class names,
+   consolidated to one shared definition like every other page already
+   uses. */

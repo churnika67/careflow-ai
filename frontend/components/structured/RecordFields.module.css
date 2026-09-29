@@ -1,0 +1,22 @@
+.fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-sm) var(--space-lg);
+}
+
+.field dt {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.field dd {
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}

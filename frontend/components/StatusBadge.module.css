@@ -1,0 +1,35 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.symbol {
+  font-size: 0.75em;
+}
+
+.checking {
+  color: var(--color-status-checking);
+  background: var(--color-status-checking-bg);
+}
+
+.ok {
+  color: var(--color-status-ok);
+  background: var(--color-status-ok-bg);
+}
+
+.degraded {
+  color: var(--color-status-degraded);
+  background: var(--color-status-degraded-bg);
+}
+
+.unavailable {
+  color: var(--color-status-unavailable);
+  background: var(--color-status-unavailable-bg);
+}

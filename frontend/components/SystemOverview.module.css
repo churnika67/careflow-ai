@@ -1,0 +1,107 @@
+.page {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.appName {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.tagline {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.description {
+  margin-top: var(--space-md);
+  color: var(--color-text);
+  line-height: 1.5;
+  max-width: 52ch;
+}
+
+.statusSection {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.statusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.statusHeader h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.refreshButton {
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+}
+
+.refreshButton:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.checkingText {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.unavailableNotice {
+  color: var(--color-status-unavailable);
+  font-size: 0.9375rem;
+}
+
+.dependencyList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+}
+
+.dependencyList li:last-child {
+  border-bottom: none;
+}
+
+.optionalNote {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.readinessNote {
+  margin-top: var(--space-sm);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.technicalDetail {
+  margin-top: var(--space-sm);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-geist-mono, monospace);
+}
+
+.disclaimer {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+  max-width: 60ch;
+}

@@ -41,6 +41,14 @@ class Settings(BaseSettings):
     # correctness. Bounded to at most 7 days, matching this codebase's
     # explicit-bounded-setting convention.
     query_embedding_cache_ttl_seconds: int = Field(default=86400, gt=0, le=604800)
+    # Phase 14 Slice 1: comma-separated list of allowed CORS origins for the
+    # Next.js frontend. Empty means CORSMiddleware is never added at all --
+    # every environment that does not explicitly opt in keeps today's
+    # behavior (no CORS headers, same as before this field existed). The
+    # single default origin is the Next.js dev server's own default port,
+    # never a wildcard, and never combined with credentials (this API has
+    # no cookie/session auth to protect against a permissive origin list).
+    cors_allowed_origins: str = "http://localhost:3000"
     rag_provider: Literal["deterministic", "openai"] = "deterministic"
     rag_model: str = Field(default="gpt-4.1-mini", min_length=1)
     openai_api_key: SecretStr | None = None

@@ -1,0 +1,34 @@
+.recordList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.recordCount {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.allCodings {
+  margin-top: var(--space-sm);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.componentList {
+  margin-top: var(--space-sm);
+  padding-left: var(--space-lg);
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+.subheading {
+  margin-top: var(--space-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

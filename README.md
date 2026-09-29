@@ -1,25 +1,30 @@
 # CareFlow AI
 
 An evidence-grounded healthcare operations intelligence platform, developed in
-verified phases. The planned system combines public Medicare coverage policies
-with synthetic claims and patient records to support documentation review.
-It is an engineering portfolio project, not a clinical decision system.
+verified phases. The system combines public Medicare coverage policy retrieval
+with synthetic claims and patient records to demonstrate bounded orchestration,
+a coordinated evidence workflow, and a human review/audit trail on top of it.
+It is an engineering portfolio project, not a clinical decision system — it
+never determines coverage, eligibility, medical necessity, or claim approval.
 
-**Current scope: Phase 9 — LangGraph router & structured tools.** Phase 8 added
-an independent structured-data layer: CMS DE-SynPUF synthetic claims and
-Synthea synthetic FHIR R4 patient records in PostgreSQL, behind a
-parameterized-SQL-only repository layer (checksum-gated source validation,
-per-record quarantine, provenance, idempotent loading). Phase 9 adds a small
-real `langgraph.StateGraph` that routes a request to either the existing,
-unchanged Phase 1-7 policy RAG pipeline or one of 18 Phase 8 structured tools
-— deterministically by default, with no route (including policy) getting
-unmatched free text as a fallback. See the
-[Phase 8 guide](docs/phase8_structured_health_data.md) and
-[Phase 9 guide](docs/phase9_langgraph_orchestration.md) for architecture,
-real findings (multi-coding, `Observation.value[x]` diversity, claim
-identity, two strict-validation bugs caught live), schema/graph, and
-reproduction steps. `POST /orchestrate` is new; `POST /query`'s contract is
-unchanged.
+**Current scope: Phase 14 — frontend.** The backend now implements, on top of
+the Phase 1-7 policy RAG pipeline: an independent structured-data layer (CMS
+DE-SynPUF synthetic claims and Synthea synthetic FHIR R4 patient records,
+Phase 8), a deterministic `langgraph.StateGraph` router (`POST /orchestrate`,
+Phase 9), a bounded multi-agent evidence workflow that can combine policy and
+structured evidence with a deterministic validator (`POST /multi-agent`,
+Phase 10), and a human-in-the-loop review/audit state machine
+(`POST /reviewable-query`, `GET /reviews`, Phase 11). Phase 14 adds a
+Next.js/TypeScript frontend exposing all of the above: Medicare policy Q&A,
+synthetic FHIR/SynPUF lookups, the free-text router, the coordinated evidence
+workflow, and the review queue/detail/decision UI. See the
+[Phase 8](docs/phase8_structured_health_data.md),
+[Phase 9](docs/phase9_langgraph_orchestration.md),
+[Phase 10](docs/phase10_multi_agent_architecture.md),
+[Phase 11](docs/phase11_hitl_audit_workflow.md), and
+[Phase 14](docs/phase14_frontend_design.md) guides for architecture, real
+findings, schema/graph details, and reproduction steps. `POST /query`'s
+original contract remains unchanged throughout.
 
 The Phase 7 retrieval evaluation below remains the last verified state of the
 unstructured pipeline: a versioned 32-case development dataset measuring
@@ -40,7 +45,8 @@ See the [dataset analysis](docs/cms_dataset_analysis.md),
 [Phase 6 model, windowing, evaluation and verification](docs/cms_cross_encoder_reranking.md).
 See the [Phase 7 evaluation guide](docs/evaluation/README.md) and
 [measured results and failures](docs/evaluation/retrieval_eval_v1.md).
-Agents, authentication and the frontend remain later phases.
+Authentication, an evaluation/analytics dashboard, and CI remain later phases
+(15-17) — see "Roadmap and limitations" below.
 
 ## Run locally
 
@@ -91,6 +97,41 @@ sets internal service addresses for the backend automatically. If you change loc
 database credentials, update `DATABASE_URL` as well (URL-encode password characters).
 PostgreSQL initialization settings apply only to an empty volume.
 
+## Frontend development
+
+Phase 14 added a Next.js/TypeScript frontend in `frontend/` — see the
+[Phase 14 guide](docs/phase14_frontend_design.md) for the full slice-by-slice
+design record. It exposes:
+
+- **System Overview** (`/`) — live backend/dependency status
+- **Ask CareFlow** (`/ask`) — Medicare policy Q&A with citations
+- **CareFlow Assistant** (`/assistant`) — free-text request routing to policy,
+  synthetic FHIR, or synthetic SynPUF lookups
+- **Patient Data** / **Claims** (`/patient-data`, `/claims`) — explicit
+  synthetic FHIR/SynPUF record lookups
+- **Evidence Workflow** (`/workflow`) — a coordinated policy + structured
+  evidence request with a deterministic validator result, keeping the two
+  evidence domains visually and semantically separate
+- **Reviews** (`/reviews`, `/reviews/[reviewId]`) — the human-in-the-loop
+  review queue, evidence snapshot, audit history, and approve/reject/
+  request-revision decisions
+
+Synthetic data is always labeled as such; the review "approved" state means
+the reviewer accepted the output for the application workflow only — it is
+never a coverage, eligibility, medical-necessity, or claim decision, and
+reviewer identity is caller-supplied, not authenticated. With a CareFlow
+backend already running (Docker or native, above):
+
+```bash
+cd frontend
+npm install
+cp .env.example .env.local   # adjust the port if your backend is not on 8000
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Other useful commands:
+`npm run lint`, `npm run typecheck`, `npm test`, `npm run build`.
+
 ## Testing
 
 ```bash
@@ -140,21 +181,29 @@ flowchart LR
     Gen --> Validate[Exact quotes and citations]
 ```
 
-Planned: Next.js/TypeScript frontend → analysis → validation → cited report and
-human review. Implemented retrieval supports dense, BM25, RRF hybrid search and
-optional cross-encoder reranking. Phase 7 evaluation and Phase 8 structured
-DE-SynPUF/FHIR ingestion are implemented as an independent layer. Phase 9 adds
-a real `langgraph.StateGraph` router (`POST /orchestrate`) that dispatches
-deterministically to policy retrieval or restricted structured-data tools —
-see the [Phase 9 guide](docs/phase9_langgraph_orchestration.md). Multi-agent
-behavior and the remaining roadmap are planned (Phase 10+).
+Implemented retrieval supports dense, BM25, RRF hybrid search and optional
+cross-encoder reranking. Phase 7 evaluation and Phase 8 structured
+DE-SynPUF/FHIR ingestion are implemented as an independent layer. Phase 9
+adds a real `langgraph.StateGraph` router (`POST /orchestrate`) that
+dispatches deterministically to policy retrieval or restricted
+structured-data tools. Phase 10 adds a bounded multi-agent workflow
+(`POST /multi-agent`) that can run the policy and structured branches
+together and validates the combined result. Phase 11 adds a human review/
+audit state machine (`POST /reviewable-query`, `GET /reviews`) on top of
+that validator's output. Phase 14 adds the Next.js/TypeScript frontend
+exposing all of the above — see the
+[Phase 9](docs/phase9_langgraph_orchestration.md),
+[Phase 10](docs/phase10_multi_agent_architecture.md),
+[Phase 11](docs/phase11_hitl_audit_workflow.md), and
+[Phase 14](docs/phase14_frontend_design.md) guides. An evaluation/analytics
+dashboard and authentication remain planned (Phase 15+).
 
 ## Repository
 
 | Path | Purpose |
 | --- | --- |
 | `backend/app/` | FastAPI health/query APIs, settings, generation providers and evidence validation |
-| `frontend/` | Reserved for Next.js in Phase 14 |
+| `frontend/` | Next.js/TypeScript frontend: policy Q&A, router, synthetic FHIR/SynPUF lookups, evidence workflow, human review (Phase 14) |
 | `ingestion/` | CMS NCD ingestion, chunking, embeddings, Qdrant indexing and search; other sources reserved |
 | `evaluation/` | Versioned development label validation, retrieval metrics, eligibility analysis and reports |
 | `tests/` | API, source, chunking, storage, embeddings and live search tests |
@@ -306,8 +355,17 @@ The approved sequence is: (1) scaffold, (2) CMS inspection, (3) ingestion,
 (4) basic RAG, (5) hybrid retrieval, (6) reranking, (7) retrieval evaluation,
 (8) structured datasets, (9) router/tools, (10) full agent workflow,
 (11) review/audit, (12) evaluation/experiments, (13) caching/reliability,
-(14) frontend, (15) dashboard, (16) tests/CI, (17) GitHub polish.
-Every phase requires working verification and user approval before proceeding.
+(14) frontend, (15) evaluation/analytics dashboard, (16) tests/CI,
+(17) GitHub polish. Phases 1-14 are implemented and verified, including a
+full frontend over the Phase 8-11 backend capabilities (Medicare policy Q&A,
+synthetic FHIR/SynPUF lookups, the router, the coordinated evidence
+workflow, and human review/audit). Phase 15 (evaluation/analytics
+dashboard) has not started; population-level aggregate FHIR/SynPUF tools
+exist in the backend's tool registry but are not yet exposed anywhere in
+the frontend. No authentication is implemented anywhere in the project —
+the review workflow's `reviewer_id` is a caller-supplied, non-authoritative
+string, never a verified identity. Every phase requires working
+verification and user approval before proceeding.
 
 Future AWS mapping: S3 for documents, RDS PostgreSQL, ElastiCache Redis,
 ECS/Fargate for the API, ECR images, Secrets Manager, and CloudWatch. Qdrant hosting
