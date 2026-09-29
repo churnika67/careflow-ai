@@ -165,3 +165,41 @@ def test_existing_query_endpoint_contract_is_unchanged():
     # POST /query's own response shape (no "route"/"tool" fields) is untouched.
     assert "answer" in body and "citations" in body
     assert "route" not in body
+
+
+# --- Phase 16 Slice 2: API-level route-boundary exception mapping ---------
+#
+# The lower-layer graph/generation tests already exercise GenerationError
+# handling in isolation. These two tests instead prove the *route handler
+# itself* (backend/app/api/orchestrate.py) maps it to the right HTTP
+# response -- the one boundary no existing test drove through TestClient.
+# No live Postgres/Qdrant/generation provider is needed: build_graph is
+# monkeypatched at the point orchestrate.py imports it, so this is a pure,
+# unconditional unit test of the route, never live-gated.
+
+
+def test_generation_error_maps_to_its_declared_status_code_through_the_route(monkeypatch):
+    from app.generation.providers import GenerationError
+
+    class _FakeGraph:
+        async def ainvoke(self, state):
+            raise GenerationError("provider_timeout", status_code=504)
+
+    monkeypatch.setattr("app.api.orchestrate.build_graph", lambda settings: _FakeGraph())
+    with TestClient(app) as client:
+        response = client.post("/orchestrate", json={"question": "does this time out"})
+    assert response.status_code == 504
+    assert response.json() == {"error": {"code": "provider_timeout"}}
+
+
+def test_unexpected_infrastructure_failure_maps_to_503_never_exposing_internals(monkeypatch):
+    class _FakeGraph:
+        async def ainvoke(self, state):
+            raise RuntimeError("connection refused: internal detail that must never leak")
+
+    monkeypatch.setattr("app.api.orchestrate.build_graph", lambda settings: _FakeGraph())
+    with TestClient(app) as client:
+        response = client.post("/orchestrate", json={"question": "does this fail"})
+    assert response.status_code == 503
+    assert response.json() == {"error": {"code": "orchestration_unavailable"}}
+    assert "connection refused" not in response.text

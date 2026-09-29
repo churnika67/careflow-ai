@@ -213,3 +213,41 @@ def test_existing_orchestrate_endpoint_contract_is_unchanged():
     # POST /orchestrate's own response shape (route/tool, no "workflow") is untouched.
     assert body["route"] == "abstain"
     assert "workflow" not in body
+
+
+# --- Phase 16 Slice 2: API-level route-boundary exception mapping ---------
+# Mirrors tests/test_orchestration_api.py's equivalent pair for /orchestrate
+# -- proves backend/app/api/multi_agent.py's own route handler maps
+# GenerationError/unexpected exceptions to the right HTTP response,
+# without needing a live Postgres/Qdrant/generation provider.
+
+
+def test_generation_error_maps_to_its_declared_status_code_through_the_route(monkeypatch):
+    from app.generation.providers import GenerationError
+
+    class _FakeGraph:
+        async def ainvoke(self, state):
+            raise GenerationError("provider_timeout", status_code=504)
+
+    monkeypatch.setattr(
+        "app.api.multi_agent.build_multi_agent_graph", lambda settings: _FakeGraph()
+    )
+    with TestClient(app) as client:
+        response = client.post("/multi-agent", json={"question": "does this time out"})
+    assert response.status_code == 504
+    assert response.json() == {"error": {"code": "provider_timeout"}}
+
+
+def test_unexpected_infrastructure_failure_maps_to_503_never_exposing_internals(monkeypatch):
+    class _FakeGraph:
+        async def ainvoke(self, state):
+            raise RuntimeError("connection refused: internal detail that must never leak")
+
+    monkeypatch.setattr(
+        "app.api.multi_agent.build_multi_agent_graph", lambda settings: _FakeGraph()
+    )
+    with TestClient(app) as client:
+        response = client.post("/multi-agent", json={"question": "does this fail"})
+    assert response.status_code == 503
+    assert response.json() == {"error": {"code": "multi_agent_unavailable"}}
+    assert "connection refused" not in response.text

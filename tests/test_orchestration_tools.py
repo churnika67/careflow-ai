@@ -182,6 +182,72 @@ async def test_execute_tool_domain_mismatch_fhir_tool_under_synpuf_route():
     assert result.error == "unsupported_tool"
 
 
+# --- Phase 16 Slice 2: cross-dataset identity-linkage regression ---------
+#
+# backend/app/agents/structured_specialist.py resolves a multi-agent
+# structured-only request against exactly ONE Route for its whole tools
+# list (MultiAgentRequest.structured_route is a single value, never a
+# list -- see backend/app/agents/models.py). There is no request shape
+# that lets a caller name both a FHIR patient_id and a SynPUF
+# beneficiary_id and have them treated as the same identity: whichever
+# tool doesn't match the request's single declared route is rejected
+# independently, per call, and never merged with any other call's result.
+# This test proves that directly, using both an FHIR-shaped and a
+# SynPUF-shaped identifier in the same attempted (mismatched) call --
+# current Phase 9/10 semantics, not a new policy invented for this test.
+
+
+async def test_a_synpuf_beneficiary_identifier_is_never_resolved_under_an_fhir_route():
+    """Simulates the exact shape of a cross-dataset linkage attempt: a
+    caller declares route=FHIR (as a multi-agent structured_route would
+    resolve to) but supplies a SynPUF beneficiary_id-shaped tool call.
+    The beneficiary identifier is never looked up, and the result carries
+    no FHIR data alongside it -- there is nothing here that could be
+    mistaken for a linked patient/beneficiary profile."""
+    result = await execute_tool(
+        None, Route.FHIR, "get_beneficiary_summary", {"beneficiary_id": "00013D2EFD8E45D1"}
+    )
+    assert result.success is False
+    assert result.error == "unsupported_tool"
+    assert result.data is None
+    assert result.source_dataset is None
+
+
+async def test_an_fhir_patient_identifier_is_never_resolved_under_a_synpuf_route():
+    """The reverse direction of the same property."""
+    result = await execute_tool(
+        None,
+        Route.SYNPUF,
+        "get_patient_summary",
+        {"patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713"},
+    )
+    assert result.success is False
+    assert result.error == "unsupported_tool"
+    assert result.data is None
+    assert result.source_dataset is None
+
+
+def test_multi_agent_request_schema_cannot_express_two_structured_routes_at_once():
+    """Structural proof that a combined-dataset request is inexpressible,
+    not merely rejected at runtime: MultiAgentRequest.structured_route is
+    a single Route (or None), never a list -- so there is no way to
+    construct a request naming both 'fhir' and 'synpuf' as the target of
+    one structured_only/policy_and_structured call in the first place."""
+    from app.agents.models import MultiAgentRequest
+
+    field = MultiAgentRequest.model_fields["structured_route"]
+    assert "list" not in str(field.annotation).lower()
+    with pytest.raises(ValidationError):
+        MultiAgentRequest.model_validate(
+            {
+                "question": "x",
+                "workflow": "structured_only",
+                "structured_route": ["fhir", "synpuf"],
+                "tools": [{"tool": "get_patient_summary", "arguments": {"patient_id": "x"}}],
+            }
+        )
+
+
 async def test_execute_tool_invalid_arguments_reported_not_raised():
     result = await execute_tool(None, Route.FHIR, "get_patient_summary", {})  # missing patient_id
     assert result.success is False

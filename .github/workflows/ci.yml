@@ -1,0 +1,295 @@
+name: CI
+
+# Phase 16 Slice 4: CI around the test system proven stable in Slices 1-3.
+# Six jobs, not the five Slice 1 originally sketched before browser E2E
+# existed (see docs/phase16_testing_ci_design.md's Slice 4 section for the
+# re-audit): backend-quality, frontend-quality, backend-tests,
+# frontend-tests, integration-tests, and e2e. integration-tests and e2e
+# are kept separate rather than merged -- they exercise genuinely
+# different test semantics (repository/API-boundary correctness across
+# ~99 deterministic cases vs. 9 real-browser user journeys), have
+# different dependency weight (integration-tests never touches Qdrant/the
+# embedding model; e2e always does), and merging them would remove the
+# failure-isolation a PR author currently gets from a single-line CI
+# summary ("integration-tests failed" vs. "e2e failed" point at very
+# different things to go investigate).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Least privilege: this workflow only ever reads the repository. No job
+# writes to the repo, comments on a PR, publishes a package, or requests
+# an OIDC token.
+permissions:
+  contents: read
+
+# One in-flight run per workflow+ref; a new push to the same PR/branch
+# cancels the superseded run instead of letting both finish. Runs on
+# other branches/PRs are a different group and are never cancelled by
+# this.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # pyproject.toml: requires-python = ">=3.12,<3.15"; backend/Dockerfile
+  # pins the same 3.12. Not an arbitrary newer version.
+  PYTHON_VERSION: "3.12"
+  NODE_VERSION: "20"
+
+jobs:
+  # ---------------------------------------------------------------------
+  # Fast, dependency-free jobs. No services, no Docker, no model
+  # download. These should be the first signal on every PR.
+  # ---------------------------------------------------------------------
+
+  backend-quality:
+    name: Backend quality (ruff, format, pip check)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+      - name: Install backend dependencies (CPU-only torch, matching backend/Dockerfile)
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-dev.lock
+          pip install --no-deps -e .
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: pip check
+
+  frontend-quality:
+    name: Frontend quality (lint, typecheck, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+        env:
+          # A real backend URL is never contacted during a production
+          # build (see lib/config.ts) -- this only needs to be a
+          # syntactically valid URL for Next.js to inline at build time.
+          NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+
+  backend-tests:
+    name: Backend unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+      - name: Install backend dependencies (CPU-only torch, matching backend/Dockerfile)
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-dev.lock
+          pip install --no-deps -e .
+      - name: Run unit-tier tests (no CAREFLOW_*_INTEGRATION set -- integration tiers run in their own jobs)
+        run: python -m pytest tests/ -q
+
+  frontend-tests:
+    name: Frontend unit/component tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  # ---------------------------------------------------------------------
+  # Deterministic integration subset. Postgres/Qdrant/Redis + a
+  # host-run backend process, real FHIR/SynPUF fixtures -- but
+  # deliberately NOT the CMS/Qdrant corpus or the embedding model: none
+  # of the five gates selected here need it (see docs/
+  # phase16_testing_ci_design.md's Slice 4 "Integration-test decision"
+  # section for the full 169-skip categorization this was chosen from).
+  # Runs in parallel with the fast jobs and with e2e -- independent
+  # infrastructure, no reason to serialize.
+  # ---------------------------------------------------------------------
+
+  integration-tests:
+    name: Backend integration tests (deterministic subset)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17.6-bookworm
+        env:
+          POSTGRES_DB: careflow
+          POSTGRES_USER: careflow
+          POSTGRES_PASSWORD: careflow_local_only
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U careflow -d careflow"
+          --health-interval 5s --health-timeout 3s --health-retries 12
+      qdrant:
+        image: qdrant/qdrant:v1.15.4
+        ports: ["6333:6333"]
+      redis:
+        image: redis:7.4.5-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 12
+    env:
+      DATABASE_URL: postgresql://careflow:careflow_local_only@localhost:5432/careflow
+      QDRANT_URL: http://localhost:6333
+      REDIS_URL: redis://localhost:6379/0
+      RAG_PROVIDER: deterministic
+      OPENAI_API_KEY: ""
+      # The five gates whose own skip reasons (audited in Slice 1, §6 of
+      # the design doc) require only Postgres/Redis connectivity and real
+      # FHIR/SynPUF fixtures -- never Qdrant content or the embedding
+      # model. CAREFLOW_MULTI_AGENT_INTEGRATION,
+      # CAREFLOW_ORCHESTRATION_INTEGRATION, CAREFLOW_INGESTION_INTEGRATION,
+      # CAREFLOW_LATENCY_INTEGRATION, CAREFLOW_RERANKER_COMPARISON_INTEGRATION
+      # and the model/CMS-index-dependent gates are deliberately left
+      # unset here -- see the design doc for why each is excluded.
+      CAREFLOW_REVIEW_INTEGRATION: "1"
+      CAREFLOW_STRUCTURED_INTEGRATION: "1"
+      CAREFLOW_ANALYTICS_INTEGRATION: "1"
+      CAREFLOW_CACHE_INTEGRATION: "1"
+      CAREFLOW_INTEGRATION: "1"
+      CAREFLOW_API_URL: http://127.0.0.1:8000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+      - name: Install backend dependencies (CPU-only torch, matching backend/Dockerfile)
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-dev.lock
+          pip install --no-deps -e .
+      - name: Apply schema migrations
+        run: python -m app.db.migrate
+      - name: Ingest FHIR + SynPUF dev-subset fixtures (no CMS/Qdrant ingestion -- not needed by this tier)
+        run: |
+          python -m ingestion.cli ingest-fhir
+          python -m ingestion.cli ingest-synpuf
+      - name: Wait for Postgres/Qdrant to be genuinely ready (not just port-open -- Qdrant has no Docker healthcheck, see docker-compose.yml)
+        run: python scripts/wait_for_backend_ready.py
+      - name: Start the backend (host process, not the Docker image -- reuses the deps already installed above)
+        run: |
+          nohup python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 > backend.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:8000/ready >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          echo "backend process did not report ready in time" >&2
+          cat backend.log
+          exit 1
+      - name: Run the deterministic integration subset
+        run: python -m pytest tests/ -q
+      - name: Backend log (always, for diagnostics)
+        if: always()
+        run: cat backend.log || true
+
+  # ---------------------------------------------------------------------
+  # Browser E2E. Gated behind the fast jobs succeeding first (§38 of the
+  # Slice 4 directive: avoid burning ~2-3 minutes of Chromium
+  # install + Docker build + model load on a commit already known
+  # broken by a 10-second lint/typecheck failure). Uses the exact same
+  # clean-bootstrap script proven in Slice 3 -- no CI-specific setup
+  # logic duplicated in this YAML.
+  # ---------------------------------------------------------------------
+
+  e2e:
+    name: Browser E2E (clean bootstrap)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [backend-quality, frontend-quality, backend-tests, frontend-tests]
+    env:
+      RAG_PROVIDER: deterministic
+      OPENAI_API_KEY: ""
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:28000
+      DATABASE_URL: postgresql://careflow:careflow_local_only@localhost:25432/careflow_e2e_clean
+      QDRANT_URL: http://localhost:26333
+      REDIS_URL: redis://localhost:26379/0
+      PYTHON_BIN: python
+      E2E_POSTGRES_CONTAINER: careflow-ai-e2e-clean-postgres-1
+      E2E_REDIS_CONTAINER: careflow-ai-e2e-clean-redis-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+      - name: Install backend dependencies (CPU-only torch, matching backend/Dockerfile)
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-dev.lock
+          pip install --no-deps -e .
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - name: Cache the embedding model
+        uses: actions/cache@v4
+        with:
+          # ingestion/embeddings/providers.py::SentenceTransformerEmbedding
+          # writes here via SentenceTransformer(cache_folder=...) -- the
+          # actual runtime path, confirmed by reading that file, not
+          # assumed. HF_HOME (.cache/huggingface) is a separate, smaller
+          # hub-metadata cache the same code also uses; left uncached here
+          # since it is not what makes the ~90MB model download the
+          # expensive part of a cold run.
+          path: .cache/models
+          # Keyed on OS, the pinned model name AND revision (both read
+          # from ingestion/embeddings/providers.py -- hashing that file
+          # means a future revision bump busts this cache automatically,
+          # never silently reusing a stale model), and the lock context
+          # that determines how sentence-transformers reads/writes the
+          # cache directory. Nothing secret or run-specific.
+          key: ${{ runner.os }}-models-${{ hashFiles('ingestion/embeddings/providers.py', 'requirements-ingestion.lock') }}
+      - name: Install Playwright's own Chromium (the normal, supported path -- never the local-sandbox chrome-channel workaround)
+        run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Bootstrap a clean, isolated E2E environment (Postgres/Qdrant/Redis/backend + CMS/FHIR/SynPUF)
+        run: scripts/bootstrap_clean_e2e_env.sh up
+      - name: Run the full E2E suite (0 retries)
+        run: npx playwright test
+        working-directory: frontend
+      - name: Upload E2E failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/
+          retention-days: 7
+      - name: Tear down the isolated E2E environment
+        if: always()
+        run: scripts/bootstrap_clean_e2e_env.sh down

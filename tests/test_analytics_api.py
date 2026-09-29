@@ -138,3 +138,54 @@ def test_structured_overview_does_not_mutate_production_invariants():
         client.get("/analytics/structured/overview")
     after = asyncio.run(_counts())
     assert before == after == (219, 5)
+
+
+# --- Phase 16 Slice 2: security regression -- no client-controlled -------
+# artifact path / experiment selector on either analytics endpoint.
+#
+# There is no vulnerable parameter to add here -- the actual security
+# property (from backend/app/analytics/snapshot.py's own docstring) is
+# that neither route accepts ANY request parameter at all, so there is
+# nothing for a caller to inject a path/experiment_id through. These
+# tests document and lock in that property directly, via the app's own
+# OpenAPI schema (the authoritative description of what each route
+# accepts) plus a live request proving an attempted injection is simply
+# ignored, never interpreted as a file-selecting argument.
+
+
+def test_evaluation_snapshot_route_declares_zero_parameters_in_its_openapi_schema():
+    schema = app.openapi()
+    operation = schema["paths"]["/analytics/evaluation/snapshot"]["get"]
+    assert operation.get("parameters", []) == []
+    assert "requestBody" not in operation
+
+
+def test_structured_overview_route_declares_zero_parameters_in_its_openapi_schema():
+    schema = app.openapi()
+    operation = schema["paths"]["/analytics/structured/overview"]["get"]
+    assert operation.get("parameters", []) == []
+    assert "requestBody" not in operation
+
+
+def test_evaluation_snapshot_ignores_an_attempted_path_traversal_query_param():
+    """FastAPI silently ignores a query parameter no route function
+    declares -- so a caller attempting `?experiment_id=../../etc/passwd`
+    or `?path=../../` cannot influence which artifact is read; the
+    response is byte-identical to a plain request."""
+    with TestClient(app) as client:
+        plain = client.get("/analytics/evaluation/snapshot")
+        with_injection_attempt = client.get(
+            "/analytics/evaluation/snapshot",
+            params={
+                "experiment_id": "../../../../etc/passwd",
+                "path": "../../secrets.json",
+                "artifact_path": "/etc/shadow",
+            },
+        )
+    assert plain.status_code == with_injection_attempt.status_code
+    assert plain.json() == with_injection_attempt.json()
+
+
+# (The structural "no public function accepts a path/experiment_id
+# argument" check already exists in tests/test_analytics_snapshot.py --
+# not duplicated here.)

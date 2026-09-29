@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { Analytics } from "./Analytics";
 import { SystemStatusProvider } from "./SystemStatusProvider";
@@ -300,6 +301,30 @@ describe("Analytics", () => {
     await waitFor(() => expect(screen.getAllByText(/temporarily unavailable/i).length).toBeGreaterThan(0));
   });
 
+  it("does not hide the Evaluation Snapshot panel when Structured Analytics fails", async () => {
+    setupFetchMock({
+      structuredResponse: () => jsonResponse({ error: { code: "structured_overview_unavailable" } }, { status: 503 }),
+    });
+    renderAnalytics();
+    // The failing panel shows its own error...
+    await waitFor(() => expect(screen.getAllByText(/temporarily unavailable/i).length).toBeGreaterThan(0));
+    // ...while the healthy Evaluation Snapshot panel still renders its real content.
+    expect(screen.getByRole("heading", { name: "Evaluation Overview" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Claim Matrix" })).toBeInTheDocument();
+  });
+
+  it("does not hide the Structured Analytics panel when the Evaluation Snapshot fails", async () => {
+    setupFetchMock({
+      snapshotResponse: () => jsonResponse({ error: { code: "evaluation_snapshot_unavailable" } }, { status: 503 }),
+    });
+    renderAnalytics();
+    // The failing panel shows its own error...
+    await waitFor(() => expect(screen.getAllByText(/temporarily unavailable/i).length).toBeGreaterThan(0));
+    // ...while the healthy Structured Analytics panel still renders its real content.
+    expect(screen.getByRole("heading", { name: "Synthetic FHIR Population Analytics" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Synthetic SynPUF Claims Analytics" })).toBeInTheDocument();
+  });
+
   it("renders a not-evaluated citation rate as text, never as 0%", async () => {
     setupFetchMock({});
     renderAnalytics();
@@ -460,6 +485,36 @@ describe("Analytics", () => {
     expect(screen.getByText(/1e55c381f68f3e0fe021b217a49ad05d246e87943a7f33cc5780e3e1bf31bcc2/)).toBeInTheDocument();
     expect(document.body).not.toHaveTextContent(/\/Users\//);
     expect(document.body).not.toHaveTextContent(/api[_-]?key/i);
+  });
+
+  // --- Slice 2 (Phase 16): Evaluation Provenance interaction -----------------
+
+  it("starts the Evaluation Provenance details collapsed, and expanding it via a real click reveals the real fields", async () => {
+    setupFetchMock({});
+    renderAnalytics();
+    await waitFor(() => expect(screen.getByRole("heading", { name: "Evaluation Provenance" })).toBeInTheDocument());
+
+    const details = screen
+      .getByText("Show experiment metadata and evaluated configuration")
+      .closest("details") as HTMLDetailsElement;
+    expect(details).not.toBeNull();
+
+    // Collapsed initial state: the <details> element itself is not open,
+    // and its field content is not visible (native <details> semantics --
+    // the content is present in the DOM but hidden until expanded).
+    expect(details.open).toBe(false);
+    expect(screen.queryByText("eb59bc90_774ea9a697a1")).not.toBeVisible();
+
+    // A real user interaction (not a raw DOM .click()) expands it.
+    const user = userEvent.setup();
+    await user.click(screen.getByText("Show experiment metadata and evaluated configuration"));
+
+    expect(details.open).toBe(true);
+    // Real provenance fields become visible -- not fabricated placeholder text.
+    expect(screen.getByText("eb59bc90_774ea9a697a1")).toBeVisible();
+    expect(screen.getByText("eb59bc90_a223469082ce")).toBeVisible();
+    expect(screen.getByText("eb59bc90_reranker_comparison")).toBeVisible();
+    expect(screen.getByText(/1e55c381f68f3e0fe021b217a49ad05d246e87943a7f33cc5780e3e1bf31bcc2/)).toBeVisible();
   });
 
   // --- Slice 3: FHIR population analytics -----------------------------------

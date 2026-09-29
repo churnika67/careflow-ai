@@ -169,6 +169,41 @@ raw archive is absent; network/model integration tests require the flags above.
 Synthetic vectors test storage behavior only; semantic checks use the real model.
 See [Phase 1 verification](docs/phase1_verification.md) for measured results and commands.
 
+### Browser E2E (Phase 16)
+
+A small, bounded Playwright suite (`frontend/e2e/`) covers nine critical
+journeys — smoke, policy, FHIR, SynPUF, analytics, the combined
+policy+structured multi-agent workflow, the HITL review lifecycle, a
+dependency-degradation/recovery check, and an abstention journey —
+against the real running stack. See
+[Phase 16 guide](docs/phase16_testing_ci_design.md) for the full design.
+With Postgres/Qdrant/Redis/backend already up and the Phase 8 dev-subset
+ingested:
+
+```bash
+cd frontend
+npx playwright install chromium  # first time only
+npm run test:e2e
+```
+
+To prove the same suite against a completely fresh environment instead
+of your own developer stack (an isolated Docker Compose project on
+different ports — your existing stack and data are never touched):
+
+```bash
+scripts/bootstrap_clean_e2e_env.sh up    # builds + ingests a clean stack
+scripts/bootstrap_clean_e2e_env.sh down  # tears it down completely
+```
+
+### Continuous integration (Phase 16)
+
+`.github/workflows/ci.yml` runs on every pull request and every push to
+`main`: `backend-quality`, `frontend-quality`, `backend-tests`,
+`frontend-tests`, a deterministic `integration-tests` subset, and `e2e`
+(the same clean-bootstrap suite above). No job needs an OpenAI key or
+any other repository secret. See
+[Phase 16 guide](docs/phase16_testing_ci_design.md) for the full design.
+
 ## Architecture
 
 Implemented infrastructure, ingestion and basic RAG:

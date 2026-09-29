@@ -13,6 +13,12 @@
 # testing
 /coverage
 
+# Playwright (Phase 16 Slice 2) -- generated reports/traces/results, never
+# the test source under e2e/
+/playwright-report/
+/test-results/
+/blob-report/
+
 # next.js
 /.next/
 /out/

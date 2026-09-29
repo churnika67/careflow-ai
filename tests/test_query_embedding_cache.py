@@ -228,7 +228,20 @@ def test_hit_returns_cached_vector_without_calling_the_model():
     assert events[0]["cache_write_status"] is None
     log_text = buffer.getvalue()
     assert "hospital bed" not in log_text
-    assert "1.0" not in log_text and "2.0" not in log_text and "3.0" not in log_text
+    # Vector values must never leak into the log. Checked against every
+    # field except `timestamp` and `duration_ms`: both are genuine,
+    # non-deterministic wall-clock values (real time, not mocked), and
+    # their own digits can coincidentally contain a "N.0"-shaped
+    # substring purely by chance -- e.g. a timestamp second ending in 1
+    # followed by a fractional part starting with 0 produces "...1.0..."
+    # with no relation whatsoever to the cached [1.0, 2.0, 3.0] vector.
+    # This was a real, rare (order of a few percent per run), reproduced
+    # flake, not a false alarm -- see docs/phase16_testing_ci_design.md's
+    # flaky-test audit for how it was caught and confirmed.
+    safe_text = json.dumps(
+        {k: v for k, v in events[0].items() if k not in ("timestamp", "duration_ms")}
+    )
+    assert "1.0" not in safe_text and "2.0" not in safe_text and "3.0" not in safe_text
 
 
 # --- MISS behavior (section 18) ------------------------------------------------
