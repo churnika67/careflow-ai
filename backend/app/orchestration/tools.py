@@ -288,6 +288,33 @@ class ToolExecutionResult:
     error: str | None = None
 
 
+def precheck_tool_call(
+    route: Route, tool_name: str | None, raw_arguments: dict[str, Any] | None
+) -> ToolExecutionResult | None:
+    """The same tool-name/route/argument validation execute_tool() applies,
+    factored out so a caller can run it before opening a database
+    connection. Returns the failure ToolExecutionResult a doomed call would
+    get from execute_tool() anyway, or None when the call is valid and a
+    connection is genuinely needed. A caller that skips this and always
+    connects first pays for a real database round trip on every invalid
+    tool name or malformed argument set, purely to reject it — see
+    app/orchestration/graph.py::_run_structured_route and
+    app/agents/structured_specialist.py, both of which use this to defer
+    connecting until at least one call in a request is actually valid."""
+    if not tool_name:
+        return ToolExecutionResult("", False, None, None, None, error="missing_tool_name")
+    spec = TOOL_REGISTRY.get(tool_name)
+    if spec is None or spec.route != route:
+        return ToolExecutionResult(tool_name, False, None, None, None, error="unsupported_tool")
+    try:
+        spec.argument_schema.model_validate(raw_arguments or {})
+    except ValidationError:
+        return ToolExecutionResult(
+            tool_name, False, None, None, spec.source_dataset, error="invalid_tool_arguments"
+        )
+    return None
+
+
 async def execute_tool(
     connection: psycopg.AsyncConnection,
     route: Route,
@@ -300,17 +327,11 @@ async def execute_tool(
     Pydantic validation. Returns unsupported_tool for an unknown name or a
     tool whose registered route does not match the current route (this is
     what rejects e.g. route=FHIR combined with a SYNPUF-only tool)."""
-    if not tool_name:
-        return ToolExecutionResult("", False, None, None, None, error="missing_tool_name")
-    spec = TOOL_REGISTRY.get(tool_name)
-    if spec is None or spec.route != route:
-        return ToolExecutionResult(tool_name, False, None, None, None, error="unsupported_tool")
-    try:
-        args = spec.argument_schema.model_validate(raw_arguments or {})
-    except ValidationError:
-        return ToolExecutionResult(
-            tool_name, False, None, None, spec.source_dataset, error="invalid_tool_arguments"
-        )
+    precheck = precheck_tool_call(route, tool_name, raw_arguments)
+    if precheck is not None:
+        return precheck
+    spec = TOOL_REGISTRY[tool_name]
+    args = spec.argument_schema.model_validate(raw_arguments or {})
     data = await spec.implementation(connection, args)
     record_count = len(data) if isinstance(data, list) else (0 if data is None else 1)
     return ToolExecutionResult(tool_name, True, data, record_count, spec.source_dataset)

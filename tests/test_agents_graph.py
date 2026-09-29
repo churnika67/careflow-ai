@@ -174,10 +174,15 @@ async def test_supervisor_resolves_structured_route_from_explicit_request(graph)
     assert result["structured_route"] == Route.SYNPUF
 
 
+@pytestmark_live
 async def test_supervisor_via_classifier_resolves_structured_route():
     # No requested_workflow: exercises the real classify_workflow() fallback
-    # through the real graph. Uses STRUCTURED_ONLY so it stays live-free
-    # (the Slice 1 structured placeholder has no I/O).
+    # through the real graph. STRUCTURED_ONLY still reaches the real
+    # structured specialist node (Phase 10's own implementation, not a
+    # placeholder), which opens a real Postgres connection to resolve the
+    # classifier-extracted beneficiary id -- gated behind
+    # CAREFLOW_MULTI_AGENT_INTEGRATION like the graph's other live paths,
+    # not "live-free" as an earlier phase's stale comment here claimed.
     graph = build_multi_agent_graph(get_settings())
     result = await graph.ainvoke(
         {"question": "What claims does beneficiary 00013D2EFD8E45D1 have?"}

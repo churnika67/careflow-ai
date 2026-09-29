@@ -14,7 +14,7 @@ from app.core.config import Settings
 from app.db.connection import connect
 from app.observability.logging import log_event
 from app.orchestration.models import AbstentionReason, Route
-from app.orchestration.tools import execute_tool
+from app.orchestration.tools import execute_tool, precheck_tool_call
 
 logger = logging.getLogger(__name__)
 
@@ -106,12 +106,22 @@ async def run_structured_specialist(state: MultiAgentState, settings: Settings) 
         )
         return {"structured_results": [_empty_attempt(error="too_many_tool_calls")]}
 
-    connection = await connect(settings)
+    # A connection is opened lazily, on the first call in this request that
+    # actually needs one -- a request whose every tool call is unsupported
+    # or malformed never opens one at all (see
+    # orchestration/tools.py::precheck_tool_call's docstring).
+    connection = None
     results = []
     try:
         for tool_name, arguments in calls:
             started = perf_counter()
-            outcome = await execute_tool(connection, route, tool_name, arguments)
+            precheck = precheck_tool_call(route, tool_name, arguments)
+            if precheck is not None:
+                outcome = precheck
+            else:
+                if connection is None:
+                    connection = await connect(settings)
+                outcome = await execute_tool(connection, route, tool_name, arguments)
             duration_ms = (perf_counter() - started) * 1000
             abstention_reason = None
             if outcome.success and outcome.data is None and tool_name in _UNKNOWN_RECORD_REASON:
@@ -139,5 +149,6 @@ async def run_structured_specialist(state: MultiAgentState, settings: Settings) 
                 error_category=outcome.error,
             )
     finally:
-        await connection.close()
+        if connection is not None:
+            await connection.close()
     return {"structured_results": results}

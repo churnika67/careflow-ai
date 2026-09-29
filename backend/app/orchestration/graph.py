@@ -14,7 +14,7 @@ from app.db.connection import connect
 from app.orchestration.classify import classify
 from app.orchestration.models import AbstentionReason, GraphState, Route, Status
 from app.orchestration.policy_adapter import call_policy
-from app.orchestration.tools import execute_tool
+from app.orchestration.tools import execute_tool, precheck_tool_call
 
 _TOOL_ERROR_TO_ABSTENTION = {
     "unsupported_tool": AbstentionReason.UNSUPPORTED_TOOL,
@@ -111,11 +111,22 @@ async def _run_structured_route(state: GraphState, settings: Settings, route: Ro
         tool_name = default_tool
         tool_arguments = {id_field: result.extracted_id}
 
-    connection = await connect(settings)
-    try:
-        outcome = await execute_tool(connection, route, tool_name, tool_arguments)
-    finally:
-        await connection.close()
+    # Validate before ever connecting -- an unsupported tool name or invalid
+    # arguments must abstain without opening a database connection at all
+    # (see tools.py::precheck_tool_call's own docstring for why: this used
+    # to connect unconditionally, which meant every rejected tool call still
+    # paid for a real database round trip, and a genuinely unreachable
+    # database turned a clean abstention into an unhandled connection
+    # error).
+    precheck = precheck_tool_call(route, tool_name, tool_arguments)
+    if precheck is not None:
+        outcome = precheck
+    else:
+        connection = await connect(settings)
+        try:
+            outcome = await execute_tool(connection, route, tool_name, tool_arguments)
+        finally:
+            await connection.close()
 
     if not outcome.success:
         reason = _TOOL_ERROR_TO_ABSTENTION.get(outcome.error, AbstentionReason.UNSUPPORTED_REQUEST)

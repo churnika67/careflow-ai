@@ -79,7 +79,33 @@ def test_abstention_is_a_200_and_does_not_count_as_internal_error():
     assert http_requests_total.snapshot()[("POST", "/orchestrate", "2xx")] == 1
 
 
-def test_dynamic_review_id_becomes_the_route_template_not_the_raw_id():
+def test_dynamic_review_id_becomes_the_route_template_not_the_raw_id(monkeypatch):
+    # This test's real subject is metrics route-templating, not review
+    # lookup -- it needs some real 4xx response from GET /reviews/{id}, and
+    # a non-UUID-shaped id naturally produces one via the same
+    # InvalidTextRepresentation path get_review() already handles (see
+    # app/api/reviews.py::get_review_detail). Mocking connect()/get_review()
+    # here reproduces that exact response without a real database
+    # connection, so this stays a true unit test rather than silently
+    # depending on Compose being up (which it always incidentally was on
+    # every machine this suite had previously been run on, masking the
+    # dependency).
+    import psycopg
+    from app.api import reviews as reviews_module
+
+    class _FakeConnection:
+        async def close(self):
+            pass
+
+    async def _fake_connect(_settings):
+        return _FakeConnection()
+
+    async def _fake_get_review(_connection, _review_id):
+        raise psycopg.errors.InvalidTextRepresentation()
+
+    monkeypatch.setattr(reviews_module, "connect", _fake_connect)
+    monkeypatch.setattr(reviews_module, "get_review", _fake_get_review)
+
     distinctive_id = "totally-unique-review-id-marker-98765"
     with TestClient(app) as client:
         client.get(f"/reviews/{distinctive_id}")

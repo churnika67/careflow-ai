@@ -96,6 +96,28 @@ echo "[bootstrap] applying schema migrations (python -m app.db.migrate)..."
 DATABASE_URL="$DATABASE_URL" QDRANT_URL="$QDRANT_URL" REDIS_URL="$REDIS_URL" \
   python -m app.db.migrate
 
+# Raw source archives are large and deliberately gitignored (see
+# docs/cms_ingestion.md, docs/phase8_structured_health_data.md's
+# "Reproduction" section) -- a genuinely fresh checkout has none of them.
+# Downloaded here with the exact same commands those docs already give,
+# skipped when already present (this script also runs against a developer
+# machine that likely already has them, where re-downloading ~130MB on
+# every invocation would be pure waste). Each file's own checksum is
+# verified by the ingestion pipeline itself against the committed
+# docs/cms_inspection/*_profile.json, not by this script.
+echo "[bootstrap] fetching raw source archives (skipped if already present)..."
+mkdir -p data/raw/cms_coverage data/raw/cms_synpuf data/raw/synthea
+[[ -f data/raw/cms_coverage/ncd.zip ]] || curl -sSfL -o data/raw/cms_coverage/ncd.zip \
+  "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/ncd.zip"
+[[ -f data/raw/cms_synpuf/beneficiary_2008_sample1.zip ]] || curl -sL -o data/raw/cms_synpuf/beneficiary_2008_sample1.zip \
+  "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_beneficiary_summary_file_sample_1.zip"
+[[ -f data/raw/cms_synpuf/inpatient_sample1.zip ]] || curl -sL -o data/raw/cms_synpuf/inpatient_sample1.zip \
+  "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_to_2010_inpatient_claims_sample_1.zip"
+[[ -f data/raw/cms_synpuf/outpatient_sample1.zip ]] || curl -sL -o data/raw/cms_synpuf/outpatient_sample1.zip \
+  "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_to_2010_outpatient_claims_sample_1.zip"
+[[ -f data/raw/synthea/fhir_r4_nov2021.zip ]] || curl -sSfL -o data/raw/synthea/fhir_r4_nov2021.zip \
+  "https://github.com/synthetichealth/synthea-sample-data/raw/main/downloads/synthea_sample_data_fhir_r4_nov2021.zip"
+
 echo "[bootstrap] ingesting CMS policy corpus (python -m ingestion.cli ingest)..."
 DATABASE_URL="$DATABASE_URL" QDRANT_URL="$QDRANT_URL" REDIS_URL="$REDIS_URL" \
   python -m ingestion.cli ingest --qdrant-url "$QDRANT_URL" --reindex
