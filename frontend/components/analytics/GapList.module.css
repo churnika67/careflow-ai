@@ -1,0 +1,58 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.groupHeading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.groupCount {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.entry {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.entry[data-status="OPEN"] {
+  border-left: 3px solid var(--color-status-degraded);
+}
+
+.entry[data-status="DOCUMENTED_LIMITATION"] {
+  border-left: 3px solid var(--color-status-checking);
+}
+
+.entry[data-status="OUT_OF_SCOPE_PHASE12"] {
+  border-left: 3px solid var(--color-border);
+}
+
+.entryTitle {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.entryMeta {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  margin-top: var(--space-xs);
+}
+
+.entryEvidence {
+  margin-top: var(--space-xs);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.highlighted {
+  border-width: 2px;
+  border-left-width: 4px;
+}

@@ -35,15 +35,13 @@ describe("Sidebar active state", () => {
     expect(screen.getByRole("link", { name: "System Overview" })).not.toHaveAttribute("aria-current");
   });
 
-  it("renders Analytics as a disabled placeholder, never a fake functional link", () => {
-    renderSidebar("/");
-    expect(screen.queryByRole("link", { name: /Analytics/ })).not.toBeInTheDocument();
-    const analytics = screen.getByText("Analytics").closest("[aria-disabled]");
-    expect(analytics).toHaveAttribute("aria-disabled", "true");
-    expect(screen.getByText("Coming soon")).toBeInTheDocument();
+  it("marks Analytics active on the exact /analytics path (Phase 15 Slice 1)", () => {
+    renderSidebar("/analytics");
+    expect(screen.getByRole("link", { name: "Analytics" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("link", { name: "Reviews" })).not.toHaveAttribute("aria-current");
   });
 
-  it("exposes every functional nav item as a real, keyboard-reachable link", () => {
+  it("exposes every nav item as a real, keyboard-reachable link -- no disabled placeholder remains", () => {
     renderSidebar("/");
     for (const label of [
       "System Overview",
@@ -53,8 +51,10 @@ describe("Sidebar active state", () => {
       "CareFlow Assistant",
       "Evidence Workflow",
       "Reviews",
+      "Analytics",
     ]) {
       expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
     }
+    expect(screen.queryByText("Coming soon")).not.toBeInTheDocument();
   });
 });

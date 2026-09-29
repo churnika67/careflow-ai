@@ -10,10 +10,10 @@ interface NavItem {
 }
 
 // Ask CareFlow (Slice 2), Patient Data/Claims (Slice 3), CareFlow
-// Assistant (Slice 4), Evidence Workflow (Slice 5), and Reviews (Slice 6)
-// are functional. Analytics remains visibly present but clearly inactive
-// (no href, aria-disabled, a "Coming soon" note) -- never a fake
-// functional screen.
+// Assistant (Slice 4), Evidence Workflow (Slice 5), Reviews (Slice 6), and
+// Analytics (Phase 15 Slice 1 -- a foundation shell, not yet the full
+// dashboard) are all functional. Every nav item now links somewhere real;
+// there is no remaining disabled/"Coming soon" placeholder link.
 const NAV_ITEMS: NavItem[] = [
   { label: "System Overview", href: "/" },
   { label: "Ask CareFlow", href: "/ask" },
@@ -22,7 +22,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "CareFlow Assistant", href: "/assistant" },
   { label: "Evidence Workflow", href: "/workflow" },
   { label: "Reviews", href: "/reviews" },
-  { label: "Analytics" },
+  { label: "Analytics", href: "/analytics" },
 ];
 
 export function Sidebar() {

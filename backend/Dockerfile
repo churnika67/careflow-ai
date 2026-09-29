@@ -7,6 +7,26 @@ RUN pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu \
     && useradd --create-home --uid 10001 careflow
 COPY backend ./backend
 COPY ingestion ./ingestion
+# Phase 15 Slice 1: the read-only analytics API surfaces existing Phase 12
+# evaluation evidence by reading these directories directly (fixed
+# canonical paths, never a client-supplied path) -- without them the
+# container has no evaluation artifacts to serve at all. Small (~3.9MB
+# combined); no dataset/model weights live here. `evaluation/` is imported
+# only for its lightweight, dependency-free claim_governance module (json
+# claim-matrix/gap-registry parsing and validation only) -- importing it
+# does not pull in sentence-transformers/torch/qdrant-client, which
+# `evaluation`'s other submodules use but its own __init__.py does not.
+COPY artifacts/evaluation ./artifacts/evaluation
+COPY docs/evaluation ./docs/evaluation
+COPY evaluation ./evaluation
+# evaluation/artifacts.py writes each experiment directory via
+# tempfile.mkdtemp(), which is mode 0700 -- correct on the host (only the
+# developer who ran the experiment needs access), but COPY preserves that
+# mode verbatim, and the container runs as the unprivileged `careflow`
+# user (added below), not root. Relax read/traverse permissions on this
+# container's own copy only; the host repository's file modes are
+# untouched.
+RUN chmod -R a+rX ./artifacts/evaluation ./docs/evaluation
 RUN pip install --no-deps .
 USER careflow
 EXPOSE 8000

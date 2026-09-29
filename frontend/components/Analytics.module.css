@@ -1,0 +1,186 @@
+.page {
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.subheading {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  max-width: 68ch;
+  line-height: 1.5;
+}
+
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.panel h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.panelSubheading {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  max-width: 68ch;
+  line-height: 1.5;
+}
+
+.blockedReason {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.loading {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.snapshotContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.card h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.card h4 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-top: var(--space-sm);
+}
+
+.card[data-status="OPEN"] {
+  border-left: 3px solid var(--color-status-degraded);
+  background: var(--color-status-degraded-bg);
+}
+
+.snapshotLabel {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.snapshotLabelTag {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.cardNote {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.claimList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.claimList > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.claimList dt {
+  color: var(--color-text-muted);
+}
+
+.claimList dd {
+  font-weight: 600;
+}
+
+.limitationsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  padding-left: 1.25rem;
+}
+
+.comingSoon {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-style: italic;
+}
+
+.datasetColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.datasetColumn h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tableScroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.tableCaption {
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table th,
+.table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}

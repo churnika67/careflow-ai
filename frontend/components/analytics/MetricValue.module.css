@@ -1,0 +1,8 @@
+.notEvaluated {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.rate {
+  font-variant-numeric: tabular-nums;
+}

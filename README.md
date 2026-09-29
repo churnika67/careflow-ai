@@ -7,22 +7,31 @@ a coordinated evidence workflow, and a human review/audit trail on top of it.
 It is an engineering portfolio project, not a clinical decision system — it
 never determines coverage, eligibility, medical necessity, or claim approval.
 
-**Current scope: Phase 14 — frontend.** The backend now implements, on top of
-the Phase 1-7 policy RAG pipeline: an independent structured-data layer (CMS
-DE-SynPUF synthetic claims and Synthea synthetic FHIR R4 patient records,
-Phase 8), a deterministic `langgraph.StateGraph` router (`POST /orchestrate`,
-Phase 9), a bounded multi-agent evidence workflow that can combine policy and
-structured evidence with a deterministic validator (`POST /multi-agent`,
-Phase 10), and a human-in-the-loop review/audit state machine
-(`POST /reviewable-query`, `GET /reviews`, Phase 11). Phase 14 adds a
-Next.js/TypeScript frontend exposing all of the above: Medicare policy Q&A,
-synthetic FHIR/SynPUF lookups, the free-text router, the coordinated evidence
-workflow, and the review queue/detail/decision UI. See the
-[Phase 8](docs/phase8_structured_health_data.md),
+**Current scope: Phase 15 — evaluation/analytics dashboard.** The backend now
+implements, on top of the Phase 1-7 policy RAG pipeline: an independent
+structured-data layer (CMS DE-SynPUF synthetic claims and Synthea synthetic
+FHIR R4 patient records, Phase 8), a deterministic `langgraph.StateGraph`
+router (`POST /orchestrate`, Phase 9), a bounded multi-agent evidence
+workflow that can combine policy and structured evidence with a
+deterministic validator (`POST /multi-agent`, Phase 10), a human-in-the-loop
+review/audit state machine (`POST /reviewable-query`, `GET /reviews`, Phase
+11), and a reproducible retrieval/reranker/threshold/latency evaluation
+package (`evaluation/`, Phase 12). Phase 14 adds a Next.js/TypeScript
+frontend exposing all of the above: Medicare policy Q&A, synthetic
+FHIR/SynPUF lookups, the free-text router, the coordinated evidence
+workflow, and the review queue/detail/decision UI. Phase 15 adds a
+read-only Analytics page (`GET /analytics/evaluation/snapshot`,
+`GET /analytics/structured/overview`) exposing that Phase 12 evaluation
+evidence — retrieval quality, reranker rank-change and latency tradeoff,
+threshold behavior, citation-to-expected-evidence match, the claim matrix,
+and the evaluation gap registry — alongside population-level (never
+patient-level) aggregate analytics over the synthetic FHIR and SynPUF
+datasets. See the [Phase 8](docs/phase8_structured_health_data.md),
 [Phase 9](docs/phase9_langgraph_orchestration.md),
 [Phase 10](docs/phase10_multi_agent_architecture.md),
-[Phase 11](docs/phase11_hitl_audit_workflow.md), and
-[Phase 14](docs/phase14_frontend_design.md) guides for architecture, real
+[Phase 11](docs/phase11_hitl_audit_workflow.md),
+[Phase 14](docs/phase14_frontend_design.md), and
+[Phase 15](docs/phase15_analytics_design.md) guides for architecture, real
 findings, schema/graph details, and reproduction steps. `POST /query`'s
 original contract remains unchanged throughout.
 
@@ -45,8 +54,8 @@ See the [dataset analysis](docs/cms_dataset_analysis.md),
 [Phase 6 model, windowing, evaluation and verification](docs/cms_cross_encoder_reranking.md).
 See the [Phase 7 evaluation guide](docs/evaluation/README.md) and
 [measured results and failures](docs/evaluation/retrieval_eval_v1.md).
-Authentication, an evaluation/analytics dashboard, and CI remain later phases
-(15-17) — see "Roadmap and limitations" below.
+Authentication and CI remain later phases (16-17) — see "Roadmap and
+limitations" below.
 
 ## Run locally
 
@@ -115,6 +124,12 @@ design record. It exposes:
 - **Reviews** (`/reviews`, `/reviews/[reviewId]`) — the human-in-the-loop
   review queue, evidence snapshot, audit history, and approve/reject/
   request-revision decisions
+- **Analytics** (`/analytics`, Phase 15) — a read-only Phase 12 evaluation
+  snapshot (retrieval quality, reranker analysis, threshold behavior,
+  latency, citation-to-expected-evidence match, the claim matrix, and the
+  evaluation gap registry, all read from existing artifacts) alongside
+  population-level (never patient-level) FHIR/SynPUF aggregate analytics —
+  see the [Phase 15 guide](docs/phase15_analytics_design.md)
 
 Synthetic data is always labeled as such; the review "approved" state means
 the reviewer accepted the output for the application workflow only — it is
@@ -190,20 +205,27 @@ structured-data tools. Phase 10 adds a bounded multi-agent workflow
 (`POST /multi-agent`) that can run the policy and structured branches
 together and validates the combined result. Phase 11 adds a human review/
 audit state machine (`POST /reviewable-query`, `GET /reviews`) on top of
-that validator's output. Phase 14 adds the Next.js/TypeScript frontend
-exposing all of the above — see the
+that validator's output. Phase 12 adds a reproducible evaluation package
+(`evaluation/`) measuring retrieval, chunking, threshold/abstention,
+citation wiring, latency, and reranker behavior against frozen datasets.
+Phase 14 adds the Next.js/TypeScript frontend exposing the Phase 8-11
+capabilities — see the
 [Phase 9](docs/phase9_langgraph_orchestration.md),
 [Phase 10](docs/phase10_multi_agent_architecture.md),
 [Phase 11](docs/phase11_hitl_audit_workflow.md), and
-[Phase 14](docs/phase14_frontend_design.md) guides. An evaluation/analytics
-dashboard and authentication remain planned (Phase 15+).
+[Phase 14](docs/phase14_frontend_design.md) guides. Phase 15 adds a
+read-only Analytics page (`app/analytics/`, `backend/app/analytics/`)
+surfacing that Phase 12 evaluation evidence plus population-level FHIR/
+SynPUF aggregates — see the
+[Phase 15](docs/phase15_analytics_design.md) guide. Authentication and CI
+remain planned (Phase 16+).
 
 ## Repository
 
 | Path | Purpose |
 | --- | --- |
 | `backend/app/` | FastAPI health/query APIs, settings, generation providers and evidence validation |
-| `frontend/` | Next.js/TypeScript frontend: policy Q&A, router, synthetic FHIR/SynPUF lookups, evidence workflow, human review (Phase 14) |
+| `frontend/` | Next.js/TypeScript frontend: policy Q&A, router, synthetic FHIR/SynPUF lookups, evidence workflow, human review (Phase 14), evaluation/population analytics (Phase 15) |
 | `ingestion/` | CMS NCD ingestion, chunking, embeddings, Qdrant indexing and search; other sources reserved |
 | `evaluation/` | Versioned development label validation, retrieval metrics, eligibility analysis and reports |
 | `tests/` | API, source, chunking, storage, embeddings and live search tests |
@@ -356,16 +378,23 @@ The approved sequence is: (1) scaffold, (2) CMS inspection, (3) ingestion,
 (8) structured datasets, (9) router/tools, (10) full agent workflow,
 (11) review/audit, (12) evaluation/experiments, (13) caching/reliability,
 (14) frontend, (15) evaluation/analytics dashboard, (16) tests/CI,
-(17) GitHub polish. Phases 1-14 are implemented and verified, including a
+(17) GitHub polish. Phases 1-15 are implemented and verified, including a
 full frontend over the Phase 8-11 backend capabilities (Medicare policy Q&A,
 synthetic FHIR/SynPUF lookups, the router, the coordinated evidence
-workflow, and human review/audit). Phase 15 (evaluation/analytics
-dashboard) has not started; population-level aggregate FHIR/SynPUF tools
-exist in the backend's tool registry but are not yet exposed anywhere in
-the frontend. No authentication is implemented anywhere in the project —
-the review workflow's `reviewer_id` is a caller-supplied, non-authoritative
-string, never a verified identity. Every phase requires working
-verification and user approval before proceeding.
+workflow, and human review/audit), plus a read-only Analytics page (Phase
+15) that surfaces Phase 12's evaluation evidence (retrieval quality by
+mode, the isolated reranker comparison and its latency cost, the frozen
+threshold sweep, latency by boundary, the citation-to-expected-evidence
+metric, the claim matrix, and the full evaluation gap registry — all read
+from existing, already-persisted artifacts, never re-computed) and
+population-level aggregate FHIR/SynPUF analytics using the backend's
+existing 9-tool aggregate registry (4 FHIR, 5 SynPUF). See
+[Phase 15](docs/phase15_analytics_design.md) for the full audit, metric
+semantics, and known limitations. No authentication is implemented
+anywhere in the project — the review workflow's `reviewer_id` is a
+caller-supplied, non-authoritative string, never a verified identity.
+Every phase requires working verification and user approval before
+proceeding.
 
 Future AWS mapping: S3 for documents, RDS PostgreSQL, ElastiCache Redis,
 ECS/Fargate for the API, ECR images, Secrets Manager, and CloudWatch. Qdrant hosting
