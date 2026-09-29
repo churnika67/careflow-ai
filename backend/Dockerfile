@@ -7,6 +7,21 @@ RUN pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu \
     && useradd --create-home --uid 10001 careflow
 COPY backend ./backend
 COPY ingestion ./ingestion
+# Phase 17 Slice 2: docker-compose.yml's local dev topology bind-mounts
+# .cache/models from the host, so this image has never needed the
+# embedding model baked in before -- a real deployment target has no such
+# host mount. Bakes it in at build time instead, reusing the exact
+# MODEL_NAME/MODEL_REVISION this image's own runtime code already pins
+# (ingestion/embeddings/providers.py), so the pinned revision is never
+# duplicated or silently changed here. RAG_EMBEDDING_OFFLINE=true (set
+# below) then means the running container never attempts a network model
+# fetch at request time, matching Phase 1's original offline-serving
+# design intent -- just applied consistently, since this image was never
+# actually runnable standalone (without the compose host mount) before.
+RUN python -c "\
+from ingestion.embeddings.providers import MODEL_NAME, MODEL_REVISION; \
+from sentence_transformers import SentenceTransformer; \
+SentenceTransformer(MODEL_NAME, revision=MODEL_REVISION, cache_folder='.cache/models')"
 # Phase 15 Slice 1: the read-only analytics API surfaces existing Phase 12
 # evaluation evidence by reading these directories directly (fixed
 # canonical paths, never a client-supplied path) -- without them the
@@ -26,7 +41,7 @@ COPY evaluation ./evaluation
 # user (added below), not root. Relax read/traverse permissions on this
 # container's own copy only; the host repository's file modes are
 # untouched.
-RUN chmod -R a+rX ./artifacts/evaluation ./docs/evaluation
+RUN chmod -R a+rX ./artifacts/evaluation ./docs/evaluation .cache
 RUN pip install --no-deps .
 USER careflow
 EXPOSE 8000
