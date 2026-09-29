@@ -107,8 +107,20 @@ DATABASE_URL="$DATABASE_URL" QDRANT_URL="$QDRANT_URL" REDIS_URL="$REDIS_URL" \
 # docs/cms_inspection/*_profile.json, not by this script.
 echo "[bootstrap] fetching raw source archives (skipped if already present)..."
 mkdir -p data/raw/cms_coverage data/raw/cms_synpuf data/raw/synthea
-[[ -f data/raw/cms_coverage/ncd.zip ]] || curl -sSfL -o data/raw/cms_coverage/ncd.zip \
-  "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/ncd.zip"
+# The CMS NCD archive is the one exception to "download the live source":
+# https://downloads.cms.gov/.../exports/ncd.zip is CMS's *current* export,
+# not a pinned historical release like the FHIR/SynPUF URLs below -- CMS
+# updates it over time, so a fresh download today legitimately no longer
+# matches the archive_sha256 in the already-committed, already-reviewed
+# docs/cms_inspection/ncd_profile.json (confirmed empirically: this is
+# exactly the checksum-gate failure a genuinely fresh CI runner hit).
+# docs/cms_ingestion.md already documented this as a known upstream
+# limitation ("preserve your original download") before this was found.
+# The exact byte-identical archive that profile was built from is
+# committed at docs/cms_inspection/ncd.zip (1.3MB, public CMS policy
+# data, not fetched from the live/drifting URL) -- copied from there
+# instead of re-downloaded.
+[[ -f data/raw/cms_coverage/ncd.zip ]] || cp docs/cms_inspection/ncd.zip data/raw/cms_coverage/ncd.zip
 [[ -f data/raw/cms_synpuf/beneficiary_2008_sample1.zip ]] || curl -sL -o data/raw/cms_synpuf/beneficiary_2008_sample1.zip \
   "https://www.cms.gov/research-statistics-data-and-systems/downloadable-public-use-files/synpufs/downloads/de1_0_2008_beneficiary_summary_file_sample_1.zip"
 [[ -f data/raw/cms_synpuf/inpatient_sample1.zip ]] || curl -sL -o data/raw/cms_synpuf/inpatient_sample1.zip \

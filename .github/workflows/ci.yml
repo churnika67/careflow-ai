@@ -219,7 +219,18 @@ jobs:
           cat backend.log
           exit 1
       - name: Run the deterministic integration subset
-        run: python -m pytest tests/ -q
+        # test_existing_query_endpoint_contract_is_unchanged is the one
+        # CAREFLOW_REVIEW_INTEGRATION test that needs the real CMS/Qdrant
+        # corpus and embedding model (it calls POST /query directly to
+        # prove Phase 11 didn't regress the pre-existing policy contract)
+        # -- unlike this gate's other 53 tests, which only need Postgres.
+        # This job deliberately never ingests the CMS corpus (see the
+        # "Integration-test decision" section of docs/
+        # phase16_testing_ci_design.md); the same /query contract is
+        # already proven live, end to end, by E2E-2 in the e2e job. Only
+        # deselected here -- it still runs locally and would run in any
+        # job that does ingest the corpus.
+        run: python -m pytest tests/ -q --deselect tests/test_review_api.py::test_existing_query_endpoint_contract_is_unchanged
       - name: Backend log (always, for diagnostics)
         if: always()
         run: cat backend.log || true
