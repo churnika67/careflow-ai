@@ -7,7 +7,7 @@ a coordinated evidence workflow, and a human review/audit trail on top of it.
 It is an engineering portfolio project, not a clinical decision system — it
 never determines coverage, eligibility, medical necessity, or claim approval.
 
-**Current scope: Phase 15 — evaluation/analytics dashboard.** The backend now
+**Current scope: Phase 16 complete — automated testing and CI.** The backend now
 implements, on top of the Phase 1-7 policy RAG pipeline: an independent
 structured-data layer (CMS DE-SynPUF synthetic claims and Synthea synthetic
 FHIR R4 patient records, Phase 8), a deterministic `langgraph.StateGraph`
@@ -30,8 +30,9 @@ datasets. See the [Phase 8](docs/phase8_structured_health_data.md),
 [Phase 9](docs/phase9_langgraph_orchestration.md),
 [Phase 10](docs/phase10_multi_agent_architecture.md),
 [Phase 11](docs/phase11_hitl_audit_workflow.md),
-[Phase 14](docs/phase14_frontend_design.md), and
-[Phase 15](docs/phase15_analytics_design.md) guides for architecture, real
+[Phase 14](docs/phase14_frontend_design.md),
+[Phase 15](docs/phase15_analytics_design.md), and
+[Phase 16](docs/phase16_testing_ci_design.md) guides for architecture, real
 findings, schema/graph details, and reproduction steps. `POST /query`'s
 original contract remains unchanged throughout.
 
