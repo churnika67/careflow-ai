@@ -19,7 +19,7 @@
  * does not change which endpoint is used.
  */
 
-import { apiPost } from "./client";
+import { apiPost, RAG_REQUEST_TIMEOUT_MS } from "./client";
 import { ApiClientError } from "./errors";
 import type { ReviewableQueryRequest, ReviewableQueryResponse, ReviewErrorBody } from "./reviewTypes";
 import type { Route } from "./orchestrationTypes";
@@ -110,6 +110,7 @@ export async function runReviewableQuery(
   try {
     const result = await apiPost<ReviewableQueryResponse | ReviewErrorBody>("/reviewable-query", request, {
       signal,
+      timeoutMs: RAG_REQUEST_TIMEOUT_MS,
     });
     if (!result.ok) {
       return { kind: "error", category: categorizeErrorResponse(result.data), requestId: result.requestId };

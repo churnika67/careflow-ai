@@ -12,7 +12,7 @@
  * just one more value of the same `status` field the caller already reads.
  */
 
-import { apiPost } from "./client";
+import { apiPost, RAG_REQUEST_TIMEOUT_MS } from "./client";
 import { ApiClientError } from "./errors";
 import type { OrchestrationErrorBody, OrchestrationRequest, OrchestrationResponse } from "./orchestrationTypes";
 
@@ -84,7 +84,7 @@ export async function orchestrateQuestion(
     const result = await apiPost<OrchestrationResponse | OrchestrationErrorBody>(
       "/orchestrate",
       request,
-      { signal },
+      { signal, timeoutMs: RAG_REQUEST_TIMEOUT_MS },
     );
     if (!result.ok) {
       return { kind: "error", category: categorizeErrorResponse(result.data), requestId: result.requestId };

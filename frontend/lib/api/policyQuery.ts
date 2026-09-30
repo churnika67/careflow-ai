@@ -17,7 +17,7 @@
  * for how each outcome is rendered.
  */
 
-import { apiPost } from "./client";
+import { apiPost, RAG_REQUEST_TIMEOUT_MS } from "./client";
 import { ApiClientError } from "./errors";
 import type { QueryErrorBody, RAGAnswer } from "./types";
 
@@ -82,7 +82,11 @@ export async function queryPolicy(
   signal?: AbortSignal,
 ): Promise<PolicyQueryOutcome> {
   try {
-    const result = await apiPost<RAGAnswer | QueryErrorBody>("/query", { question }, { signal });
+    const result = await apiPost<RAGAnswer | QueryErrorBody>(
+      "/query",
+      { question },
+      { signal, timeoutMs: RAG_REQUEST_TIMEOUT_MS },
+    );
     if (result.ok) {
       const answer = result.data as RAGAnswer;
       return {

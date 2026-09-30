@@ -308,7 +308,7 @@ describe("runMultiAgentWorkflow", () => {
     );
     const pending = runMultiAgentWorkflow({ question: "x" });
     const assertion = expect(pending).resolves.toMatchObject({ kind: "error", category: "timeout" });
-    await vi.advanceTimersByTimeAsync(6000);
+    await vi.advanceTimersByTimeAsync(31_000);
     await assertion;
     vi.useRealTimers();
   });

@@ -15,6 +15,16 @@ import { apiBaseUrl } from "@/lib/config";
 import { ApiClientError } from "./errors";
 
 const DEFAULT_TIMEOUT_MS = 5000;
+// /query, /orchestrate, /multi-agent, and /reviewable-query all run real
+// embedding + retrieval (CPU-bound) before ever reaching the deterministic
+// provider -- 5s is fine for cheap endpoints (/live, /ready, /reviews) but
+// too short for these on a resource-constrained deployment target (e.g. a
+// free-tier host's fractional CPU allocation genuinely takes ~10-15s for
+// a single query, confirmed directly against Phase 17's production
+// deployment). Bounded to roughly the backend's own
+// RAG_PROVIDER_TIMEOUT_SECONDS default (30s) rather than removing a
+// timeout altogether.
+export const RAG_REQUEST_TIMEOUT_MS = 30_000;
 const REQUEST_ID_HEADER = "X-Request-ID";
 
 export interface ApiResponse<T> {

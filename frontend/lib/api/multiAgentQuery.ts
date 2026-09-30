@@ -22,7 +22,7 @@
  * `_log` only ever includes workflow/status/counts/reason codes).
  */
 
-import { apiPost } from "./client";
+import { apiPost, RAG_REQUEST_TIMEOUT_MS } from "./client";
 import { ApiClientError } from "./errors";
 import type {
   MultiAgentErrorBody,
@@ -121,7 +121,10 @@ export async function runMultiAgentWorkflow(
   signal?: AbortSignal,
 ): Promise<MultiAgentOutcome> {
   try {
-    const result = await apiPost<MultiAgentResponse | MultiAgentErrorBody>("/multi-agent", request, { signal });
+    const result = await apiPost<MultiAgentResponse | MultiAgentErrorBody>("/multi-agent", request, {
+      signal,
+      timeoutMs: RAG_REQUEST_TIMEOUT_MS,
+    });
     if (!result.ok) {
       return { kind: "error", category: categorizeErrorResponse(result.data), requestId: result.requestId };
     }
