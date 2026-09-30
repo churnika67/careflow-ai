@@ -22,13 +22,48 @@ export function SystemOverview() {
 
   return (
     <div className={styles.page}>
-      <section>
+      <section className={styles.hero}>
+        <span className={styles.eyebrow}>Healthcare Intelligence Platform</span>
         <h1 className={styles.appName}>CareFlow AI</h1>
-        <p className={styles.tagline}>Healthcare Intelligence Platform</p>
         <p className={styles.description}>
-          Evidence-grounded healthcare information workflows using CMS policy and
-          synthetic healthcare data.
+          Evidence-grounded healthcare information workflows that combine public
+          Medicare coverage policy with synthetic patient and claims data — bounded
+          orchestration, coordinated evidence retrieval, and a full human-review
+          audit trail.
         </p>
+      </section>
+
+      <section className={styles.features} aria-label="Platform capabilities">
+        <div className={styles.featureCard}>
+          <span className={styles.featureIcon} aria-hidden="true">
+            📄
+          </span>
+          <h3>Medicare Policy Retrieval</h3>
+          <p>
+            Evidence-grounded answers to Medicare coverage questions, cited directly
+            to the source policy document.
+          </p>
+        </div>
+        <div className={styles.featureCard}>
+          <span className={styles.featureIcon} aria-hidden="true">
+            🗂️
+          </span>
+          <h3>Synthetic Patient &amp; Claims Data</h3>
+          <p>
+            Structured lookups over synthetic Synthea FHIR records and CMS DE-SynPUF
+            claims — never real patient data.
+          </p>
+        </div>
+        <div className={styles.featureCard}>
+          <span className={styles.featureIcon} aria-hidden="true">
+            ✅
+          </span>
+          <h3>Human-in-the-Loop Review</h3>
+          <p>
+            Every flagged result routes through a reviewable queue with a full
+            decision and audit trail.
+          </p>
+        </div>
       </section>
 
       <section className={styles.statusSection} aria-live="polite">

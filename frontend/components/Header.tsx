@@ -18,9 +18,14 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <div>
-        <p className={styles.title}>CareFlow AI</p>
-        <p className={styles.subtitle}>Healthcare Intelligence Platform</p>
+      <div className={styles.brand}>
+        <span className={styles.logo} aria-hidden="true">
+          C
+        </span>
+        <div>
+          <p className={styles.title}>CareFlow AI</p>
+          <p className={styles.subtitle}>Healthcare Intelligence Platform</p>
+        </div>
       </div>
       <div aria-live="polite">
         <StatusBadge state={badge.state} label={badge.label} />

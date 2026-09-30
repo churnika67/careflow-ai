@@ -8,6 +8,21 @@
   font-weight: 500;
   line-height: 1.2;
   white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+@keyframes badge-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.checking .symbol {
+  animation: badge-pulse 1.2s ease-in-out infinite;
 }
 
 .symbol {

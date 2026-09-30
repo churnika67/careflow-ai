@@ -130,6 +130,17 @@
   border-radius: var(--radius-sm);
   padding: var(--space-sm) var(--space-lg);
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .submitButton:disabled {
