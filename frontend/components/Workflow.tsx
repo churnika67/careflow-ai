@@ -207,7 +207,7 @@ export function Workflow() {
               <path d="M5 6h5v5H5zM14 6h5v5h-5zM9.5 8.5H14M9.5 8.5v8M9.5 16.5h9.5v-5" />
             </svg>
           </span>
-          <h1 className={styles.heading}>Combined Policy + Structured Analysis</h1>
+          <h1 className={styles.heading}>Evidence Workflow</h1>
         </div>
         <p className={styles.subheading}>
           Run a CareFlow coordinated workflow that gathers Medicare policy evidence and synthetic
