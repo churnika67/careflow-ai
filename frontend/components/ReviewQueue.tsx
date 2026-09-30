@@ -116,7 +116,14 @@ export function ReviewQueue() {
   return (
     <div className={styles.page}>
       <section>
-        <h1 className={styles.heading}>Reviews</h1>
+        <div className={styles.headingRow}>
+          <span className={styles.headingIcon} aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12.5 10 17l9-10" />
+            </svg>
+          </span>
+          <h1 className={styles.heading}>Reviews</h1>
+        </div>
         <p className={styles.subheading}>
           CareFlow requests that were flagged for human review -- either because evidence validation
           found an issue, or because a reviewer explicitly requested review.

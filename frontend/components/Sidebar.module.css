@@ -44,6 +44,10 @@
   color: var(--color-sidebar-text-muted);
 }
 
+.navList {
+  flex: 1;
+}
+
 .activeLink,
 .inactiveLink {
   display: flex;
@@ -56,6 +60,25 @@
   transition:
     background var(--transition-fast),
     color var(--transition-fast);
+}
+
+.navLabel {
+  flex: 1;
+}
+
+.navBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  background: #e33a5c;
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .icon {

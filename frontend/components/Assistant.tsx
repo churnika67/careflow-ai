@@ -127,7 +127,14 @@ export function Assistant() {
   return (
     <div className={styles.page}>
       <section>
-        <h1 className={styles.heading}>CareFlow Assistant</h1>
+        <div className={styles.headingRow}>
+          <span className={styles.headingIcon} aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" />
+            </svg>
+          </span>
+          <h1 className={styles.heading}>CareFlow Assistant</h1>
+        </div>
         <p className={styles.subheading}>
           Ask CareFlow to find information from supported healthcare sources.
         </p>

@@ -5,8 +5,25 @@
   gap: var(--space-xl);
 }
 
+.headingRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.headingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
 .heading {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 

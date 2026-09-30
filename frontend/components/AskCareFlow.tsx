@@ -108,9 +108,19 @@ export function AskCareFlow() {
 
   return (
     <div className={styles.page}>
-      <section>
-        <h1 className={styles.heading}>Ask CareFlow</h1>
-        <p className={styles.subheading}>Ask a question about Medicare policy.</p>
+      <section className={styles.headingRow}>
+        <span className={styles.headingIcon} aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 5h16v11H8l-4 4z" />
+          </svg>
+        </span>
+        <div>
+          <h1 className={styles.heading}>Ask CareFlow</h1>
+          <p className={styles.subheading}>
+            Get evidence-grounded answers from Medicare policy. Provider: deterministic extractive
+            retrieval — no external model call.
+          </p>
+        </div>
       </section>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>

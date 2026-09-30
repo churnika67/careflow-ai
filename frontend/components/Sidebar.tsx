@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { getReviewQueue } from "@/lib/api/reviewsApi";
 import styles from "./Sidebar.module.css";
 
-interface NavItem {
+export interface NavItem {
   label: string;
   href: string;
   icon: string;
@@ -15,7 +17,7 @@ interface NavItem {
 // Analytics (Phase 15 Slice 1 -- a foundation shell, not yet the full
 // dashboard) are all functional. Every nav item now links somewhere real;
 // there is no remaining disabled/"Coming soon" placeholder link.
-const NAV_ITEMS: NavItem[] = [
+export const NAV_ITEMS: NavItem[] = [
   { label: "System Overview", href: "/", icon: "grid" },
   { label: "Ask CareFlow", href: "/ask", icon: "message" },
   { label: "Patient Data", href: "/patient-data", icon: "user" },
@@ -56,8 +58,32 @@ function NavIcon({ name }: { name: string }) {
   );
 }
 
+// Fetched once on mount, best-effort: a real live count of currently
+// pending reviews (capped by `limit`), not a fabricated number. A failed
+// fetch just leaves the badge hidden rather than showing a stale/fake
+// count.
+function usePendingReviewCount(): number | null {
+  const [count, setCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    getReviewQueue({ status: "pending", limit: 50 }, controller.signal).then((outcome) => {
+      if (cancelled || outcome.kind !== "ok") return;
+      setCount(outcome.page.reviews.length);
+    });
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, []);
+
+  return count;
+}
+
 export function Sidebar() {
   const pathname = usePathname();
+  const pendingReviewCount = usePendingReviewCount();
 
   return (
     <nav className={styles.sidebar} aria-label="Primary">
@@ -71,7 +97,7 @@ export function Sidebar() {
         </div>
       </Link>
 
-      <ul>
+      <ul className={styles.navList}>
         {NAV_ITEMS.map((item) => {
           // Exact match for a leaf route; prefix match for a route with
           // its own sub-pages (e.g. /reviews/[reviewId] should still
@@ -79,6 +105,7 @@ export function Sidebar() {
           // a prefix, or every route would match it.
           const isCurrent =
             pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+          const showBadge = item.href === "/reviews" && !!pendingReviewCount && pendingReviewCount > 0;
           return (
             <li key={item.label}>
               <Link
@@ -87,7 +114,12 @@ export function Sidebar() {
                 aria-current={isCurrent ? "page" : undefined}
               >
                 <NavIcon name={item.icon} />
-                <span>{item.label}</span>
+                <span className={styles.navLabel}>{item.label}</span>
+                {showBadge && (
+                  <span className={styles.navBadge} aria-label={`${pendingReviewCount} pending`}>
+                    {pendingReviewCount > 9 ? "9+" : pendingReviewCount}
+                  </span>
+                )}
               </Link>
             </li>
           );

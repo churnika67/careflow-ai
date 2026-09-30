@@ -253,6 +253,54 @@ function latencyStages(source: Record<string, LatencyStageRaw>, labels?: Record<
   }));
 }
 
+function formatMetric(value: number | null | undefined): string {
+  return value === null || value === undefined ? "—" : value.toFixed(2);
+}
+
+// A compact, colorful headline pair above the full evaluation detail --
+// real hybrid-mode Hit@1/MRR@5 read straight from the same snapshot every
+// other section on this page uses, never a separately computed figure.
+function EvaluationHeadlineSection({ snapshot }: { snapshot: EvaluationSnapshotResponse }) {
+  const devHybrid = (snapshot.retrieval_baseline.development.metrics as RetrievalModeMetrics).hybrid?.overall;
+  const heldOutHybrid = (snapshot.retrieval_baseline.held_out.metrics as RetrievalModeMetrics).hybrid?.overall;
+  const heldOutReranked = (snapshot.retrieval_baseline.held_out.metrics as RetrievalModeMetrics)
+    .hybrid_reranked?.overall;
+
+  return (
+    <div className={styles.headlineGrid}>
+      <div className={styles.headlineCard}>
+        <p className={styles.headlineLabel}>
+          Development Set ({snapshot.datasets.development.case_count} cases)
+        </p>
+        <div className={styles.headlineMetrics}>
+          <div>
+            <span className={styles.headlineValue}>{formatMetric(devHybrid?.["Hit@1"])}</span>
+            <span className={styles.headlineMetricLabel}>Hit@1 (Hybrid)</span>
+          </div>
+          <div>
+            <span className={styles.headlineValue}>{formatMetric(devHybrid?.["MRR@5"])}</span>
+            <span className={styles.headlineMetricLabel}>MRR@5 (Hybrid)</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles.headlineCard} data-tone="amber">
+        <p className={styles.headlineLabel}>
+          Held-out Set ({snapshot.datasets.held_out.case_count} cases)
+        </p>
+        <div className={styles.headlineMetrics}>
+          <div>
+            <span className={styles.headlineValue}>
+              {formatMetric(heldOutHybrid?.["MRR@5"])} → {formatMetric(heldOutReranked?.["MRR@5"])}
+            </span>
+            <span className={styles.headlineMetricLabel}>MRR@5 (Hybrid → + Reranking)</span>
+          </div>
+        </div>
+        <p className={styles.headlineNote}>Project-authored, not independent. Not clinician-validated.</p>
+      </div>
+    </div>
+  );
+}
+
 function EvaluationOverviewSection({ snapshot }: { snapshot: EvaluationSnapshotResponse }) {
   return (
     <div className={styles.card}>
@@ -637,6 +685,7 @@ function EvaluationSnapshotContent({ snapshot }: { snapshot: EvaluationSnapshotR
         {snapshot.generated_note}
       </p>
 
+      <EvaluationHeadlineSection snapshot={snapshot} />
       <EvaluationOverviewSection snapshot={snapshot} />
       <DatasetLimitationsSection snapshot={snapshot} />
       <RetrievalQualitySection snapshot={snapshot} />
@@ -1061,7 +1110,14 @@ export function Analytics() {
   return (
     <div className={styles.page}>
       <section>
-        <h1 className={styles.heading}>Analytics &amp; Evaluation</h1>
+        <div className={styles.headingRow}>
+          <span className={styles.headingIcon} aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 19V9M12 19V5M19 19v-7" />
+            </svg>
+          </span>
+          <h1 className={styles.heading}>Analytics &amp; Evaluation</h1>
+        </div>
         <p className={styles.subheading}>
           Phase 12 evaluation evidence and population-level synthetic-data aggregates for the
           synthetic FHIR and SynPUF datasets.

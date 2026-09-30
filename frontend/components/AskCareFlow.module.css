@@ -1,19 +1,38 @@
 .page {
-  max-width: 720px;
+  max-width: 880px;
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
 }
 
+.headingRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.headingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
 .heading {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
 .subheading {
   margin-top: var(--space-xs);
   color: var(--color-text-muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
+  max-width: 62ch;
 }
 
 .form {

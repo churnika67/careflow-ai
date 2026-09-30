@@ -196,10 +196,19 @@ export function Workflow() {
     setErrors({});
   }
 
+  const currentStep: 1 | 2 | 3 = state.status === "idle" ? 1 : isSubmitting ? 2 : 3;
+
   return (
     <div className={styles.page}>
       <section>
-        <h1 className={styles.heading}>Evidence Workflow</h1>
+        <div className={styles.headingRow}>
+          <span className={styles.headingIcon} aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 6h5v5H5zM14 6h5v5h-5zM9.5 8.5H14M9.5 8.5v8M9.5 16.5h9.5v-5" />
+            </svg>
+          </span>
+          <h1 className={styles.heading}>Combined Policy + Structured Analysis</h1>
+        </div>
         <p className={styles.subheading}>
           Run a CareFlow coordinated workflow that gathers Medicare policy evidence and synthetic
           healthcare data for one request, then validates the result.
@@ -210,6 +219,21 @@ export function Workflow() {
           approval.
         </p>
       </section>
+
+      <ol className={styles.stepper} aria-label="Workflow progress">
+        <li className={currentStep === 1 ? styles.stepActive : currentStep > 1 ? styles.stepDone : styles.step}>
+          <span className={styles.stepNumber}>{currentStep > 1 ? "✓" : "1"}</span>
+          Configure
+        </li>
+        <li className={currentStep === 2 ? styles.stepActive : currentStep > 2 ? styles.stepDone : styles.step}>
+          <span className={styles.stepNumber}>{currentStep > 2 ? "✓" : "2"}</span>
+          Execute
+        </li>
+        <li className={currentStep === 3 ? styles.stepActive : styles.step}>
+          <span className={styles.stepNumber}>3</span>
+          Results
+        </li>
+      </ol>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
         <fieldset className={styles.fieldset}>

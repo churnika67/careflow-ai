@@ -165,6 +165,12 @@ export function Claims() {
     <div className={styles.page}>
       <section>
         <div className={styles.headingRow}>
+          <span className={styles.headingIcon} aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 3h9l5 5v13H6z" />
+              <path d="M14 3v6h6" />
+            </svg>
+          </span>
           <h1 className={styles.heading}>Claims</h1>
           <DatasetBadge name="CMS DE-SynPUF" />
         </div>
