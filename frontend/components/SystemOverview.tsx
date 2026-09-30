@@ -23,33 +23,35 @@ export function SystemOverview() {
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
-        <span className={styles.eyebrow}>Healthcare Intelligence Platform</span>
-        <h1 className={styles.appName}>CareFlow AI</h1>
-        <p className={styles.description}>
-          Evidence-grounded healthcare information workflows that combine public
-          Medicare coverage policy with synthetic patient and claims data — bounded
-          orchestration, coordinated evidence retrieval, and a full human-review
-          audit trail.
-        </p>
-      </section>
+        <div className={styles.heroContent}>
+          <span className={styles.eyebrow}>Healthcare Intelligence Platform</span>
+          <h1 className={styles.appName}>CareFlow AI</h1>
+          <p className={styles.description}>
+            Evidence-grounded healthcare information workflows that combine public
+            Medicare coverage policy with synthetic patient and claims data — bounded
+            orchestration, coordinated evidence retrieval, and a full human-review
+            audit trail.
+          </p>
+        </div>
 
-      <section className={styles.stats} aria-label="Engineering metrics">
-        <div className={styles.statCard}>
-          <span className={styles.statNumber}>1,171</span>
-          <span className={styles.statLabel}>Automated tests passing</span>
-        </div>
-        <div className={styles.statCard}>
-          <span className={styles.statNumber}>9</span>
-          <span className={styles.statLabel}>End-to-end browser journeys</span>
-        </div>
-        <div className={styles.statCard}>
-          <span className={styles.statNumber}>6</span>
-          <span className={styles.statLabel}>CI quality gates, every commit</span>
-        </div>
-        <div className={styles.statCard}>
-          <span className={styles.statNumber}>0</span>
-          <span className={styles.statLabel}>Real patient records used</span>
-        </div>
+        <dl className={styles.stats} aria-label="Engineering metrics">
+          <div className={styles.statCard}>
+            <dt className={styles.statLabel}>Automated tests passing</dt>
+            <dd className={styles.statNumber}>1,171</dd>
+          </div>
+          <div className={styles.statCard}>
+            <dt className={styles.statLabel}>End-to-end browser journeys</dt>
+            <dd className={styles.statNumber}>9</dd>
+          </div>
+          <div className={styles.statCard}>
+            <dt className={styles.statLabel}>CI quality gates, every commit</dt>
+            <dd className={styles.statNumber}>6</dd>
+          </div>
+          <div className={styles.statCard}>
+            <dt className={styles.statLabel}>Real patient records used</dt>
+            <dd className={styles.statNumber}>0</dd>
+          </div>
+        </dl>
       </section>
 
       <section className={styles.features} aria-label="Platform capabilities">

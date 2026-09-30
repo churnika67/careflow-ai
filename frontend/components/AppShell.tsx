@@ -8,9 +8,9 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <SystemStatusProvider>
       <div className={styles.shell}>
-        <Header />
-        <div className={styles.body}>
-          <Sidebar />
+        <Sidebar />
+        <div className={styles.column}>
+          <Header />
           <main className={styles.main}>{children}</main>
         </div>
       </div>

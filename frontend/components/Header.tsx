@@ -12,21 +12,14 @@ const STATE_TO_BADGE: Record<SystemStatusState, { state: BadgeState; label: stri
   unavailable: { state: "unavailable", label: "Unavailable" },
 };
 
+// Branding lives in the sidebar (Sidebar.tsx) now, not here -- this is a
+// slim top bar for the content column only, carrying system status.
 export function Header() {
   const { status } = useSystemStatusContext();
   const badge = STATE_TO_BADGE[status.state];
 
   return (
     <header className={styles.header}>
-      <div className={styles.brand}>
-        <span className={styles.logo} aria-hidden="true">
-          C
-        </span>
-        <div>
-          <p className={styles.title}>CareFlow AI</p>
-          <p className={styles.subtitle}>Healthcare Intelligence Platform</p>
-        </div>
-      </div>
       <div aria-live="polite">
         <StatusBadge state={badge.state} label={badge.label} />
       </div>

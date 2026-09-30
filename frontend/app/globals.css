@@ -2,18 +2,32 @@
    docs/phase14_frontend_design.md's "Design direction" for why dark mode
    is out of scope for this foundation slice. */
 :root {
-  --color-bg: #f4f6fb;
+  --color-bg: #f6f7fb;
   --color-surface: #ffffff;
   --color-surface-muted: #f8fafc;
-  --color-border: #e2e6ee;
-  --color-text: #131826;
-  --color-text-muted: #5b6472;
-  --color-primary: #1846c9;
-  --color-primary-dark: #12318f;
-  --color-primary-light: #eef2ff;
+  --color-border: #e5e7f0;
+  --color-text: #12131a;
+  --color-text-muted: #63667a;
+
+  /* A single distinctive accent (indigo) rather than a generic
+     blue-to-teal SaaS gradient -- paired with a warm amber for the rare
+     moment something needs to visually pop against it. */
+  --color-primary: #5451e0;
+  --color-primary-dark: #423fc0;
+  --color-primary-light: #eeedfd;
   --color-primary-contrast: #ffffff;
-  --color-accent: #0f9d8f;
-  --color-accent-light: #e6f7f4;
+  --color-accent-warm: #f5a524;
+
+  /* The sidebar is deliberately its own dark palette -- see Sidebar.tsx
+     -- the one strong visual identity choice that separates this from a
+     generic white-on-white admin template. */
+  --color-sidebar-bg: #0e1020;
+  --color-sidebar-bg-raised: #171a30;
+  --color-sidebar-text: #c6c8db;
+  --color-sidebar-text-muted: #6b6f8a;
+  --color-sidebar-active-bg: rgba(84, 81, 224, 0.22);
+  --color-sidebar-active-text: #ffffff;
+  --color-sidebar-border: rgba(255, 255, 255, 0.08);
 
   --color-status-ok: #15803d;
   --color-status-ok-bg: #eaf6ee;
@@ -38,17 +52,17 @@
 
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
   --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
-  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+  --shadow-lg: 0 16px 40px rgba(14, 16, 32, 0.16);
 
-  --gradient-brand: linear-gradient(135deg, #1846c9 0%, #0f9d8f 100%);
+  --gradient-brand: linear-gradient(145deg, #171a30 0%, #2c2a63 55%, #5451e0 100%);
 
   --font-sans:
     var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --transition-fast: 150ms ease;
 
-  --sidebar-width: 248px;
-  --header-height: 72px;
+  --sidebar-width: 264px;
+  --header-height: 64px;
 }
 
 html {
