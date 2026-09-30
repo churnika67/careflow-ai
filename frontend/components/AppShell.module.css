@@ -1,6 +1,8 @@
 .shell {
+  position: relative;
   min-height: 100vh;
   display: flex;
+  background: var(--color-bg);
 }
 
 .column {

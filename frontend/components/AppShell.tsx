@@ -8,6 +8,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <SystemStatusProvider>
       <div className={styles.shell}>
+        <div className="ambient-glow" aria-hidden="true" />
         <Sidebar />
         <div className={styles.column}>
           <Header />

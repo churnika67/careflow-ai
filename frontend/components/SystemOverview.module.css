@@ -125,9 +125,10 @@
 }
 
 .featureCard:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-glow);
   border-color: var(--color-primary);
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.01);
+  transition: box-shadow var(--transition-spring), border-color var(--transition-fast), transform var(--transition-spring);
 }
 
 .featureCard h3 {

@@ -25,7 +25,7 @@ export function SystemOverview() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <span className={styles.eyebrow}>Healthcare Intelligence Platform</span>
-          <h1 className={styles.appName}>CareFlow AI</h1>
+          <h1 className={`${styles.appName} gradient-text`}>CareFlow AI</h1>
           <p className={styles.description}>
             Evidence-grounded healthcare information workflows that combine public
             Medicare coverage policy with synthetic patient and claims data — bounded

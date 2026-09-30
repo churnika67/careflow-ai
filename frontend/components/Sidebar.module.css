@@ -66,6 +66,7 @@
 .activeLink {
   color: var(--color-sidebar-active-text);
   background: var(--color-sidebar-active-bg);
+  box-shadow: 0 0 0 1px rgba(84, 81, 224, 0.35) inset, 0 0 16px rgba(84, 81, 224, 0.35);
   font-weight: 600;
 }
 
