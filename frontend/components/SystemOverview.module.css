@@ -42,6 +42,37 @@
   font-size: 1.0625rem;
 }
 
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  animation: fade-in-up 0.5s ease both;
+  animation-delay: 0.05s;
+}
+
+.statCard {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+}
+
+.statNumber {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -107,6 +138,14 @@
 
   .features {
     grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
   }
 }
 

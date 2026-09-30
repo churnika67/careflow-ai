@@ -33,6 +33,25 @@ export function SystemOverview() {
         </p>
       </section>
 
+      <section className={styles.stats} aria-label="Engineering metrics">
+        <div className={styles.statCard}>
+          <span className={styles.statNumber}>1,171</span>
+          <span className={styles.statLabel}>Automated tests passing</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statNumber}>9</span>
+          <span className={styles.statLabel}>End-to-end browser journeys</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statNumber}>6</span>
+          <span className={styles.statLabel}>CI quality gates, every commit</span>
+        </div>
+        <div className={styles.statCard}>
+          <span className={styles.statNumber}>0</span>
+          <span className={styles.statLabel}>Real patient records used</span>
+        </div>
+      </section>
+
       <section className={styles.features} aria-label="Platform capabilities">
         <div className={styles.featureCard}>
           <span className={styles.featureIcon} aria-hidden="true">
